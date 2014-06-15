@@ -46,6 +46,21 @@ class FunctionSignature
     arguments = @arguments.map { |_| _.to_s }.join(', ')
     "#{@return_type} #{@name}(#{arguments})"
   end
+
+
+  def <=>(other)
+    if @name === other.name then
+      argument_list <=> other.argument_list
+    else
+      @name <=> other.name
+    end
+  end
+
+  private
+
+  def argument_list
+    @arguments.map { |_| _.to_s }.join(', ')
+  end
 end
 
 
@@ -59,12 +74,23 @@ def remove_space(s)
 end
 
 
-def extract_enums(draw_api_header)
+def get_header_contents(draw_api_header_list)
+  contents = ''
+  draw_api_header_list.each { |file|
+    contents << open(file)
+      .read
+      .force_encoding('MacRoman')
+      .encode('UTF-8')
+      .gsub(/#if OLDROUTINENAMES.+?#endif/m, '')
+  }
+  contents
+end
+
+def extract_enums(draw_api_header_list)
+  contents = get_header_contents(draw_api_header_list)
+
   enums = []
-  open(draw_api_header)
-    .read
-    .force_encoding('MacRoman')
-    .encode('UTF-8')
+  contents
     .scan(/enum {([^{]+?)}/m).map { |e|
       e.first
     }
@@ -97,11 +123,10 @@ def extract_enums(draw_api_header)
 end
 
 
-def extract_extern_function_symbols(draw_api_header)
-  function_symbols = open(draw_api_header)
-    .read
-    .force_encoding('MacRoman')
-    .encode('UTF-8')
+def extract_extern_function_symbols(draw_api_header_list)
+  contents = get_header_contents(draw_api_header_list)
+
+  function_symbols = contents
     .scan(/extern[^{]+?;/m).map { |func_sig|
       func_sig = func_sig
         .gsub(/(\r|\n|\r\n|\t)/, ' ')
@@ -124,8 +149,9 @@ def extract_extern_function_symbols(draw_api_header)
   api_list = function_symbols.map { |function_symbol|
     FunctionSignature.new(function_symbol)
   }
+  .sort
 
-  unsupported_type_list = [
+  removed_type_list = [
     'Cursor',
     'PenState',
     'QDProcs',
@@ -137,10 +163,12 @@ def extract_extern_function_symbols(draw_api_header)
     'QDRegionBitsRef',
     'QDXSystemCursorID',
     'ITabHandle',
+    'DeviceLoopDrawingUPP',
+    'DeviceLoopDrawingProcPtr',
   ]
   api_list.select { |s|
     decl = s.to_s
-    unsupported_type_list.all? { |type|
+    removed_type_list.all? { |type|
       not (decl =~ /\b#{type}\b/)
     }
   }
@@ -347,9 +375,10 @@ end
 
 begin
   raise 'Argument needed: specify the file path of QuickDrawAPI.h' if ARGV.length == 0
-  header_path = ARGV[0]
-  raise "File not found: #{header_path}" unless File.exists?(header_path)
-  main header_path
+  ARGV.each { |file|
+    raise "File not found: #{file}" unless File.exists?(file)
+  }
+  main(ARGV)
 rescue => e
   puts "Error: #{e}"
   exit 1
