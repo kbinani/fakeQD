@@ -281,10 +281,7 @@ def main(qd_api_header)
     f.puts '#include "fakeQD.h"'
     f.puts '#if MAC_OS_X_VERSION_10_6 < MAC_OS_X_VERSION_MIN_REQUIRED'
 
-    [
-      '#include <dlfcn.h>',
-      '#include <string>',
-    ].each { |_| f.puts _ }
+    f.puts '#include <dlfcn.h>'
 
     f.puts '#ifdef __cplusplus'
     f.puts 'extern "C" {'

@@ -1,7 +1,6 @@
 #include "fakeQD.h"
 #if MAC_OS_X_VERSION_10_6 < MAC_OS_X_VERSION_MIN_REQUIRED
 #include <dlfcn.h>
-#include <string>
 #ifdef __cplusplus
 extern "C" {
 #endif
