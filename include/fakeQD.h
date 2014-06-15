@@ -29,6 +29,7 @@
 #define CopyMask fakeQD_CopyMask
 #define CopyPixMap fakeQD_CopyPixMap
 #define CopyPixPat fakeQD_CopyPixPat
+#define CopyRgn fakeQD_CopyRgn
 #define CreateCGContextForPort fakeQD_CreateCGContextForPort
 #define CreateNewPort fakeQD_CreateNewPort
 #define CreateNewPortForCGDisplayID fakeQD_CreateNewPortForCGDisplayID
@@ -69,6 +70,8 @@
 #define EmptyRect fakeQD_EmptyRect
 #define EmptyRgn fakeQD_EmptyRgn
 #define EqualPt fakeQD_EqualPt
+#define EqualRect fakeQD_EqualRect
+#define EqualRgn fakeQD_EqualRgn
 #define EraseArc fakeQD_EraseArc
 #define EraseOval fakeQD_EraseOval
 #define ErasePoly fakeQD_ErasePoly
@@ -84,11 +87,15 @@
 #define FillCRoundRect fakeQD_FillCRoundRect
 #define FillOval fakeQD_FillOval
 #define FillPoly fakeQD_FillPoly
+#define FillRect fakeQD_FillRect
+#define FillRgn fakeQD_FillRgn
 #define FillRoundRect fakeQD_FillRoundRect
 #define ForeColor fakeQD_ForeColor
 #define FrameArc fakeQD_FrameArc
 #define FrameOval fakeQD_FrameOval
 #define FramePoly fakeQD_FramePoly
+#define FrameRect fakeQD_FrameRect
+#define FrameRgn fakeQD_FrameRgn
 #define FrameRoundRect fakeQD_FrameRoundRect
 #define GetBackColor fakeQD_GetBackColor
 #define GetCPixel fakeQD_GetCPixel
@@ -109,6 +116,7 @@
 #define GetPixBounds fakeQD_GetPixBounds
 #define GetPixDepth fakeQD_GetPixDepth
 #define GetPixPat fakeQD_GetPixPat
+#define GetPixel fakeQD_GetPixel
 #define GetPort fakeQD_GetPort
 #define GetPortBackColor fakeQD_GetPortBackColor
 #define GetPortBackPixPat fakeQD_GetPortBackPixPat
@@ -153,11 +161,14 @@
 #define Index2Color fakeQD_Index2Color
 #define InitCursor fakeQD_InitCursor
 #define InitGDevice fakeQD_InitGDevice
+#define InsetRect fakeQD_InsetRect
 #define InsetRgn fakeQD_InsetRgn
 #define InvertArc fakeQD_InvertArc
 #define InvertColor fakeQD_InvertColor
 #define InvertOval fakeQD_InvertOval
 #define InvertPoly fakeQD_InvertPoly
+#define InvertRect fakeQD_InvertRect
+#define InvertRgn fakeQD_InvertRgn
 #define InvertRoundRect fakeQD_InvertRoundRect
 #define InvokeCMBitmapCallBackUPP fakeQD_InvokeCMBitmapCallBackUPP
 #define InvokeColorComplementUPP fakeQD_InvokeColorComplementUPP
@@ -223,31 +234,9 @@
 #define LMSetWidthPtr fakeQD_LMSetWidthPtr
 #define LMSetWidthTabHandle fakeQD_LMSetWidthTabHandle
 #define Line fakeQD_Line
+#define LineTo fakeQD_LineTo
 #define LocalToGlobal fakeQD_LocalToGlobal
 #define LockPortBits fakeQD_LockPortBits
-#define MacCopyRgn fakeQD_MacCopyRgn
-#define MacEqualRect fakeQD_MacEqualRect
-#define MacEqualRgn fakeQD_MacEqualRgn
-#define MacFillRect fakeQD_MacFillRect
-#define MacFillRgn fakeQD_MacFillRgn
-#define MacFrameRect fakeQD_MacFrameRect
-#define MacFrameRgn fakeQD_MacFrameRgn
-#define MacGetPixel fakeQD_MacGetPixel
-#define MacInsetRect fakeQD_MacInsetRect
-#define MacInvertRect fakeQD_MacInvertRect
-#define MacInvertRgn fakeQD_MacInvertRgn
-#define MacLineTo fakeQD_MacLineTo
-#define MacOffsetRect fakeQD_MacOffsetRect
-#define MacOffsetRgn fakeQD_MacOffsetRgn
-#define MacPaintRgn fakeQD_MacPaintRgn
-#define MacPtInRect fakeQD_MacPtInRect
-#define MacSetPort fakeQD_MacSetPort
-#define MacSetRect fakeQD_MacSetRect
-#define MacSetRectRgn fakeQD_MacSetRectRgn
-#define MacShowCursor fakeQD_MacShowCursor
-#define MacUnionRect fakeQD_MacUnionRect
-#define MacUnionRgn fakeQD_MacUnionRgn
-#define MacXorRgn fakeQD_MacXorRgn
 #define MakeRGBPat fakeQD_MakeRGBPat
 #define MapPoly fakeQD_MapPoly
 #define MapPt fakeQD_MapPt
@@ -286,6 +275,8 @@
 #define NewRgn fakeQD_NewRgn
 #define ObscureCursor fakeQD_ObscureCursor
 #define OffsetPoly fakeQD_OffsetPoly
+#define OffsetRect fakeQD_OffsetRect
+#define OffsetRgn fakeQD_OffsetRgn
 #define OpColor fakeQD_OpColor
 #define OpenCPicture fakeQD_OpenCPicture
 #define OpenCursorComponent fakeQD_OpenCursorComponent
@@ -297,6 +288,7 @@
 #define PaintOval fakeQD_PaintOval
 #define PaintPoly fakeQD_PaintPoly
 #define PaintRect fakeQD_PaintRect
+#define PaintRgn fakeQD_PaintRgn
 #define PaintRoundRect fakeQD_PaintRoundRect
 #define PenMode fakeQD_PenMode
 #define PenNormal fakeQD_PenNormal
@@ -307,6 +299,7 @@
 #define PortSize fakeQD_PortSize
 #define ProtectEntry fakeQD_ProtectEntry
 #define Pt2Rect fakeQD_Pt2Rect
+#define PtInRect fakeQD_PtInRect
 #define PtInRgn fakeQD_PtInRgn
 #define PtToAngle fakeQD_PtToAngle
 #define QDAddRectToDirtyRegion fakeQD_QDAddRectToDirtyRegion
@@ -368,6 +361,7 @@
 #define SetEntries fakeQD_SetEntries
 #define SetGDevice fakeQD_SetGDevice
 #define SetOrigin fakeQD_SetOrigin
+#define SetPort fakeQD_SetPort
 #define SetPortBackPixPat fakeQD_SetPortBackPixPat
 #define SetPortBits fakeQD_SetPortBits
 #define SetPortBounds fakeQD_SetPortBounds
@@ -388,8 +382,11 @@
 #define SetPt fakeQD_SetPt
 #define SetQDError fakeQD_SetQDError
 #define SetQDGlobalsRandomSeed fakeQD_SetQDGlobalsRandomSeed
+#define SetRect fakeQD_SetRect
+#define SetRectRgn fakeQD_SetRectRgn
 #define SetStdCProcs fakeQD_SetStdCProcs
 #define ShieldCursor fakeQD_ShieldCursor
+#define ShowCursor fakeQD_ShowCursor
 #define ShowPen fakeQD_ShowPen
 #define SlopeFromAngle fakeQD_SlopeFromAngle
 #define StdArc fakeQD_StdArc
@@ -411,34 +408,37 @@
 #define SwapPortRegionSaveHandle fakeQD_SwapPortRegionSaveHandle
 #define SyncCGContextOriginWithPort fakeQD_SyncCGContextOriginWithPort
 #define TestDeviceAttribute fakeQD_TestDeviceAttribute
+#define UnionRect fakeQD_UnionRect
+#define UnionRgn fakeQD_UnionRgn
 #define UnlockPortBits fakeQD_UnlockPortBits
 #define UnpackBits fakeQD_UnpackBits
+#define XorRgn fakeQD_XorRgn
 #define deltapoint fakeQD_deltapoint
-#define SetPort fakeQD_MacSetPort
-#define SetCursor fakeQD_MacSetCursor
-#define ShowCursor fakeQD_MacShowCursor
-#define LineTo fakeQD_MacLineTo
-#define SetRect fakeQD_MacSetRect
-#define OffsetRect fakeQD_MacOffsetRect
-#define InsetRect fakeQD_MacInsetRect
-#define UnionRect fakeQD_MacUnionRect
-#define EqualRect fakeQD_MacEqualRect
-#define FrameRect fakeQD_MacFrameRect
-#define InvertRect fakeQD_MacInvertRect
-#define FillRect fakeQD_MacFillRect
-#define CopyRgn fakeQD_MacCopyRgn
-#define SetRectRgn fakeQD_MacSetRectRgn
-#define OffsetRgn fakeQD_MacOffsetRgn
-#define UnionRgn fakeQD_MacUnionRgn
-#define XorRgn fakeQD_MacXorRgn
-#define EqualRgn fakeQD_MacEqualRgn
-#define FrameRgn fakeQD_MacFrameRgn
-#define PaintRgn fakeQD_MacPaintRgn
-#define InvertRgn fakeQD_MacInvertRgn
-#define FillRgn fakeQD_MacFillRgn
-#define GetPixel fakeQD_MacGetPixel
-#define PtInRect fakeQD_MacPtInRect
-#define GetCursor fakeQD_MacGetCursor
+#define MacSetPort fakeQD_SetPort
+#define MacSetCursor fakeQD_SetCursor
+#define MacShowCursor fakeQD_ShowCursor
+#define MacLineTo fakeQD_LineTo
+#define MacSetRect fakeQD_SetRect
+#define MacOffsetRect fakeQD_OffsetRect
+#define MacInsetRect fakeQD_InsetRect
+#define MacUnionRect fakeQD_UnionRect
+#define MacEqualRect fakeQD_EqualRect
+#define MacFrameRect fakeQD_FrameRect
+#define MacInvertRect fakeQD_InvertRect
+#define MacFillRect fakeQD_FillRect
+#define MacCopyRgn fakeQD_CopyRgn
+#define MacSetRectRgn fakeQD_SetRectRgn
+#define MacOffsetRgn fakeQD_OffsetRgn
+#define MacUnionRgn fakeQD_UnionRgn
+#define MacXorRgn fakeQD_XorRgn
+#define MacEqualRgn fakeQD_EqualRgn
+#define MacFrameRgn fakeQD_FrameRgn
+#define MacPaintRgn fakeQD_PaintRgn
+#define MacInvertRgn fakeQD_InvertRgn
+#define MacFillRgn fakeQD_FillRgn
+#define MacGetPixel fakeQD_GetPixel
+#define MacPtInRect fakeQD_PtInRect
+#define MacGetCursor fakeQD_GetCursor
 #define kQDRegionToRectsMsgInit fakeQD_kQDRegionToRectsMsgInit
 #define kQDRegionToRectsMsgParse fakeQD_kQDRegionToRectsMsgParse
 #define kQDRegionToRectsMsgTerminate fakeQD_kQDRegionToRectsMsgTerminate
@@ -815,6 +815,7 @@ extern void fakeQD_CopyDeepMask(const BitMap *, const BitMap *, const BitMap *, 
 extern void fakeQD_CopyMask(const BitMap *, const BitMap *, const BitMap *, const Rect *, const Rect *, const Rect *);
 extern void fakeQD_CopyPixMap(PixMapHandle, PixMapHandle);
 extern void fakeQD_CopyPixPat(PixPatHandle, PixPatHandle);
+extern void fakeQD_CopyRgn(RgnHandle, RgnHandle);
 extern OSStatus fakeQD_CreateCGContextForPort(CGrafPtr, CGContextRef *);
 extern CGrafPtr fakeQD_CreateNewPort();
 extern CGrafPtr fakeQD_CreateNewPortForCGDisplayID(UInt32);
@@ -855,6 +856,8 @@ extern void fakeQD_DrawPicture(PicHandle, const Rect *);
 extern Boolean fakeQD_EmptyRect(const Rect *);
 extern Boolean fakeQD_EmptyRgn(RgnHandle);
 extern Boolean fakeQD_EqualPt(Point, Point);
+extern Boolean fakeQD_EqualRect(const Rect *, const Rect *);
+extern Boolean fakeQD_EqualRgn(RgnHandle, RgnHandle);
 extern void fakeQD_EraseArc(const Rect *, short, short);
 extern void fakeQD_EraseOval(const Rect *);
 extern void fakeQD_ErasePoly(PolyHandle);
@@ -870,11 +873,15 @@ extern void fakeQD_FillCRgn(RgnHandle, PixPatHandle);
 extern void fakeQD_FillCRoundRect(const Rect *, short, short, PixPatHandle);
 extern void fakeQD_FillOval(const Rect *, const Pattern *);
 extern void fakeQD_FillPoly(PolyHandle, const Pattern *);
+extern void fakeQD_FillRect(const Rect *, const Pattern *);
+extern void fakeQD_FillRgn(RgnHandle, const Pattern *);
 extern void fakeQD_FillRoundRect(const Rect *, short, short, const Pattern *);
 extern void fakeQD_ForeColor(long);
 extern void fakeQD_FrameArc(const Rect *, short, short);
 extern void fakeQD_FrameOval(const Rect *);
 extern void fakeQD_FramePoly(PolyHandle);
+extern void fakeQD_FrameRect(const Rect *);
+extern void fakeQD_FrameRgn(RgnHandle);
 extern void fakeQD_FrameRoundRect(const Rect *, short, short);
 extern void fakeQD_GetBackColor(RGBColor *);
 extern void fakeQD_GetCPixel(short, short, RGBColor *);
@@ -895,6 +902,7 @@ extern PicHandle fakeQD_GetPicture(short);
 extern Rect * fakeQD_GetPixBounds(PixMapHandle, Rect *);
 extern short fakeQD_GetPixDepth(PixMapHandle);
 extern PixPatHandle fakeQD_GetPixPat(short);
+extern Boolean fakeQD_GetPixel(short, short);
 extern void fakeQD_GetPort(GrafPtr *);
 extern RGBColor * fakeQD_GetPortBackColor(CGrafPtr, RGBColor *);
 extern PixPatHandle fakeQD_GetPortBackPixPat(CGrafPtr, PixPatHandle);
@@ -939,11 +947,14 @@ extern void fakeQD_HiliteColor(const RGBColor *);
 extern void fakeQD_Index2Color(long, RGBColor *);
 extern void fakeQD_InitCursor();
 extern void fakeQD_InitGDevice(short, long, GDHandle);
+extern void fakeQD_InsetRect(Rect *, short, short);
 extern void fakeQD_InsetRgn(RgnHandle, short, short);
 extern void fakeQD_InvertArc(const Rect *, short, short);
 extern void fakeQD_InvertColor(RGBColor *);
 extern void fakeQD_InvertOval(const Rect *);
 extern void fakeQD_InvertPoly(PolyHandle);
+extern void fakeQD_InvertRect(const Rect *);
+extern void fakeQD_InvertRgn(RgnHandle);
 extern void fakeQD_InvertRoundRect(const Rect *, short, short);
 extern Boolean fakeQD_InvokeCMBitmapCallBackUPP(long, void *, CMBitmapCallBackUPP);
 extern Boolean fakeQD_InvokeColorComplementUPP(RGBColor *, ColorComplementUPP);
@@ -1009,31 +1020,9 @@ extern void fakeQD_LMSetWidthListHand(Handle);
 extern void fakeQD_LMSetWidthPtr(Ptr);
 extern void fakeQD_LMSetWidthTabHandle(Handle);
 extern void fakeQD_Line(short, short);
+extern void fakeQD_LineTo(short, short);
 extern void fakeQD_LocalToGlobal(Point *);
 extern OSErr fakeQD_LockPortBits(GrafPtr);
-extern void fakeQD_MacCopyRgn(RgnHandle, RgnHandle);
-extern Boolean fakeQD_MacEqualRect(const Rect *, const Rect *);
-extern Boolean fakeQD_MacEqualRgn(RgnHandle, RgnHandle);
-extern void fakeQD_MacFillRect(const Rect *, const Pattern *);
-extern void fakeQD_MacFillRgn(RgnHandle, const Pattern *);
-extern void fakeQD_MacFrameRect(const Rect *);
-extern void fakeQD_MacFrameRgn(RgnHandle);
-extern Boolean fakeQD_MacGetPixel(short, short);
-extern void fakeQD_MacInsetRect(Rect *, short, short);
-extern void fakeQD_MacInvertRect(const Rect *);
-extern void fakeQD_MacInvertRgn(RgnHandle);
-extern void fakeQD_MacLineTo(short, short);
-extern void fakeQD_MacOffsetRect(Rect *, short, short);
-extern void fakeQD_MacOffsetRgn(RgnHandle, short, short);
-extern void fakeQD_MacPaintRgn(RgnHandle);
-extern Boolean fakeQD_MacPtInRect(Point, const Rect *);
-extern void fakeQD_MacSetPort(GrafPtr);
-extern void fakeQD_MacSetRect(Rect *, short, short, short, short);
-extern void fakeQD_MacSetRectRgn(RgnHandle, short, short, short, short);
-extern void fakeQD_MacShowCursor();
-extern void fakeQD_MacUnionRect(const Rect *, const Rect *, Rect *);
-extern void fakeQD_MacUnionRgn(RgnHandle, RgnHandle, RgnHandle);
-extern void fakeQD_MacXorRgn(RgnHandle, RgnHandle, RgnHandle);
 extern void fakeQD_MakeRGBPat(PixPatHandle, const RGBColor *);
 extern void fakeQD_MapPoly(PolyHandle, const Rect *, const Rect *);
 extern void fakeQD_MapPt(Point *, const Rect *, const Rect *);
@@ -1072,6 +1061,8 @@ extern RegionToRectsUPP fakeQD_NewRegionToRectsUPP(RegionToRectsProcPtr);
 extern RgnHandle fakeQD_NewRgn();
 extern void fakeQD_ObscureCursor();
 extern void fakeQD_OffsetPoly(PolyHandle, short, short);
+extern void fakeQD_OffsetRect(Rect *, short, short);
+extern void fakeQD_OffsetRgn(RgnHandle, short, short);
 extern void fakeQD_OpColor(const RGBColor *);
 extern PicHandle fakeQD_OpenCPicture(const OpenCPicParams *);
 extern OSErr fakeQD_OpenCursorComponent(Component, ComponentInstance *);
@@ -1083,6 +1074,7 @@ extern void fakeQD_PaintArc(const Rect *, short, short);
 extern void fakeQD_PaintOval(const Rect *);
 extern void fakeQD_PaintPoly(PolyHandle);
 extern void fakeQD_PaintRect(const Rect *);
+extern void fakeQD_PaintRgn(RgnHandle);
 extern void fakeQD_PaintRoundRect(const Rect *, short, short);
 extern void fakeQD_PenMode(short);
 extern void fakeQD_PenNormal();
@@ -1093,6 +1085,7 @@ extern void fakeQD_PicComment(short, short, Handle);
 extern void fakeQD_PortSize(short, short);
 extern void fakeQD_ProtectEntry(short, Boolean);
 extern void fakeQD_Pt2Rect(Point, Point, Rect *);
+extern Boolean fakeQD_PtInRect(Point, const Rect *);
 extern Boolean fakeQD_PtInRgn(Point, RgnHandle);
 extern void fakeQD_PtToAngle(const Rect *, Point, short *);
 extern OSStatus fakeQD_QDAddRectToDirtyRegion(CGrafPtr, const Rect *);
@@ -1154,6 +1147,7 @@ extern void fakeQD_SetEmptyRgn(RgnHandle);
 extern void fakeQD_SetEntries(short, short, CSpecArray);
 extern void fakeQD_SetGDevice(GDHandle);
 extern void fakeQD_SetOrigin(short, short);
+extern void fakeQD_SetPort(GrafPtr);
 extern void fakeQD_SetPortBackPixPat(CGrafPtr, PixPatHandle);
 extern void fakeQD_SetPortBits(const BitMap *);
 extern void fakeQD_SetPortBounds(CGrafPtr, const Rect *);
@@ -1174,8 +1168,11 @@ extern void fakeQD_SetPortVisibleRegion(CGrafPtr, RgnHandle);
 extern void fakeQD_SetPt(Point *, short, short);
 extern void fakeQD_SetQDError(OSErr);
 extern void fakeQD_SetQDGlobalsRandomSeed(long);
+extern void fakeQD_SetRect(Rect *, short, short, short, short);
+extern void fakeQD_SetRectRgn(RgnHandle, short, short, short, short);
 extern void fakeQD_SetStdCProcs(CQDProcs *);
 extern void fakeQD_ShieldCursor(const Rect *, Point);
+extern void fakeQD_ShowCursor();
 extern void fakeQD_ShowPen();
 extern Fixed fakeQD_SlopeFromAngle(short);
 extern void fakeQD_StdArc(GrafVerb, const Rect *, short, short);
@@ -1197,8 +1194,11 @@ extern Handle fakeQD_SwapPortPolySaveHandle(CGrafPtr, Handle);
 extern Handle fakeQD_SwapPortRegionSaveHandle(CGrafPtr, Handle);
 extern OSStatus fakeQD_SyncCGContextOriginWithPort(CGContextRef, CGrafPtr);
 extern Boolean fakeQD_TestDeviceAttribute(GDHandle, short);
+extern void fakeQD_UnionRect(const Rect *, const Rect *, Rect *);
+extern void fakeQD_UnionRgn(RgnHandle, RgnHandle, RgnHandle);
 extern OSErr fakeQD_UnlockPortBits(GrafPtr);
 extern void fakeQD_UnpackBits(Ptr *, Ptr *, short);
+extern void fakeQD_XorRgn(RgnHandle, RgnHandle, RgnHandle);
 extern long fakeQD_deltapoint(Point *, Point *);
 #ifdef __cplusplus
 } // extern "C"

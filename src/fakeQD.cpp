@@ -32,6 +32,7 @@ typedef void (*CopyDeepMaskFunc)(const BitMap *, const BitMap *, const BitMap *,
 typedef void (*CopyMaskFunc)(const BitMap *, const BitMap *, const BitMap *, const Rect *, const Rect *, const Rect *);
 typedef void (*CopyPixMapFunc)(PixMapHandle, PixMapHandle);
 typedef void (*CopyPixPatFunc)(PixPatHandle, PixPatHandle);
+typedef void (*CopyRgnFunc)(RgnHandle, RgnHandle);
 typedef OSStatus (*CreateCGContextForPortFunc)(CGrafPtr, CGContextRef *);
 typedef CGrafPtr (*CreateNewPortFunc)();
 typedef CGrafPtr (*CreateNewPortForCGDisplayIDFunc)(UInt32);
@@ -72,6 +73,8 @@ typedef void (*DrawPictureFunc)(PicHandle, const Rect *);
 typedef Boolean (*EmptyRectFunc)(const Rect *);
 typedef Boolean (*EmptyRgnFunc)(RgnHandle);
 typedef Boolean (*EqualPtFunc)(Point, Point);
+typedef Boolean (*EqualRectFunc)(const Rect *, const Rect *);
+typedef Boolean (*EqualRgnFunc)(RgnHandle, RgnHandle);
 typedef void (*EraseArcFunc)(const Rect *, short, short);
 typedef void (*EraseOvalFunc)(const Rect *);
 typedef void (*ErasePolyFunc)(PolyHandle);
@@ -87,11 +90,15 @@ typedef void (*FillCRgnFunc)(RgnHandle, PixPatHandle);
 typedef void (*FillCRoundRectFunc)(const Rect *, short, short, PixPatHandle);
 typedef void (*FillOvalFunc)(const Rect *, const Pattern *);
 typedef void (*FillPolyFunc)(PolyHandle, const Pattern *);
+typedef void (*FillRectFunc)(const Rect *, const Pattern *);
+typedef void (*FillRgnFunc)(RgnHandle, const Pattern *);
 typedef void (*FillRoundRectFunc)(const Rect *, short, short, const Pattern *);
 typedef void (*ForeColorFunc)(long);
 typedef void (*FrameArcFunc)(const Rect *, short, short);
 typedef void (*FrameOvalFunc)(const Rect *);
 typedef void (*FramePolyFunc)(PolyHandle);
+typedef void (*FrameRectFunc)(const Rect *);
+typedef void (*FrameRgnFunc)(RgnHandle);
 typedef void (*FrameRoundRectFunc)(const Rect *, short, short);
 typedef void (*GetBackColorFunc)(RGBColor *);
 typedef void (*GetCPixelFunc)(short, short, RGBColor *);
@@ -112,6 +119,7 @@ typedef PicHandle (*GetPictureFunc)(short);
 typedef Rect * (*GetPixBoundsFunc)(PixMapHandle, Rect *);
 typedef short (*GetPixDepthFunc)(PixMapHandle);
 typedef PixPatHandle (*GetPixPatFunc)(short);
+typedef Boolean (*GetPixelFunc)(short, short);
 typedef void (*GetPortFunc)(GrafPtr *);
 typedef RGBColor * (*GetPortBackColorFunc)(CGrafPtr, RGBColor *);
 typedef PixPatHandle (*GetPortBackPixPatFunc)(CGrafPtr, PixPatHandle);
@@ -156,11 +164,14 @@ typedef void (*HiliteColorFunc)(const RGBColor *);
 typedef void (*Index2ColorFunc)(long, RGBColor *);
 typedef void (*InitCursorFunc)();
 typedef void (*InitGDeviceFunc)(short, long, GDHandle);
+typedef void (*InsetRectFunc)(Rect *, short, short);
 typedef void (*InsetRgnFunc)(RgnHandle, short, short);
 typedef void (*InvertArcFunc)(const Rect *, short, short);
 typedef void (*InvertColorFunc)(RGBColor *);
 typedef void (*InvertOvalFunc)(const Rect *);
 typedef void (*InvertPolyFunc)(PolyHandle);
+typedef void (*InvertRectFunc)(const Rect *);
+typedef void (*InvertRgnFunc)(RgnHandle);
 typedef void (*InvertRoundRectFunc)(const Rect *, short, short);
 typedef Boolean (*InvokeCMBitmapCallBackUPPFunc)(long, void *, CMBitmapCallBackUPP);
 typedef Boolean (*InvokeColorComplementUPPFunc)(RGBColor *, ColorComplementUPP);
@@ -226,31 +237,9 @@ typedef void (*LMSetWidthListHandFunc)(Handle);
 typedef void (*LMSetWidthPtrFunc)(Ptr);
 typedef void (*LMSetWidthTabHandleFunc)(Handle);
 typedef void (*LineFunc)(short, short);
+typedef void (*LineToFunc)(short, short);
 typedef void (*LocalToGlobalFunc)(Point *);
 typedef OSErr (*LockPortBitsFunc)(GrafPtr);
-typedef void (*MacCopyRgnFunc)(RgnHandle, RgnHandle);
-typedef Boolean (*MacEqualRectFunc)(const Rect *, const Rect *);
-typedef Boolean (*MacEqualRgnFunc)(RgnHandle, RgnHandle);
-typedef void (*MacFillRectFunc)(const Rect *, const Pattern *);
-typedef void (*MacFillRgnFunc)(RgnHandle, const Pattern *);
-typedef void (*MacFrameRectFunc)(const Rect *);
-typedef void (*MacFrameRgnFunc)(RgnHandle);
-typedef Boolean (*MacGetPixelFunc)(short, short);
-typedef void (*MacInsetRectFunc)(Rect *, short, short);
-typedef void (*MacInvertRectFunc)(const Rect *);
-typedef void (*MacInvertRgnFunc)(RgnHandle);
-typedef void (*MacLineToFunc)(short, short);
-typedef void (*MacOffsetRectFunc)(Rect *, short, short);
-typedef void (*MacOffsetRgnFunc)(RgnHandle, short, short);
-typedef void (*MacPaintRgnFunc)(RgnHandle);
-typedef Boolean (*MacPtInRectFunc)(Point, const Rect *);
-typedef void (*MacSetPortFunc)(GrafPtr);
-typedef void (*MacSetRectFunc)(Rect *, short, short, short, short);
-typedef void (*MacSetRectRgnFunc)(RgnHandle, short, short, short, short);
-typedef void (*MacShowCursorFunc)();
-typedef void (*MacUnionRectFunc)(const Rect *, const Rect *, Rect *);
-typedef void (*MacUnionRgnFunc)(RgnHandle, RgnHandle, RgnHandle);
-typedef void (*MacXorRgnFunc)(RgnHandle, RgnHandle, RgnHandle);
 typedef void (*MakeRGBPatFunc)(PixPatHandle, const RGBColor *);
 typedef void (*MapPolyFunc)(PolyHandle, const Rect *, const Rect *);
 typedef void (*MapPtFunc)(Point *, const Rect *, const Rect *);
@@ -289,6 +278,8 @@ typedef RegionToRectsUPP (*NewRegionToRectsUPPFunc)(RegionToRectsProcPtr);
 typedef RgnHandle (*NewRgnFunc)();
 typedef void (*ObscureCursorFunc)();
 typedef void (*OffsetPolyFunc)(PolyHandle, short, short);
+typedef void (*OffsetRectFunc)(Rect *, short, short);
+typedef void (*OffsetRgnFunc)(RgnHandle, short, short);
 typedef void (*OpColorFunc)(const RGBColor *);
 typedef PicHandle (*OpenCPictureFunc)(const OpenCPicParams *);
 typedef OSErr (*OpenCursorComponentFunc)(Component, ComponentInstance *);
@@ -300,6 +291,7 @@ typedef void (*PaintArcFunc)(const Rect *, short, short);
 typedef void (*PaintOvalFunc)(const Rect *);
 typedef void (*PaintPolyFunc)(PolyHandle);
 typedef void (*PaintRectFunc)(const Rect *);
+typedef void (*PaintRgnFunc)(RgnHandle);
 typedef void (*PaintRoundRectFunc)(const Rect *, short, short);
 typedef void (*PenModeFunc)(short);
 typedef void (*PenNormalFunc)();
@@ -310,6 +302,7 @@ typedef void (*PicCommentFunc)(short, short, Handle);
 typedef void (*PortSizeFunc)(short, short);
 typedef void (*ProtectEntryFunc)(short, Boolean);
 typedef void (*Pt2RectFunc)(Point, Point, Rect *);
+typedef Boolean (*PtInRectFunc)(Point, const Rect *);
 typedef Boolean (*PtInRgnFunc)(Point, RgnHandle);
 typedef void (*PtToAngleFunc)(const Rect *, Point, short *);
 typedef OSStatus (*QDAddRectToDirtyRegionFunc)(CGrafPtr, const Rect *);
@@ -371,6 +364,7 @@ typedef void (*SetEmptyRgnFunc)(RgnHandle);
 typedef void (*SetEntriesFunc)(short, short, CSpecArray);
 typedef void (*SetGDeviceFunc)(GDHandle);
 typedef void (*SetOriginFunc)(short, short);
+typedef void (*SetPortFunc)(GrafPtr);
 typedef void (*SetPortBackPixPatFunc)(CGrafPtr, PixPatHandle);
 typedef void (*SetPortBitsFunc)(const BitMap *);
 typedef void (*SetPortBoundsFunc)(CGrafPtr, const Rect *);
@@ -391,8 +385,11 @@ typedef void (*SetPortVisibleRegionFunc)(CGrafPtr, RgnHandle);
 typedef void (*SetPtFunc)(Point *, short, short);
 typedef void (*SetQDErrorFunc)(OSErr);
 typedef void (*SetQDGlobalsRandomSeedFunc)(long);
+typedef void (*SetRectFunc)(Rect *, short, short, short, short);
+typedef void (*SetRectRgnFunc)(RgnHandle, short, short, short, short);
 typedef void (*SetStdCProcsFunc)(CQDProcs *);
 typedef void (*ShieldCursorFunc)(const Rect *, Point);
+typedef void (*ShowCursorFunc)();
 typedef void (*ShowPenFunc)();
 typedef Fixed (*SlopeFromAngleFunc)(short);
 typedef void (*StdArcFunc)(GrafVerb, const Rect *, short, short);
@@ -414,8 +411,11 @@ typedef Handle (*SwapPortPolySaveHandleFunc)(CGrafPtr, Handle);
 typedef Handle (*SwapPortRegionSaveHandleFunc)(CGrafPtr, Handle);
 typedef OSStatus (*SyncCGContextOriginWithPortFunc)(CGContextRef, CGrafPtr);
 typedef Boolean (*TestDeviceAttributeFunc)(GDHandle, short);
+typedef void (*UnionRectFunc)(const Rect *, const Rect *, Rect *);
+typedef void (*UnionRgnFunc)(RgnHandle, RgnHandle, RgnHandle);
 typedef OSErr (*UnlockPortBitsFunc)(GrafPtr);
 typedef void (*UnpackBitsFunc)(Ptr *, Ptr *, short);
+typedef void (*XorRgnFunc)(RgnHandle, RgnHandle, RgnHandle);
 typedef long (*deltapointFunc)(Point *, Point *);
 #ifdef __cplusplus
 } // extern "C"
@@ -454,6 +454,7 @@ public:
         , m_CopyMaskFunc(0)
         , m_CopyPixMapFunc(0)
         , m_CopyPixPatFunc(0)
+        , m_CopyRgnFunc(0)
         , m_CreateCGContextForPortFunc(0)
         , m_CreateNewPortFunc(0)
         , m_CreateNewPortForCGDisplayIDFunc(0)
@@ -494,6 +495,8 @@ public:
         , m_EmptyRectFunc(0)
         , m_EmptyRgnFunc(0)
         , m_EqualPtFunc(0)
+        , m_EqualRectFunc(0)
+        , m_EqualRgnFunc(0)
         , m_EraseArcFunc(0)
         , m_EraseOvalFunc(0)
         , m_ErasePolyFunc(0)
@@ -509,11 +512,15 @@ public:
         , m_FillCRoundRectFunc(0)
         , m_FillOvalFunc(0)
         , m_FillPolyFunc(0)
+        , m_FillRectFunc(0)
+        , m_FillRgnFunc(0)
         , m_FillRoundRectFunc(0)
         , m_ForeColorFunc(0)
         , m_FrameArcFunc(0)
         , m_FrameOvalFunc(0)
         , m_FramePolyFunc(0)
+        , m_FrameRectFunc(0)
+        , m_FrameRgnFunc(0)
         , m_FrameRoundRectFunc(0)
         , m_GetBackColorFunc(0)
         , m_GetCPixelFunc(0)
@@ -534,6 +541,7 @@ public:
         , m_GetPixBoundsFunc(0)
         , m_GetPixDepthFunc(0)
         , m_GetPixPatFunc(0)
+        , m_GetPixelFunc(0)
         , m_GetPortFunc(0)
         , m_GetPortBackColorFunc(0)
         , m_GetPortBackPixPatFunc(0)
@@ -578,11 +586,14 @@ public:
         , m_Index2ColorFunc(0)
         , m_InitCursorFunc(0)
         , m_InitGDeviceFunc(0)
+        , m_InsetRectFunc(0)
         , m_InsetRgnFunc(0)
         , m_InvertArcFunc(0)
         , m_InvertColorFunc(0)
         , m_InvertOvalFunc(0)
         , m_InvertPolyFunc(0)
+        , m_InvertRectFunc(0)
+        , m_InvertRgnFunc(0)
         , m_InvertRoundRectFunc(0)
         , m_InvokeCMBitmapCallBackUPPFunc(0)
         , m_InvokeColorComplementUPPFunc(0)
@@ -648,31 +659,9 @@ public:
         , m_LMSetWidthPtrFunc(0)
         , m_LMSetWidthTabHandleFunc(0)
         , m_LineFunc(0)
+        , m_LineToFunc(0)
         , m_LocalToGlobalFunc(0)
         , m_LockPortBitsFunc(0)
-        , m_MacCopyRgnFunc(0)
-        , m_MacEqualRectFunc(0)
-        , m_MacEqualRgnFunc(0)
-        , m_MacFillRectFunc(0)
-        , m_MacFillRgnFunc(0)
-        , m_MacFrameRectFunc(0)
-        , m_MacFrameRgnFunc(0)
-        , m_MacGetPixelFunc(0)
-        , m_MacInsetRectFunc(0)
-        , m_MacInvertRectFunc(0)
-        , m_MacInvertRgnFunc(0)
-        , m_MacLineToFunc(0)
-        , m_MacOffsetRectFunc(0)
-        , m_MacOffsetRgnFunc(0)
-        , m_MacPaintRgnFunc(0)
-        , m_MacPtInRectFunc(0)
-        , m_MacSetPortFunc(0)
-        , m_MacSetRectFunc(0)
-        , m_MacSetRectRgnFunc(0)
-        , m_MacShowCursorFunc(0)
-        , m_MacUnionRectFunc(0)
-        , m_MacUnionRgnFunc(0)
-        , m_MacXorRgnFunc(0)
         , m_MakeRGBPatFunc(0)
         , m_MapPolyFunc(0)
         , m_MapPtFunc(0)
@@ -711,6 +700,8 @@ public:
         , m_NewRgnFunc(0)
         , m_ObscureCursorFunc(0)
         , m_OffsetPolyFunc(0)
+        , m_OffsetRectFunc(0)
+        , m_OffsetRgnFunc(0)
         , m_OpColorFunc(0)
         , m_OpenCPictureFunc(0)
         , m_OpenCursorComponentFunc(0)
@@ -722,6 +713,7 @@ public:
         , m_PaintOvalFunc(0)
         , m_PaintPolyFunc(0)
         , m_PaintRectFunc(0)
+        , m_PaintRgnFunc(0)
         , m_PaintRoundRectFunc(0)
         , m_PenModeFunc(0)
         , m_PenNormalFunc(0)
@@ -732,6 +724,7 @@ public:
         , m_PortSizeFunc(0)
         , m_ProtectEntryFunc(0)
         , m_Pt2RectFunc(0)
+        , m_PtInRectFunc(0)
         , m_PtInRgnFunc(0)
         , m_PtToAngleFunc(0)
         , m_QDAddRectToDirtyRegionFunc(0)
@@ -793,6 +786,7 @@ public:
         , m_SetEntriesFunc(0)
         , m_SetGDeviceFunc(0)
         , m_SetOriginFunc(0)
+        , m_SetPortFunc(0)
         , m_SetPortBackPixPatFunc(0)
         , m_SetPortBitsFunc(0)
         , m_SetPortBoundsFunc(0)
@@ -813,8 +807,11 @@ public:
         , m_SetPtFunc(0)
         , m_SetQDErrorFunc(0)
         , m_SetQDGlobalsRandomSeedFunc(0)
+        , m_SetRectFunc(0)
+        , m_SetRectRgnFunc(0)
         , m_SetStdCProcsFunc(0)
         , m_ShieldCursorFunc(0)
+        , m_ShowCursorFunc(0)
         , m_ShowPenFunc(0)
         , m_SlopeFromAngleFunc(0)
         , m_StdArcFunc(0)
@@ -836,8 +833,11 @@ public:
         , m_SwapPortRegionSaveHandleFunc(0)
         , m_SyncCGContextOriginWithPortFunc(0)
         , m_TestDeviceAttributeFunc(0)
+        , m_UnionRectFunc(0)
+        , m_UnionRgnFunc(0)
         , m_UnlockPortBitsFunc(0)
         , m_UnpackBitsFunc(0)
+        , m_XorRgnFunc(0)
         , m_deltapointFunc(0)
     {}
     ~QuickDrawAPIWrapper()
@@ -870,6 +870,7 @@ public:
         m_CopyMaskFunc = 0;
         m_CopyPixMapFunc = 0;
         m_CopyPixPatFunc = 0;
+        m_CopyRgnFunc = 0;
         m_CreateCGContextForPortFunc = 0;
         m_CreateNewPortFunc = 0;
         m_CreateNewPortForCGDisplayIDFunc = 0;
@@ -910,6 +911,8 @@ public:
         m_EmptyRectFunc = 0;
         m_EmptyRgnFunc = 0;
         m_EqualPtFunc = 0;
+        m_EqualRectFunc = 0;
+        m_EqualRgnFunc = 0;
         m_EraseArcFunc = 0;
         m_EraseOvalFunc = 0;
         m_ErasePolyFunc = 0;
@@ -925,11 +928,15 @@ public:
         m_FillCRoundRectFunc = 0;
         m_FillOvalFunc = 0;
         m_FillPolyFunc = 0;
+        m_FillRectFunc = 0;
+        m_FillRgnFunc = 0;
         m_FillRoundRectFunc = 0;
         m_ForeColorFunc = 0;
         m_FrameArcFunc = 0;
         m_FrameOvalFunc = 0;
         m_FramePolyFunc = 0;
+        m_FrameRectFunc = 0;
+        m_FrameRgnFunc = 0;
         m_FrameRoundRectFunc = 0;
         m_GetBackColorFunc = 0;
         m_GetCPixelFunc = 0;
@@ -950,6 +957,7 @@ public:
         m_GetPixBoundsFunc = 0;
         m_GetPixDepthFunc = 0;
         m_GetPixPatFunc = 0;
+        m_GetPixelFunc = 0;
         m_GetPortFunc = 0;
         m_GetPortBackColorFunc = 0;
         m_GetPortBackPixPatFunc = 0;
@@ -994,11 +1002,14 @@ public:
         m_Index2ColorFunc = 0;
         m_InitCursorFunc = 0;
         m_InitGDeviceFunc = 0;
+        m_InsetRectFunc = 0;
         m_InsetRgnFunc = 0;
         m_InvertArcFunc = 0;
         m_InvertColorFunc = 0;
         m_InvertOvalFunc = 0;
         m_InvertPolyFunc = 0;
+        m_InvertRectFunc = 0;
+        m_InvertRgnFunc = 0;
         m_InvertRoundRectFunc = 0;
         m_InvokeCMBitmapCallBackUPPFunc = 0;
         m_InvokeColorComplementUPPFunc = 0;
@@ -1064,31 +1075,9 @@ public:
         m_LMSetWidthPtrFunc = 0;
         m_LMSetWidthTabHandleFunc = 0;
         m_LineFunc = 0;
+        m_LineToFunc = 0;
         m_LocalToGlobalFunc = 0;
         m_LockPortBitsFunc = 0;
-        m_MacCopyRgnFunc = 0;
-        m_MacEqualRectFunc = 0;
-        m_MacEqualRgnFunc = 0;
-        m_MacFillRectFunc = 0;
-        m_MacFillRgnFunc = 0;
-        m_MacFrameRectFunc = 0;
-        m_MacFrameRgnFunc = 0;
-        m_MacGetPixelFunc = 0;
-        m_MacInsetRectFunc = 0;
-        m_MacInvertRectFunc = 0;
-        m_MacInvertRgnFunc = 0;
-        m_MacLineToFunc = 0;
-        m_MacOffsetRectFunc = 0;
-        m_MacOffsetRgnFunc = 0;
-        m_MacPaintRgnFunc = 0;
-        m_MacPtInRectFunc = 0;
-        m_MacSetPortFunc = 0;
-        m_MacSetRectFunc = 0;
-        m_MacSetRectRgnFunc = 0;
-        m_MacShowCursorFunc = 0;
-        m_MacUnionRectFunc = 0;
-        m_MacUnionRgnFunc = 0;
-        m_MacXorRgnFunc = 0;
         m_MakeRGBPatFunc = 0;
         m_MapPolyFunc = 0;
         m_MapPtFunc = 0;
@@ -1127,6 +1116,8 @@ public:
         m_NewRgnFunc = 0;
         m_ObscureCursorFunc = 0;
         m_OffsetPolyFunc = 0;
+        m_OffsetRectFunc = 0;
+        m_OffsetRgnFunc = 0;
         m_OpColorFunc = 0;
         m_OpenCPictureFunc = 0;
         m_OpenCursorComponentFunc = 0;
@@ -1138,6 +1129,7 @@ public:
         m_PaintOvalFunc = 0;
         m_PaintPolyFunc = 0;
         m_PaintRectFunc = 0;
+        m_PaintRgnFunc = 0;
         m_PaintRoundRectFunc = 0;
         m_PenModeFunc = 0;
         m_PenNormalFunc = 0;
@@ -1148,6 +1140,7 @@ public:
         m_PortSizeFunc = 0;
         m_ProtectEntryFunc = 0;
         m_Pt2RectFunc = 0;
+        m_PtInRectFunc = 0;
         m_PtInRgnFunc = 0;
         m_PtToAngleFunc = 0;
         m_QDAddRectToDirtyRegionFunc = 0;
@@ -1209,6 +1202,7 @@ public:
         m_SetEntriesFunc = 0;
         m_SetGDeviceFunc = 0;
         m_SetOriginFunc = 0;
+        m_SetPortFunc = 0;
         m_SetPortBackPixPatFunc = 0;
         m_SetPortBitsFunc = 0;
         m_SetPortBoundsFunc = 0;
@@ -1229,8 +1223,11 @@ public:
         m_SetPtFunc = 0;
         m_SetQDErrorFunc = 0;
         m_SetQDGlobalsRandomSeedFunc = 0;
+        m_SetRectFunc = 0;
+        m_SetRectRgnFunc = 0;
         m_SetStdCProcsFunc = 0;
         m_ShieldCursorFunc = 0;
+        m_ShowCursorFunc = 0;
         m_ShowPenFunc = 0;
         m_SlopeFromAngleFunc = 0;
         m_StdArcFunc = 0;
@@ -1252,8 +1249,11 @@ public:
         m_SwapPortRegionSaveHandleFunc = 0;
         m_SyncCGContextOriginWithPortFunc = 0;
         m_TestDeviceAttributeFunc = 0;
+        m_UnionRectFunc = 0;
+        m_UnionRgnFunc = 0;
         m_UnlockPortBitsFunc = 0;
         m_UnpackBitsFunc = 0;
+        m_XorRgnFunc = 0;
         m_deltapointFunc = 0;
         if (m_qd_dylib_handle) {
             dlclose(m_qd_dylib_handle);
@@ -1468,6 +1468,13 @@ public:
         initializeIfNeeded();
         if (m_CopyPixPatFunc) {
             m_CopyPixPatFunc(a0, a1);
+        }
+    }
+    void fakeQD_CopyRgn(RgnHandle a0, RgnHandle a1)
+    {
+        initializeIfNeeded();
+        if (m_CopyRgnFunc) {
+            m_CopyRgnFunc(a0, a1);
         }
     }
     OSStatus fakeQD_CreateCGContextForPort(CGrafPtr a0, CGContextRef * a1)
@@ -1768,6 +1775,24 @@ public:
             return (Boolean)0;
         }
     }
+    Boolean fakeQD_EqualRect(const Rect * a0, const Rect * a1)
+    {
+        initializeIfNeeded();
+        if (m_EqualRectFunc) {
+            return m_EqualRectFunc(a0, a1);
+        } else {
+            return (Boolean)0;
+        }
+    }
+    Boolean fakeQD_EqualRgn(RgnHandle a0, RgnHandle a1)
+    {
+        initializeIfNeeded();
+        if (m_EqualRgnFunc) {
+            return m_EqualRgnFunc(a0, a1);
+        } else {
+            return (Boolean)0;
+        }
+    }
     void fakeQD_EraseArc(const Rect * a0, short a1, short a2)
     {
         initializeIfNeeded();
@@ -1873,6 +1898,20 @@ public:
             m_FillPolyFunc(a0, a1);
         }
     }
+    void fakeQD_FillRect(const Rect * a0, const Pattern * a1)
+    {
+        initializeIfNeeded();
+        if (m_FillRectFunc) {
+            m_FillRectFunc(a0, a1);
+        }
+    }
+    void fakeQD_FillRgn(RgnHandle a0, const Pattern * a1)
+    {
+        initializeIfNeeded();
+        if (m_FillRgnFunc) {
+            m_FillRgnFunc(a0, a1);
+        }
+    }
     void fakeQD_FillRoundRect(const Rect * a0, short a1, short a2, const Pattern * a3)
     {
         initializeIfNeeded();
@@ -1906,6 +1945,20 @@ public:
         initializeIfNeeded();
         if (m_FramePolyFunc) {
             m_FramePolyFunc(a0);
+        }
+    }
+    void fakeQD_FrameRect(const Rect * a0)
+    {
+        initializeIfNeeded();
+        if (m_FrameRectFunc) {
+            m_FrameRectFunc(a0);
+        }
+    }
+    void fakeQD_FrameRgn(RgnHandle a0)
+    {
+        initializeIfNeeded();
+        if (m_FrameRgnFunc) {
+            m_FrameRgnFunc(a0);
         }
     }
     void fakeQD_FrameRoundRect(const Rect * a0, short a1, short a2)
@@ -2072,6 +2125,15 @@ public:
             return m_GetPixPatFunc(a0);
         } else {
             return (PixPatHandle)0;
+        }
+    }
+    Boolean fakeQD_GetPixel(short a0, short a1)
+    {
+        initializeIfNeeded();
+        if (m_GetPixelFunc) {
+            return m_GetPixelFunc(a0, a1);
+        } else {
+            return (Boolean)0;
         }
     }
     void fakeQD_GetPort(GrafPtr * a0)
@@ -2448,6 +2510,13 @@ public:
             m_InitGDeviceFunc(a0, a1, a2);
         }
     }
+    void fakeQD_InsetRect(Rect * a0, short a1, short a2)
+    {
+        initializeIfNeeded();
+        if (m_InsetRectFunc) {
+            m_InsetRectFunc(a0, a1, a2);
+        }
+    }
     void fakeQD_InsetRgn(RgnHandle a0, short a1, short a2)
     {
         initializeIfNeeded();
@@ -2481,6 +2550,20 @@ public:
         initializeIfNeeded();
         if (m_InvertPolyFunc) {
             m_InvertPolyFunc(a0);
+        }
+    }
+    void fakeQD_InvertRect(const Rect * a0)
+    {
+        initializeIfNeeded();
+        if (m_InvertRectFunc) {
+            m_InvertRectFunc(a0);
+        }
+    }
+    void fakeQD_InvertRgn(RgnHandle a0)
+    {
+        initializeIfNeeded();
+        if (m_InvertRgnFunc) {
+            m_InvertRgnFunc(a0);
         }
     }
     void fakeQD_InvertRoundRect(const Rect * a0, short a1, short a2)
@@ -2998,6 +3081,13 @@ public:
             m_LineFunc(a0, a1);
         }
     }
+    void fakeQD_LineTo(short a0, short a1)
+    {
+        initializeIfNeeded();
+        if (m_LineToFunc) {
+            m_LineToFunc(a0, a1);
+        }
+    }
     void fakeQD_LocalToGlobal(Point * a0)
     {
         initializeIfNeeded();
@@ -3012,175 +3102,6 @@ public:
             return m_LockPortBitsFunc(a0);
         } else {
             return (OSErr)0;
-        }
-    }
-    void fakeQD_MacCopyRgn(RgnHandle a0, RgnHandle a1)
-    {
-        initializeIfNeeded();
-        if (m_MacCopyRgnFunc) {
-            m_MacCopyRgnFunc(a0, a1);
-        }
-    }
-    Boolean fakeQD_MacEqualRect(const Rect * a0, const Rect * a1)
-    {
-        initializeIfNeeded();
-        if (m_MacEqualRectFunc) {
-            return m_MacEqualRectFunc(a0, a1);
-        } else {
-            return (Boolean)0;
-        }
-    }
-    Boolean fakeQD_MacEqualRgn(RgnHandle a0, RgnHandle a1)
-    {
-        initializeIfNeeded();
-        if (m_MacEqualRgnFunc) {
-            return m_MacEqualRgnFunc(a0, a1);
-        } else {
-            return (Boolean)0;
-        }
-    }
-    void fakeQD_MacFillRect(const Rect * a0, const Pattern * a1)
-    {
-        initializeIfNeeded();
-        if (m_MacFillRectFunc) {
-            m_MacFillRectFunc(a0, a1);
-        }
-    }
-    void fakeQD_MacFillRgn(RgnHandle a0, const Pattern * a1)
-    {
-        initializeIfNeeded();
-        if (m_MacFillRgnFunc) {
-            m_MacFillRgnFunc(a0, a1);
-        }
-    }
-    void fakeQD_MacFrameRect(const Rect * a0)
-    {
-        initializeIfNeeded();
-        if (m_MacFrameRectFunc) {
-            m_MacFrameRectFunc(a0);
-        }
-    }
-    void fakeQD_MacFrameRgn(RgnHandle a0)
-    {
-        initializeIfNeeded();
-        if (m_MacFrameRgnFunc) {
-            m_MacFrameRgnFunc(a0);
-        }
-    }
-    Boolean fakeQD_MacGetPixel(short a0, short a1)
-    {
-        initializeIfNeeded();
-        if (m_MacGetPixelFunc) {
-            return m_MacGetPixelFunc(a0, a1);
-        } else {
-            return (Boolean)0;
-        }
-    }
-    void fakeQD_MacInsetRect(Rect * a0, short a1, short a2)
-    {
-        initializeIfNeeded();
-        if (m_MacInsetRectFunc) {
-            m_MacInsetRectFunc(a0, a1, a2);
-        }
-    }
-    void fakeQD_MacInvertRect(const Rect * a0)
-    {
-        initializeIfNeeded();
-        if (m_MacInvertRectFunc) {
-            m_MacInvertRectFunc(a0);
-        }
-    }
-    void fakeQD_MacInvertRgn(RgnHandle a0)
-    {
-        initializeIfNeeded();
-        if (m_MacInvertRgnFunc) {
-            m_MacInvertRgnFunc(a0);
-        }
-    }
-    void fakeQD_MacLineTo(short a0, short a1)
-    {
-        initializeIfNeeded();
-        if (m_MacLineToFunc) {
-            m_MacLineToFunc(a0, a1);
-        }
-    }
-    void fakeQD_MacOffsetRect(Rect * a0, short a1, short a2)
-    {
-        initializeIfNeeded();
-        if (m_MacOffsetRectFunc) {
-            m_MacOffsetRectFunc(a0, a1, a2);
-        }
-    }
-    void fakeQD_MacOffsetRgn(RgnHandle a0, short a1, short a2)
-    {
-        initializeIfNeeded();
-        if (m_MacOffsetRgnFunc) {
-            m_MacOffsetRgnFunc(a0, a1, a2);
-        }
-    }
-    void fakeQD_MacPaintRgn(RgnHandle a0)
-    {
-        initializeIfNeeded();
-        if (m_MacPaintRgnFunc) {
-            m_MacPaintRgnFunc(a0);
-        }
-    }
-    Boolean fakeQD_MacPtInRect(Point a0, const Rect * a1)
-    {
-        initializeIfNeeded();
-        if (m_MacPtInRectFunc) {
-            return m_MacPtInRectFunc(a0, a1);
-        } else {
-            return (Boolean)0;
-        }
-    }
-    void fakeQD_MacSetPort(GrafPtr a0)
-    {
-        initializeIfNeeded();
-        if (m_MacSetPortFunc) {
-            m_MacSetPortFunc(a0);
-        }
-    }
-    void fakeQD_MacSetRect(Rect * a0, short a1, short a2, short a3, short a4)
-    {
-        initializeIfNeeded();
-        if (m_MacSetRectFunc) {
-            m_MacSetRectFunc(a0, a1, a2, a3, a4);
-        }
-    }
-    void fakeQD_MacSetRectRgn(RgnHandle a0, short a1, short a2, short a3, short a4)
-    {
-        initializeIfNeeded();
-        if (m_MacSetRectRgnFunc) {
-            m_MacSetRectRgnFunc(a0, a1, a2, a3, a4);
-        }
-    }
-    void fakeQD_MacShowCursor()
-    {
-        initializeIfNeeded();
-        if (m_MacShowCursorFunc) {
-            m_MacShowCursorFunc();
-        }
-    }
-    void fakeQD_MacUnionRect(const Rect * a0, const Rect * a1, Rect * a2)
-    {
-        initializeIfNeeded();
-        if (m_MacUnionRectFunc) {
-            m_MacUnionRectFunc(a0, a1, a2);
-        }
-    }
-    void fakeQD_MacUnionRgn(RgnHandle a0, RgnHandle a1, RgnHandle a2)
-    {
-        initializeIfNeeded();
-        if (m_MacUnionRgnFunc) {
-            m_MacUnionRgnFunc(a0, a1, a2);
-        }
-    }
-    void fakeQD_MacXorRgn(RgnHandle a0, RgnHandle a1, RgnHandle a2)
-    {
-        initializeIfNeeded();
-        if (m_MacXorRgnFunc) {
-            m_MacXorRgnFunc(a0, a1, a2);
         }
     }
     void fakeQD_MakeRGBPat(PixPatHandle a0, const RGBColor * a1)
@@ -3503,6 +3424,20 @@ public:
             m_OffsetPolyFunc(a0, a1, a2);
         }
     }
+    void fakeQD_OffsetRect(Rect * a0, short a1, short a2)
+    {
+        initializeIfNeeded();
+        if (m_OffsetRectFunc) {
+            m_OffsetRectFunc(a0, a1, a2);
+        }
+    }
+    void fakeQD_OffsetRgn(RgnHandle a0, short a1, short a2)
+    {
+        initializeIfNeeded();
+        if (m_OffsetRgnFunc) {
+            m_OffsetRgnFunc(a0, a1, a2);
+        }
+    }
     void fakeQD_OpColor(const RGBColor * a0)
     {
         initializeIfNeeded();
@@ -3588,6 +3523,13 @@ public:
             m_PaintRectFunc(a0);
         }
     }
+    void fakeQD_PaintRgn(RgnHandle a0)
+    {
+        initializeIfNeeded();
+        if (m_PaintRgnFunc) {
+            m_PaintRgnFunc(a0);
+        }
+    }
     void fakeQD_PaintRoundRect(const Rect * a0, short a1, short a2)
     {
         initializeIfNeeded();
@@ -3656,6 +3598,15 @@ public:
         initializeIfNeeded();
         if (m_Pt2RectFunc) {
             m_Pt2RectFunc(a0, a1, a2);
+        }
+    }
+    Boolean fakeQD_PtInRect(Point a0, const Rect * a1)
+    {
+        initializeIfNeeded();
+        if (m_PtInRectFunc) {
+            return m_PtInRectFunc(a0, a1);
+        } else {
+            return (Boolean)0;
         }
     }
     Boolean fakeQD_PtInRgn(Point a0, RgnHandle a1)
@@ -4155,6 +4106,13 @@ public:
             m_SetOriginFunc(a0, a1);
         }
     }
+    void fakeQD_SetPort(GrafPtr a0)
+    {
+        initializeIfNeeded();
+        if (m_SetPortFunc) {
+            m_SetPortFunc(a0);
+        }
+    }
     void fakeQD_SetPortBackPixPat(CGrafPtr a0, PixPatHandle a1)
     {
         initializeIfNeeded();
@@ -4295,6 +4253,20 @@ public:
             m_SetQDGlobalsRandomSeedFunc(a0);
         }
     }
+    void fakeQD_SetRect(Rect * a0, short a1, short a2, short a3, short a4)
+    {
+        initializeIfNeeded();
+        if (m_SetRectFunc) {
+            m_SetRectFunc(a0, a1, a2, a3, a4);
+        }
+    }
+    void fakeQD_SetRectRgn(RgnHandle a0, short a1, short a2, short a3, short a4)
+    {
+        initializeIfNeeded();
+        if (m_SetRectRgnFunc) {
+            m_SetRectRgnFunc(a0, a1, a2, a3, a4);
+        }
+    }
     void fakeQD_SetStdCProcs(CQDProcs * a0)
     {
         initializeIfNeeded();
@@ -4307,6 +4279,13 @@ public:
         initializeIfNeeded();
         if (m_ShieldCursorFunc) {
             m_ShieldCursorFunc(a0, a1);
+        }
+    }
+    void fakeQD_ShowCursor()
+    {
+        initializeIfNeeded();
+        if (m_ShowCursorFunc) {
+            m_ShowCursorFunc();
         }
     }
     void fakeQD_ShowPen()
@@ -4468,6 +4447,20 @@ public:
             return (Boolean)0;
         }
     }
+    void fakeQD_UnionRect(const Rect * a0, const Rect * a1, Rect * a2)
+    {
+        initializeIfNeeded();
+        if (m_UnionRectFunc) {
+            m_UnionRectFunc(a0, a1, a2);
+        }
+    }
+    void fakeQD_UnionRgn(RgnHandle a0, RgnHandle a1, RgnHandle a2)
+    {
+        initializeIfNeeded();
+        if (m_UnionRgnFunc) {
+            m_UnionRgnFunc(a0, a1, a2);
+        }
+    }
     OSErr fakeQD_UnlockPortBits(GrafPtr a0)
     {
         initializeIfNeeded();
@@ -4482,6 +4475,13 @@ public:
         initializeIfNeeded();
         if (m_UnpackBitsFunc) {
             m_UnpackBitsFunc(a0, a1, a2);
+        }
+    }
+    void fakeQD_XorRgn(RgnHandle a0, RgnHandle a1, RgnHandle a2)
+    {
+        initializeIfNeeded();
+        if (m_XorRgnFunc) {
+            m_XorRgnFunc(a0, a1, a2);
         }
     }
     long fakeQD_deltapoint(Point * a0, Point * a1)
@@ -4525,6 +4525,7 @@ private:
             m_CopyMaskFunc = getProcAddress<CopyMaskFunc>("CopyMask");
             m_CopyPixMapFunc = getProcAddress<CopyPixMapFunc>("CopyPixMap");
             m_CopyPixPatFunc = getProcAddress<CopyPixPatFunc>("CopyPixPat");
+            m_CopyRgnFunc = getProcAddress<CopyRgnFunc>("CopyRgn");
             m_CreateCGContextForPortFunc = getProcAddress<CreateCGContextForPortFunc>("CreateCGContextForPort");
             m_CreateNewPortFunc = getProcAddress<CreateNewPortFunc>("CreateNewPort");
             m_CreateNewPortForCGDisplayIDFunc = getProcAddress<CreateNewPortForCGDisplayIDFunc>("CreateNewPortForCGDisplayID");
@@ -4565,6 +4566,8 @@ private:
             m_EmptyRectFunc = getProcAddress<EmptyRectFunc>("EmptyRect");
             m_EmptyRgnFunc = getProcAddress<EmptyRgnFunc>("EmptyRgn");
             m_EqualPtFunc = getProcAddress<EqualPtFunc>("EqualPt");
+            m_EqualRectFunc = getProcAddress<EqualRectFunc>("EqualRect");
+            m_EqualRgnFunc = getProcAddress<EqualRgnFunc>("EqualRgn");
             m_EraseArcFunc = getProcAddress<EraseArcFunc>("EraseArc");
             m_EraseOvalFunc = getProcAddress<EraseOvalFunc>("EraseOval");
             m_ErasePolyFunc = getProcAddress<ErasePolyFunc>("ErasePoly");
@@ -4580,11 +4583,15 @@ private:
             m_FillCRoundRectFunc = getProcAddress<FillCRoundRectFunc>("FillCRoundRect");
             m_FillOvalFunc = getProcAddress<FillOvalFunc>("FillOval");
             m_FillPolyFunc = getProcAddress<FillPolyFunc>("FillPoly");
+            m_FillRectFunc = getProcAddress<FillRectFunc>("FillRect");
+            m_FillRgnFunc = getProcAddress<FillRgnFunc>("FillRgn");
             m_FillRoundRectFunc = getProcAddress<FillRoundRectFunc>("FillRoundRect");
             m_ForeColorFunc = getProcAddress<ForeColorFunc>("ForeColor");
             m_FrameArcFunc = getProcAddress<FrameArcFunc>("FrameArc");
             m_FrameOvalFunc = getProcAddress<FrameOvalFunc>("FrameOval");
             m_FramePolyFunc = getProcAddress<FramePolyFunc>("FramePoly");
+            m_FrameRectFunc = getProcAddress<FrameRectFunc>("FrameRect");
+            m_FrameRgnFunc = getProcAddress<FrameRgnFunc>("FrameRgn");
             m_FrameRoundRectFunc = getProcAddress<FrameRoundRectFunc>("FrameRoundRect");
             m_GetBackColorFunc = getProcAddress<GetBackColorFunc>("GetBackColor");
             m_GetCPixelFunc = getProcAddress<GetCPixelFunc>("GetCPixel");
@@ -4605,6 +4612,7 @@ private:
             m_GetPixBoundsFunc = getProcAddress<GetPixBoundsFunc>("GetPixBounds");
             m_GetPixDepthFunc = getProcAddress<GetPixDepthFunc>("GetPixDepth");
             m_GetPixPatFunc = getProcAddress<GetPixPatFunc>("GetPixPat");
+            m_GetPixelFunc = getProcAddress<GetPixelFunc>("GetPixel");
             m_GetPortFunc = getProcAddress<GetPortFunc>("GetPort");
             m_GetPortBackColorFunc = getProcAddress<GetPortBackColorFunc>("GetPortBackColor");
             m_GetPortBackPixPatFunc = getProcAddress<GetPortBackPixPatFunc>("GetPortBackPixPat");
@@ -4649,11 +4657,14 @@ private:
             m_Index2ColorFunc = getProcAddress<Index2ColorFunc>("Index2Color");
             m_InitCursorFunc = getProcAddress<InitCursorFunc>("InitCursor");
             m_InitGDeviceFunc = getProcAddress<InitGDeviceFunc>("InitGDevice");
+            m_InsetRectFunc = getProcAddress<InsetRectFunc>("InsetRect");
             m_InsetRgnFunc = getProcAddress<InsetRgnFunc>("InsetRgn");
             m_InvertArcFunc = getProcAddress<InvertArcFunc>("InvertArc");
             m_InvertColorFunc = getProcAddress<InvertColorFunc>("InvertColor");
             m_InvertOvalFunc = getProcAddress<InvertOvalFunc>("InvertOval");
             m_InvertPolyFunc = getProcAddress<InvertPolyFunc>("InvertPoly");
+            m_InvertRectFunc = getProcAddress<InvertRectFunc>("InvertRect");
+            m_InvertRgnFunc = getProcAddress<InvertRgnFunc>("InvertRgn");
             m_InvertRoundRectFunc = getProcAddress<InvertRoundRectFunc>("InvertRoundRect");
             m_InvokeCMBitmapCallBackUPPFunc = getProcAddress<InvokeCMBitmapCallBackUPPFunc>("InvokeCMBitmapCallBackUPP");
             m_InvokeColorComplementUPPFunc = getProcAddress<InvokeColorComplementUPPFunc>("InvokeColorComplementUPP");
@@ -4719,31 +4730,9 @@ private:
             m_LMSetWidthPtrFunc = getProcAddress<LMSetWidthPtrFunc>("LMSetWidthPtr");
             m_LMSetWidthTabHandleFunc = getProcAddress<LMSetWidthTabHandleFunc>("LMSetWidthTabHandle");
             m_LineFunc = getProcAddress<LineFunc>("Line");
+            m_LineToFunc = getProcAddress<LineToFunc>("LineTo");
             m_LocalToGlobalFunc = getProcAddress<LocalToGlobalFunc>("LocalToGlobal");
             m_LockPortBitsFunc = getProcAddress<LockPortBitsFunc>("LockPortBits");
-            m_MacCopyRgnFunc = getProcAddress<MacCopyRgnFunc>("MacCopyRgn");
-            m_MacEqualRectFunc = getProcAddress<MacEqualRectFunc>("MacEqualRect");
-            m_MacEqualRgnFunc = getProcAddress<MacEqualRgnFunc>("MacEqualRgn");
-            m_MacFillRectFunc = getProcAddress<MacFillRectFunc>("MacFillRect");
-            m_MacFillRgnFunc = getProcAddress<MacFillRgnFunc>("MacFillRgn");
-            m_MacFrameRectFunc = getProcAddress<MacFrameRectFunc>("MacFrameRect");
-            m_MacFrameRgnFunc = getProcAddress<MacFrameRgnFunc>("MacFrameRgn");
-            m_MacGetPixelFunc = getProcAddress<MacGetPixelFunc>("MacGetPixel");
-            m_MacInsetRectFunc = getProcAddress<MacInsetRectFunc>("MacInsetRect");
-            m_MacInvertRectFunc = getProcAddress<MacInvertRectFunc>("MacInvertRect");
-            m_MacInvertRgnFunc = getProcAddress<MacInvertRgnFunc>("MacInvertRgn");
-            m_MacLineToFunc = getProcAddress<MacLineToFunc>("MacLineTo");
-            m_MacOffsetRectFunc = getProcAddress<MacOffsetRectFunc>("MacOffsetRect");
-            m_MacOffsetRgnFunc = getProcAddress<MacOffsetRgnFunc>("MacOffsetRgn");
-            m_MacPaintRgnFunc = getProcAddress<MacPaintRgnFunc>("MacPaintRgn");
-            m_MacPtInRectFunc = getProcAddress<MacPtInRectFunc>("MacPtInRect");
-            m_MacSetPortFunc = getProcAddress<MacSetPortFunc>("MacSetPort");
-            m_MacSetRectFunc = getProcAddress<MacSetRectFunc>("MacSetRect");
-            m_MacSetRectRgnFunc = getProcAddress<MacSetRectRgnFunc>("MacSetRectRgn");
-            m_MacShowCursorFunc = getProcAddress<MacShowCursorFunc>("MacShowCursor");
-            m_MacUnionRectFunc = getProcAddress<MacUnionRectFunc>("MacUnionRect");
-            m_MacUnionRgnFunc = getProcAddress<MacUnionRgnFunc>("MacUnionRgn");
-            m_MacXorRgnFunc = getProcAddress<MacXorRgnFunc>("MacXorRgn");
             m_MakeRGBPatFunc = getProcAddress<MakeRGBPatFunc>("MakeRGBPat");
             m_MapPolyFunc = getProcAddress<MapPolyFunc>("MapPoly");
             m_MapPtFunc = getProcAddress<MapPtFunc>("MapPt");
@@ -4782,6 +4771,8 @@ private:
             m_NewRgnFunc = getProcAddress<NewRgnFunc>("NewRgn");
             m_ObscureCursorFunc = getProcAddress<ObscureCursorFunc>("ObscureCursor");
             m_OffsetPolyFunc = getProcAddress<OffsetPolyFunc>("OffsetPoly");
+            m_OffsetRectFunc = getProcAddress<OffsetRectFunc>("OffsetRect");
+            m_OffsetRgnFunc = getProcAddress<OffsetRgnFunc>("OffsetRgn");
             m_OpColorFunc = getProcAddress<OpColorFunc>("OpColor");
             m_OpenCPictureFunc = getProcAddress<OpenCPictureFunc>("OpenCPicture");
             m_OpenCursorComponentFunc = getProcAddress<OpenCursorComponentFunc>("OpenCursorComponent");
@@ -4793,6 +4784,7 @@ private:
             m_PaintOvalFunc = getProcAddress<PaintOvalFunc>("PaintOval");
             m_PaintPolyFunc = getProcAddress<PaintPolyFunc>("PaintPoly");
             m_PaintRectFunc = getProcAddress<PaintRectFunc>("PaintRect");
+            m_PaintRgnFunc = getProcAddress<PaintRgnFunc>("PaintRgn");
             m_PaintRoundRectFunc = getProcAddress<PaintRoundRectFunc>("PaintRoundRect");
             m_PenModeFunc = getProcAddress<PenModeFunc>("PenMode");
             m_PenNormalFunc = getProcAddress<PenNormalFunc>("PenNormal");
@@ -4803,6 +4795,7 @@ private:
             m_PortSizeFunc = getProcAddress<PortSizeFunc>("PortSize");
             m_ProtectEntryFunc = getProcAddress<ProtectEntryFunc>("ProtectEntry");
             m_Pt2RectFunc = getProcAddress<Pt2RectFunc>("Pt2Rect");
+            m_PtInRectFunc = getProcAddress<PtInRectFunc>("PtInRect");
             m_PtInRgnFunc = getProcAddress<PtInRgnFunc>("PtInRgn");
             m_PtToAngleFunc = getProcAddress<PtToAngleFunc>("PtToAngle");
             m_QDAddRectToDirtyRegionFunc = getProcAddress<QDAddRectToDirtyRegionFunc>("QDAddRectToDirtyRegion");
@@ -4864,6 +4857,7 @@ private:
             m_SetEntriesFunc = getProcAddress<SetEntriesFunc>("SetEntries");
             m_SetGDeviceFunc = getProcAddress<SetGDeviceFunc>("SetGDevice");
             m_SetOriginFunc = getProcAddress<SetOriginFunc>("SetOrigin");
+            m_SetPortFunc = getProcAddress<SetPortFunc>("SetPort");
             m_SetPortBackPixPatFunc = getProcAddress<SetPortBackPixPatFunc>("SetPortBackPixPat");
             m_SetPortBitsFunc = getProcAddress<SetPortBitsFunc>("SetPortBits");
             m_SetPortBoundsFunc = getProcAddress<SetPortBoundsFunc>("SetPortBounds");
@@ -4884,8 +4878,11 @@ private:
             m_SetPtFunc = getProcAddress<SetPtFunc>("SetPt");
             m_SetQDErrorFunc = getProcAddress<SetQDErrorFunc>("SetQDError");
             m_SetQDGlobalsRandomSeedFunc = getProcAddress<SetQDGlobalsRandomSeedFunc>("SetQDGlobalsRandomSeed");
+            m_SetRectFunc = getProcAddress<SetRectFunc>("SetRect");
+            m_SetRectRgnFunc = getProcAddress<SetRectRgnFunc>("SetRectRgn");
             m_SetStdCProcsFunc = getProcAddress<SetStdCProcsFunc>("SetStdCProcs");
             m_ShieldCursorFunc = getProcAddress<ShieldCursorFunc>("ShieldCursor");
+            m_ShowCursorFunc = getProcAddress<ShowCursorFunc>("ShowCursor");
             m_ShowPenFunc = getProcAddress<ShowPenFunc>("ShowPen");
             m_SlopeFromAngleFunc = getProcAddress<SlopeFromAngleFunc>("SlopeFromAngle");
             m_StdArcFunc = getProcAddress<StdArcFunc>("StdArc");
@@ -4907,13 +4904,16 @@ private:
             m_SwapPortRegionSaveHandleFunc = getProcAddress<SwapPortRegionSaveHandleFunc>("SwapPortRegionSaveHandle");
             m_SyncCGContextOriginWithPortFunc = getProcAddress<SyncCGContextOriginWithPortFunc>("SyncCGContextOriginWithPort");
             m_TestDeviceAttributeFunc = getProcAddress<TestDeviceAttributeFunc>("TestDeviceAttribute");
+            m_UnionRectFunc = getProcAddress<UnionRectFunc>("UnionRect");
+            m_UnionRgnFunc = getProcAddress<UnionRgnFunc>("UnionRgn");
             m_UnlockPortBitsFunc = getProcAddress<UnlockPortBitsFunc>("UnlockPortBits");
             m_UnpackBitsFunc = getProcAddress<UnpackBitsFunc>("UnpackBits");
+            m_XorRgnFunc = getProcAddress<XorRgnFunc>("XorRgn");
             m_deltapointFunc = getProcAddress<deltapointFunc>("deltapoint");
             m_initialized = true;
         }
     }
-    void* getHandle()
+    void * getHandle()
     {
         if (!m_qd_dylib_handle) {
             m_qd_dylib_handle = dlopen("/System/Library/Frameworks/ApplicationServices.framework/Frameworks/QD.framework/QD", RTLD_LAZY);
@@ -4932,7 +4932,7 @@ private:
     }
 private:
     bool m_initialized;
-    void* m_qd_dylib_handle;
+    void * m_qd_dylib_handle;
     AddCompFunc m_AddCompFunc;
     AddPtFunc m_AddPtFunc;
     AddSearchFunc m_AddSearchFunc;
@@ -4961,6 +4961,7 @@ private:
     CopyMaskFunc m_CopyMaskFunc;
     CopyPixMapFunc m_CopyPixMapFunc;
     CopyPixPatFunc m_CopyPixPatFunc;
+    CopyRgnFunc m_CopyRgnFunc;
     CreateCGContextForPortFunc m_CreateCGContextForPortFunc;
     CreateNewPortFunc m_CreateNewPortFunc;
     CreateNewPortForCGDisplayIDFunc m_CreateNewPortForCGDisplayIDFunc;
@@ -5001,6 +5002,8 @@ private:
     EmptyRectFunc m_EmptyRectFunc;
     EmptyRgnFunc m_EmptyRgnFunc;
     EqualPtFunc m_EqualPtFunc;
+    EqualRectFunc m_EqualRectFunc;
+    EqualRgnFunc m_EqualRgnFunc;
     EraseArcFunc m_EraseArcFunc;
     EraseOvalFunc m_EraseOvalFunc;
     ErasePolyFunc m_ErasePolyFunc;
@@ -5016,11 +5019,15 @@ private:
     FillCRoundRectFunc m_FillCRoundRectFunc;
     FillOvalFunc m_FillOvalFunc;
     FillPolyFunc m_FillPolyFunc;
+    FillRectFunc m_FillRectFunc;
+    FillRgnFunc m_FillRgnFunc;
     FillRoundRectFunc m_FillRoundRectFunc;
     ForeColorFunc m_ForeColorFunc;
     FrameArcFunc m_FrameArcFunc;
     FrameOvalFunc m_FrameOvalFunc;
     FramePolyFunc m_FramePolyFunc;
+    FrameRectFunc m_FrameRectFunc;
+    FrameRgnFunc m_FrameRgnFunc;
     FrameRoundRectFunc m_FrameRoundRectFunc;
     GetBackColorFunc m_GetBackColorFunc;
     GetCPixelFunc m_GetCPixelFunc;
@@ -5041,6 +5048,7 @@ private:
     GetPixBoundsFunc m_GetPixBoundsFunc;
     GetPixDepthFunc m_GetPixDepthFunc;
     GetPixPatFunc m_GetPixPatFunc;
+    GetPixelFunc m_GetPixelFunc;
     GetPortFunc m_GetPortFunc;
     GetPortBackColorFunc m_GetPortBackColorFunc;
     GetPortBackPixPatFunc m_GetPortBackPixPatFunc;
@@ -5085,11 +5093,14 @@ private:
     Index2ColorFunc m_Index2ColorFunc;
     InitCursorFunc m_InitCursorFunc;
     InitGDeviceFunc m_InitGDeviceFunc;
+    InsetRectFunc m_InsetRectFunc;
     InsetRgnFunc m_InsetRgnFunc;
     InvertArcFunc m_InvertArcFunc;
     InvertColorFunc m_InvertColorFunc;
     InvertOvalFunc m_InvertOvalFunc;
     InvertPolyFunc m_InvertPolyFunc;
+    InvertRectFunc m_InvertRectFunc;
+    InvertRgnFunc m_InvertRgnFunc;
     InvertRoundRectFunc m_InvertRoundRectFunc;
     InvokeCMBitmapCallBackUPPFunc m_InvokeCMBitmapCallBackUPPFunc;
     InvokeColorComplementUPPFunc m_InvokeColorComplementUPPFunc;
@@ -5155,31 +5166,9 @@ private:
     LMSetWidthPtrFunc m_LMSetWidthPtrFunc;
     LMSetWidthTabHandleFunc m_LMSetWidthTabHandleFunc;
     LineFunc m_LineFunc;
+    LineToFunc m_LineToFunc;
     LocalToGlobalFunc m_LocalToGlobalFunc;
     LockPortBitsFunc m_LockPortBitsFunc;
-    MacCopyRgnFunc m_MacCopyRgnFunc;
-    MacEqualRectFunc m_MacEqualRectFunc;
-    MacEqualRgnFunc m_MacEqualRgnFunc;
-    MacFillRectFunc m_MacFillRectFunc;
-    MacFillRgnFunc m_MacFillRgnFunc;
-    MacFrameRectFunc m_MacFrameRectFunc;
-    MacFrameRgnFunc m_MacFrameRgnFunc;
-    MacGetPixelFunc m_MacGetPixelFunc;
-    MacInsetRectFunc m_MacInsetRectFunc;
-    MacInvertRectFunc m_MacInvertRectFunc;
-    MacInvertRgnFunc m_MacInvertRgnFunc;
-    MacLineToFunc m_MacLineToFunc;
-    MacOffsetRectFunc m_MacOffsetRectFunc;
-    MacOffsetRgnFunc m_MacOffsetRgnFunc;
-    MacPaintRgnFunc m_MacPaintRgnFunc;
-    MacPtInRectFunc m_MacPtInRectFunc;
-    MacSetPortFunc m_MacSetPortFunc;
-    MacSetRectFunc m_MacSetRectFunc;
-    MacSetRectRgnFunc m_MacSetRectRgnFunc;
-    MacShowCursorFunc m_MacShowCursorFunc;
-    MacUnionRectFunc m_MacUnionRectFunc;
-    MacUnionRgnFunc m_MacUnionRgnFunc;
-    MacXorRgnFunc m_MacXorRgnFunc;
     MakeRGBPatFunc m_MakeRGBPatFunc;
     MapPolyFunc m_MapPolyFunc;
     MapPtFunc m_MapPtFunc;
@@ -5218,6 +5207,8 @@ private:
     NewRgnFunc m_NewRgnFunc;
     ObscureCursorFunc m_ObscureCursorFunc;
     OffsetPolyFunc m_OffsetPolyFunc;
+    OffsetRectFunc m_OffsetRectFunc;
+    OffsetRgnFunc m_OffsetRgnFunc;
     OpColorFunc m_OpColorFunc;
     OpenCPictureFunc m_OpenCPictureFunc;
     OpenCursorComponentFunc m_OpenCursorComponentFunc;
@@ -5229,6 +5220,7 @@ private:
     PaintOvalFunc m_PaintOvalFunc;
     PaintPolyFunc m_PaintPolyFunc;
     PaintRectFunc m_PaintRectFunc;
+    PaintRgnFunc m_PaintRgnFunc;
     PaintRoundRectFunc m_PaintRoundRectFunc;
     PenModeFunc m_PenModeFunc;
     PenNormalFunc m_PenNormalFunc;
@@ -5239,6 +5231,7 @@ private:
     PortSizeFunc m_PortSizeFunc;
     ProtectEntryFunc m_ProtectEntryFunc;
     Pt2RectFunc m_Pt2RectFunc;
+    PtInRectFunc m_PtInRectFunc;
     PtInRgnFunc m_PtInRgnFunc;
     PtToAngleFunc m_PtToAngleFunc;
     QDAddRectToDirtyRegionFunc m_QDAddRectToDirtyRegionFunc;
@@ -5300,6 +5293,7 @@ private:
     SetEntriesFunc m_SetEntriesFunc;
     SetGDeviceFunc m_SetGDeviceFunc;
     SetOriginFunc m_SetOriginFunc;
+    SetPortFunc m_SetPortFunc;
     SetPortBackPixPatFunc m_SetPortBackPixPatFunc;
     SetPortBitsFunc m_SetPortBitsFunc;
     SetPortBoundsFunc m_SetPortBoundsFunc;
@@ -5320,8 +5314,11 @@ private:
     SetPtFunc m_SetPtFunc;
     SetQDErrorFunc m_SetQDErrorFunc;
     SetQDGlobalsRandomSeedFunc m_SetQDGlobalsRandomSeedFunc;
+    SetRectFunc m_SetRectFunc;
+    SetRectRgnFunc m_SetRectRgnFunc;
     SetStdCProcsFunc m_SetStdCProcsFunc;
     ShieldCursorFunc m_ShieldCursorFunc;
+    ShowCursorFunc m_ShowCursorFunc;
     ShowPenFunc m_ShowPenFunc;
     SlopeFromAngleFunc m_SlopeFromAngleFunc;
     StdArcFunc m_StdArcFunc;
@@ -5343,8 +5340,11 @@ private:
     SwapPortRegionSaveHandleFunc m_SwapPortRegionSaveHandleFunc;
     SyncCGContextOriginWithPortFunc m_SyncCGContextOriginWithPortFunc;
     TestDeviceAttributeFunc m_TestDeviceAttributeFunc;
+    UnionRectFunc m_UnionRectFunc;
+    UnionRgnFunc m_UnionRgnFunc;
     UnlockPortBitsFunc m_UnlockPortBitsFunc;
     UnpackBitsFunc m_UnpackBitsFunc;
+    XorRgnFunc m_XorRgnFunc;
     deltapointFunc m_deltapointFunc;
 };
 QuickDrawAPIWrapper s_wrapper;
@@ -5462,6 +5462,10 @@ void fakeQD_CopyPixMap(PixMapHandle a0, PixMapHandle a1)
 void fakeQD_CopyPixPat(PixPatHandle a0, PixPatHandle a1)
 {
     s_wrapper.fakeQD_CopyPixPat(a0, a1);
+}
+void fakeQD_CopyRgn(RgnHandle a0, RgnHandle a1)
+{
+    s_wrapper.fakeQD_CopyRgn(a0, a1);
 }
 OSStatus fakeQD_CreateCGContextForPort(CGrafPtr a0, CGContextRef * a1)
 {
@@ -5623,6 +5627,14 @@ Boolean fakeQD_EqualPt(Point a0, Point a1)
 {
     return s_wrapper.fakeQD_EqualPt(a0, a1);
 }
+Boolean fakeQD_EqualRect(const Rect * a0, const Rect * a1)
+{
+    return s_wrapper.fakeQD_EqualRect(a0, a1);
+}
+Boolean fakeQD_EqualRgn(RgnHandle a0, RgnHandle a1)
+{
+    return s_wrapper.fakeQD_EqualRgn(a0, a1);
+}
 void fakeQD_EraseArc(const Rect * a0, short a1, short a2)
 {
     s_wrapper.fakeQD_EraseArc(a0, a1, a2);
@@ -5683,6 +5695,14 @@ void fakeQD_FillPoly(PolyHandle a0, const Pattern * a1)
 {
     s_wrapper.fakeQD_FillPoly(a0, a1);
 }
+void fakeQD_FillRect(const Rect * a0, const Pattern * a1)
+{
+    s_wrapper.fakeQD_FillRect(a0, a1);
+}
+void fakeQD_FillRgn(RgnHandle a0, const Pattern * a1)
+{
+    s_wrapper.fakeQD_FillRgn(a0, a1);
+}
 void fakeQD_FillRoundRect(const Rect * a0, short a1, short a2, const Pattern * a3)
 {
     s_wrapper.fakeQD_FillRoundRect(a0, a1, a2, a3);
@@ -5702,6 +5722,14 @@ void fakeQD_FrameOval(const Rect * a0)
 void fakeQD_FramePoly(PolyHandle a0)
 {
     s_wrapper.fakeQD_FramePoly(a0);
+}
+void fakeQD_FrameRect(const Rect * a0)
+{
+    s_wrapper.fakeQD_FrameRect(a0);
+}
+void fakeQD_FrameRgn(RgnHandle a0)
+{
+    s_wrapper.fakeQD_FrameRgn(a0);
 }
 void fakeQD_FrameRoundRect(const Rect * a0, short a1, short a2)
 {
@@ -5782,6 +5810,10 @@ short fakeQD_GetPixDepth(PixMapHandle a0)
 PixPatHandle fakeQD_GetPixPat(short a0)
 {
     return s_wrapper.fakeQD_GetPixPat(a0);
+}
+Boolean fakeQD_GetPixel(short a0, short a1)
+{
+    return s_wrapper.fakeQD_GetPixel(a0, a1);
 }
 void fakeQD_GetPort(GrafPtr * a0)
 {
@@ -5959,6 +5991,10 @@ void fakeQD_InitGDevice(short a0, long a1, GDHandle a2)
 {
     s_wrapper.fakeQD_InitGDevice(a0, a1, a2);
 }
+void fakeQD_InsetRect(Rect * a0, short a1, short a2)
+{
+    s_wrapper.fakeQD_InsetRect(a0, a1, a2);
+}
 void fakeQD_InsetRgn(RgnHandle a0, short a1, short a2)
 {
     s_wrapper.fakeQD_InsetRgn(a0, a1, a2);
@@ -5978,6 +6014,14 @@ void fakeQD_InvertOval(const Rect * a0)
 void fakeQD_InvertPoly(PolyHandle a0)
 {
     s_wrapper.fakeQD_InvertPoly(a0);
+}
+void fakeQD_InvertRect(const Rect * a0)
+{
+    s_wrapper.fakeQD_InvertRect(a0);
+}
+void fakeQD_InvertRgn(RgnHandle a0)
+{
+    s_wrapper.fakeQD_InvertRgn(a0);
 }
 void fakeQD_InvertRoundRect(const Rect * a0, short a1, short a2)
 {
@@ -6239,6 +6283,10 @@ void fakeQD_Line(short a0, short a1)
 {
     s_wrapper.fakeQD_Line(a0, a1);
 }
+void fakeQD_LineTo(short a0, short a1)
+{
+    s_wrapper.fakeQD_LineTo(a0, a1);
+}
 void fakeQD_LocalToGlobal(Point * a0)
 {
     s_wrapper.fakeQD_LocalToGlobal(a0);
@@ -6246,98 +6294,6 @@ void fakeQD_LocalToGlobal(Point * a0)
 OSErr fakeQD_LockPortBits(GrafPtr a0)
 {
     return s_wrapper.fakeQD_LockPortBits(a0);
-}
-void fakeQD_MacCopyRgn(RgnHandle a0, RgnHandle a1)
-{
-    s_wrapper.fakeQD_MacCopyRgn(a0, a1);
-}
-Boolean fakeQD_MacEqualRect(const Rect * a0, const Rect * a1)
-{
-    return s_wrapper.fakeQD_MacEqualRect(a0, a1);
-}
-Boolean fakeQD_MacEqualRgn(RgnHandle a0, RgnHandle a1)
-{
-    return s_wrapper.fakeQD_MacEqualRgn(a0, a1);
-}
-void fakeQD_MacFillRect(const Rect * a0, const Pattern * a1)
-{
-    s_wrapper.fakeQD_MacFillRect(a0, a1);
-}
-void fakeQD_MacFillRgn(RgnHandle a0, const Pattern * a1)
-{
-    s_wrapper.fakeQD_MacFillRgn(a0, a1);
-}
-void fakeQD_MacFrameRect(const Rect * a0)
-{
-    s_wrapper.fakeQD_MacFrameRect(a0);
-}
-void fakeQD_MacFrameRgn(RgnHandle a0)
-{
-    s_wrapper.fakeQD_MacFrameRgn(a0);
-}
-Boolean fakeQD_MacGetPixel(short a0, short a1)
-{
-    return s_wrapper.fakeQD_MacGetPixel(a0, a1);
-}
-void fakeQD_MacInsetRect(Rect * a0, short a1, short a2)
-{
-    s_wrapper.fakeQD_MacInsetRect(a0, a1, a2);
-}
-void fakeQD_MacInvertRect(const Rect * a0)
-{
-    s_wrapper.fakeQD_MacInvertRect(a0);
-}
-void fakeQD_MacInvertRgn(RgnHandle a0)
-{
-    s_wrapper.fakeQD_MacInvertRgn(a0);
-}
-void fakeQD_MacLineTo(short a0, short a1)
-{
-    s_wrapper.fakeQD_MacLineTo(a0, a1);
-}
-void fakeQD_MacOffsetRect(Rect * a0, short a1, short a2)
-{
-    s_wrapper.fakeQD_MacOffsetRect(a0, a1, a2);
-}
-void fakeQD_MacOffsetRgn(RgnHandle a0, short a1, short a2)
-{
-    s_wrapper.fakeQD_MacOffsetRgn(a0, a1, a2);
-}
-void fakeQD_MacPaintRgn(RgnHandle a0)
-{
-    s_wrapper.fakeQD_MacPaintRgn(a0);
-}
-Boolean fakeQD_MacPtInRect(Point a0, const Rect * a1)
-{
-    return s_wrapper.fakeQD_MacPtInRect(a0, a1);
-}
-void fakeQD_MacSetPort(GrafPtr a0)
-{
-    s_wrapper.fakeQD_MacSetPort(a0);
-}
-void fakeQD_MacSetRect(Rect * a0, short a1, short a2, short a3, short a4)
-{
-    s_wrapper.fakeQD_MacSetRect(a0, a1, a2, a3, a4);
-}
-void fakeQD_MacSetRectRgn(RgnHandle a0, short a1, short a2, short a3, short a4)
-{
-    s_wrapper.fakeQD_MacSetRectRgn(a0, a1, a2, a3, a4);
-}
-void fakeQD_MacShowCursor()
-{
-    s_wrapper.fakeQD_MacShowCursor();
-}
-void fakeQD_MacUnionRect(const Rect * a0, const Rect * a1, Rect * a2)
-{
-    s_wrapper.fakeQD_MacUnionRect(a0, a1, a2);
-}
-void fakeQD_MacUnionRgn(RgnHandle a0, RgnHandle a1, RgnHandle a2)
-{
-    s_wrapper.fakeQD_MacUnionRgn(a0, a1, a2);
-}
-void fakeQD_MacXorRgn(RgnHandle a0, RgnHandle a1, RgnHandle a2)
-{
-    s_wrapper.fakeQD_MacXorRgn(a0, a1, a2);
 }
 void fakeQD_MakeRGBPat(PixPatHandle a0, const RGBColor * a1)
 {
@@ -6491,6 +6447,14 @@ void fakeQD_OffsetPoly(PolyHandle a0, short a1, short a2)
 {
     s_wrapper.fakeQD_OffsetPoly(a0, a1, a2);
 }
+void fakeQD_OffsetRect(Rect * a0, short a1, short a2)
+{
+    s_wrapper.fakeQD_OffsetRect(a0, a1, a2);
+}
+void fakeQD_OffsetRgn(RgnHandle a0, short a1, short a2)
+{
+    s_wrapper.fakeQD_OffsetRgn(a0, a1, a2);
+}
 void fakeQD_OpColor(const RGBColor * a0)
 {
     s_wrapper.fakeQD_OpColor(a0);
@@ -6535,6 +6499,10 @@ void fakeQD_PaintRect(const Rect * a0)
 {
     s_wrapper.fakeQD_PaintRect(a0);
 }
+void fakeQD_PaintRgn(RgnHandle a0)
+{
+    s_wrapper.fakeQD_PaintRgn(a0);
+}
 void fakeQD_PaintRoundRect(const Rect * a0, short a1, short a2)
 {
     s_wrapper.fakeQD_PaintRoundRect(a0, a1, a2);
@@ -6574,6 +6542,10 @@ void fakeQD_ProtectEntry(short a0, Boolean a1)
 void fakeQD_Pt2Rect(Point a0, Point a1, Rect * a2)
 {
     s_wrapper.fakeQD_Pt2Rect(a0, a1, a2);
+}
+Boolean fakeQD_PtInRect(Point a0, const Rect * a1)
+{
+    return s_wrapper.fakeQD_PtInRect(a0, a1);
 }
 Boolean fakeQD_PtInRgn(Point a0, RgnHandle a1)
 {
@@ -6819,6 +6791,10 @@ void fakeQD_SetOrigin(short a0, short a1)
 {
     s_wrapper.fakeQD_SetOrigin(a0, a1);
 }
+void fakeQD_SetPort(GrafPtr a0)
+{
+    s_wrapper.fakeQD_SetPort(a0);
+}
 void fakeQD_SetPortBackPixPat(CGrafPtr a0, PixPatHandle a1)
 {
     s_wrapper.fakeQD_SetPortBackPixPat(a0, a1);
@@ -6899,6 +6875,14 @@ void fakeQD_SetQDGlobalsRandomSeed(long a0)
 {
     s_wrapper.fakeQD_SetQDGlobalsRandomSeed(a0);
 }
+void fakeQD_SetRect(Rect * a0, short a1, short a2, short a3, short a4)
+{
+    s_wrapper.fakeQD_SetRect(a0, a1, a2, a3, a4);
+}
+void fakeQD_SetRectRgn(RgnHandle a0, short a1, short a2, short a3, short a4)
+{
+    s_wrapper.fakeQD_SetRectRgn(a0, a1, a2, a3, a4);
+}
 void fakeQD_SetStdCProcs(CQDProcs * a0)
 {
     s_wrapper.fakeQD_SetStdCProcs(a0);
@@ -6906,6 +6890,10 @@ void fakeQD_SetStdCProcs(CQDProcs * a0)
 void fakeQD_ShieldCursor(const Rect * a0, Point a1)
 {
     s_wrapper.fakeQD_ShieldCursor(a0, a1);
+}
+void fakeQD_ShowCursor()
+{
+    s_wrapper.fakeQD_ShowCursor();
 }
 void fakeQD_ShowPen()
 {
@@ -6991,6 +6979,14 @@ Boolean fakeQD_TestDeviceAttribute(GDHandle a0, short a1)
 {
     return s_wrapper.fakeQD_TestDeviceAttribute(a0, a1);
 }
+void fakeQD_UnionRect(const Rect * a0, const Rect * a1, Rect * a2)
+{
+    s_wrapper.fakeQD_UnionRect(a0, a1, a2);
+}
+void fakeQD_UnionRgn(RgnHandle a0, RgnHandle a1, RgnHandle a2)
+{
+    s_wrapper.fakeQD_UnionRgn(a0, a1, a2);
+}
 OSErr fakeQD_UnlockPortBits(GrafPtr a0)
 {
     return s_wrapper.fakeQD_UnlockPortBits(a0);
@@ -6998,6 +6994,10 @@ OSErr fakeQD_UnlockPortBits(GrafPtr a0)
 void fakeQD_UnpackBits(Ptr * a0, Ptr * a1, short a2)
 {
     s_wrapper.fakeQD_UnpackBits(a0, a1, a2);
+}
+void fakeQD_XorRgn(RgnHandle a0, RgnHandle a1, RgnHandle a2)
+{
+    s_wrapper.fakeQD_XorRgn(a0, a1, a2);
 }
 long fakeQD_deltapoint(Point * a0, Point * a1)
 {

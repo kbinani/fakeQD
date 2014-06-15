@@ -29,6 +29,9 @@ class FunctionSignature
     function_symbol.gsub!(/\)$/, '')
     return_type_and_name, arguments = function_symbol.gsub(/\)$/, '').split('(')
     @name = return_type_and_name.split(' ').reverse.first
+    if @name.start_with?('Mac') then
+      @name = @name.slice(3...@name.length)
+    end
     @return_type = return_type_and_name.split(' ').reverse.drop(1).reverse.join(' ')
 
     argument_list = arguments.split(',')
@@ -244,7 +247,7 @@ def main(qd_api_header)
       'GetCursor',
     ]
     macro_defined_functions.each { |func|
-      f.puts "#define #{func} fakeQD_Mac#{func}"
+      f.puts "#define Mac#{func} fakeQD_#{func}"
     }
 
     enums.keys.each { |name|
@@ -344,7 +347,7 @@ def main(qd_api_header)
     f.puts '            m_initialized = true;'
     f.puts '        }'
     f.puts '    }'
-    f.puts '    void* getHandle()'
+    f.puts '    void * getHandle()'
     f.puts '    {'
     f.puts '        if (!m_qd_dylib_handle) {'
     f.puts '            m_qd_dylib_handle = dlopen("/System/Library/Frameworks/ApplicationServices.framework/Frameworks/QD.framework/QD", RTLD_LAZY);'
@@ -363,7 +366,7 @@ def main(qd_api_header)
     f.puts '    }'
     f.puts 'private:'
     f.puts '    bool m_initialized;'
-    f.puts '    void* m_qd_dylib_handle;'
+    f.puts '    void * m_qd_dylib_handle;'
     function_symbols.each { |s|
       f.puts "    #{s.name}Func m_#{s.name}Func;"
     }
