@@ -56,10 +56,37 @@ class FunctionSignature
     end
   end
 
-  private
+
+  def fakeqd_name
+    "#{FAKEQD_PREFIX}#{@name}"
+  end
+
 
   def argument_list
-    @arguments.map { |_| _.to_s }.join(', ')
+    get_argument_list(false)
+  end
+
+
+  def argument_list_with_name
+    get_argument_list(true)
+  end
+
+
+  def argument_list_without_type
+    (0...arguments.count).map { |_| "a#{_}"}.join(', ')
+  end
+
+  private
+
+  FAKEQD_PREFIX = 'fakeQD_'
+
+  def get_argument_list(with_name)
+    if with_name then
+      index = -1
+      @arguments.map { |_| index = index + 1; "#{_.to_s} a#{index}" }.join(', ')
+    else
+      @arguments.map { |_| _.to_s }.join(', ')
+    end
   end
 end
 
@@ -186,7 +213,7 @@ def main(qd_api_header)
     f.puts '#if MAC_OS_X_VERSION_10_6 < MAC_OS_X_VERSION_MIN_REQUIRED'
 
     function_symbols.each { |s|
-      f.puts "#define #{s.name} fakeQD_#{s.name}"
+      f.puts "#define #{s.name} #{s.fakeqd_name}"
     }
 
     macro_defined_functions = [
@@ -240,7 +267,7 @@ def main(qd_api_header)
     f.puts '#endif'
 
     function_symbols.each { |s|
-      f.puts "extern #{s.return_type} fakeQD_#{s.name}(#{s.arguments.map { |_| _.to_s }.join(', ')});"
+      f.puts "extern #{s.return_type} #{s.fakeqd_name}(#{s.argument_list});"
     }
 
     f.puts '#ifdef __cplusplus'
@@ -264,7 +291,7 @@ def main(qd_api_header)
     f.puts '#endif'
 
     function_symbols.each { |s|
-      f.puts "typedef #{s.return_type} (*#{s.name}Func)(#{s.arguments.map { |_| _.to_s }.join(', ')});"
+      f.puts "typedef #{s.return_type} (*#{s.name}Func)(#{s.argument_list});"
     }
 
     f.puts '#ifdef __cplusplus'
@@ -293,11 +320,11 @@ def main(qd_api_header)
     f.puts '    }'
     function_symbols.each { |s|
       index = -1
-      f.puts "    #{s.return_type} fakeQD_#{s.name}(#{s.arguments.map { |_| index = index + 1; "#{_.to_s} a#{index}" }.join(', ')})"
+      f.puts "    #{s.return_type} #{s.fakeqd_name}(#{s.argument_list_with_name})"
       f.puts '    {'
       f.puts '        initializeIfNeeded();'
       f.puts "        if (m_#{s.name}Func) {"
-      func_call = "m_#{s.name}Func(#{(0...s.arguments.count).map { |_| "a#{_}"}.join(', ')})"
+      func_call = "m_#{s.name}Func(#{s.argument_list_without_type})"
       if s.return_type == 'void' then
         f.puts "            #{func_call};"
       else
@@ -352,11 +379,11 @@ def main(qd_api_header)
 
     function_symbols.each { |s|
       index = -1
-      f.puts "#{s.return_type} fakeQD_#{s.name}(#{s.arguments.map { |_| index = index + 1; "#{_.to_s} a#{index}" }.join(', ')})"
+      f.puts "#{s.return_type} #{s.fakeqd_name}(#{s.argument_list_with_name})"
 
 
       f.puts '{'
-      func_call = "s_wrapper.fakeQD_#{s.name}(#{(0...s.arguments.count).map { |_| "a#{_}"}.join(', ')})"
+      func_call = "s_wrapper.#{s.fakeqd_name}(#{s.argument_list_without_type})"
       if s.return_type == 'void' then
         f.puts "    #{func_call};"
       else
@@ -374,7 +401,7 @@ def main(qd_api_header)
 end
 
 begin
-  raise 'Argument needed: specify the file path of QuickDrawAPI.h' if ARGV.length == 0
+  raise 'Argument needed: specify the file path of QuickDrawAPI.h and QuickDrawTypes.h' if ARGV.length == 0
   ARGV.each { |file|
     raise "File not found: #{file}" unless File.exists?(file)
   }
