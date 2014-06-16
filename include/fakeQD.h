@@ -794,6 +794,8 @@ enum
     fakeQD_kYUV211PixelFormat = 'Y211',
     fakeQD_k2vuyPixelFormat = '2vuy'
 };
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -1213,4 +1215,5 @@ extern long fakeQD_deltapoint(Point *, Point *);
 #ifdef __cplusplus
 } // extern "C"
 #endif
+#pragma GCC diagnostic pop
 #endif

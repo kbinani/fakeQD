@@ -11,6 +11,8 @@
 #include "fakeQD.h"
 #if MAC_OS_X_VERSION_10_6 < MAC_OS_X_VERSION_MIN_REQUIRED
 #include <dlfcn.h>
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 extern "C" {
 typedef void (*AddCompFunc)(ColorComplementUPP);
 typedef void (*AddPtFunc)(Point, Point *);
@@ -7008,4 +7010,5 @@ long fakeQD_deltapoint(Point * a0, Point * a1)
     return s_wrapper.fakeQD_deltapoint(a0, a1);
 }
 } // extern "C"
+#pragma GCC diagnostic pop
 #endif

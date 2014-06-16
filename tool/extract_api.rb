@@ -286,6 +286,9 @@ def main(qd_api_headers)
     end
     f.puts '};'
 
+    f.puts '#pragma GCC diagnostic push'
+    f.puts '#pragma GCC diagnostic ignored "-Wdeprecated-declarations"'
+
     f.puts '#ifdef __cplusplus'
     f.puts 'extern "C" {'
     f.puts '#endif'
@@ -298,6 +301,8 @@ def main(qd_api_headers)
     f.puts '} // extern "C"'
     f.puts '#endif'
 
+    f.puts '#pragma GCC diagnostic pop'
+
     f.puts '#endif'
   }
 
@@ -307,6 +312,9 @@ def main(qd_api_headers)
     f.puts '#if MAC_OS_X_VERSION_10_6 < MAC_OS_X_VERSION_MIN_REQUIRED'
 
     f.puts '#include <dlfcn.h>'
+
+    f.puts '#pragma GCC diagnostic push'
+    f.puts '#pragma GCC diagnostic ignored "-Wdeprecated-declarations"'
 
     f.puts 'extern "C" {'
 
@@ -409,6 +417,8 @@ def main(qd_api_headers)
     }
 
     f.puts '} // extern "C"'
+
+    f.puts '#pragma GCC diagnostic pop'
 
     f.puts '#endif'
   }
