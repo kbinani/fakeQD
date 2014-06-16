@@ -288,6 +288,7 @@ def main(qd_api_headers)
 
   open("#{dir}/../include/fakeQD.h", 'w') { |f|
     print_header(f, qd_api_headers)
+    f.puts '#pragma once'
     f.puts '#include <Availability.h>'
     f.puts '#include <ApplicationServices/ApplicationServices.h>'
 
