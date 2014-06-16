@@ -231,6 +231,7 @@ def main(qd_api_headers)
 
   open("#{dir}/../include/fakeQD.h", 'w') { |f|
     print_header(f, qd_api_headers)
+    f.puts '#if !__LP64__'
     f.puts '#include <Availability.h>'
     f.puts '#include <ApplicationServices/ApplicationServices.h>'
 
@@ -304,10 +305,12 @@ def main(qd_api_headers)
     f.puts '#pragma GCC diagnostic pop'
 
     f.puts '#endif'
+    f.puts '#endif // !__LP64__'
   }
 
   open("#{dir}/../src/fakeQD.cpp", 'w') { |f|
     print_header(f, qd_api_headers)
+    f.puts '#if !__LP64__'
     f.puts '#include "fakeQD.h"'
     f.puts '#if MAC_OS_X_VERSION_10_6 < MAC_OS_X_VERSION_MIN_REQUIRED'
 
@@ -421,6 +424,7 @@ def main(qd_api_headers)
     f.puts '#pragma GCC diagnostic pop'
 
     f.puts '#endif'
+    f.puts '#endif // !__LP64__'
   }
 end
 

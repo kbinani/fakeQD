@@ -8,6 +8,7 @@
  * /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/QD.framework/Headers/QuickdrawTypes.h
  *   8e35fe0aa7611115c9db4300e26c1b99
  */
+#if !__LP64__
 #include "fakeQD.h"
 #if MAC_OS_X_VERSION_10_6 < MAC_OS_X_VERSION_MIN_REQUIRED
 #include <dlfcn.h>
@@ -7012,3 +7013,4 @@ long fakeQD_deltapoint(Point * a0, Point * a1)
 } // extern "C"
 #pragma GCC diagnostic pop
 #endif
+#endif // !__LP64__
