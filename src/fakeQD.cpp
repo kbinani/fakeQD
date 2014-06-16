@@ -11,9 +11,7 @@
 #include "fakeQD.h"
 #if MAC_OS_X_VERSION_10_6 < MAC_OS_X_VERSION_MIN_REQUIRED
 #include <dlfcn.h>
-#ifdef __cplusplus
 extern "C" {
-#endif
 typedef void (*AddCompFunc)(ColorComplementUPP);
 typedef void (*AddPtFunc)(Point, Point *);
 typedef void (*AddSearchFunc)(ColorSearchUPP);
@@ -427,9 +425,7 @@ typedef OSErr (*UnlockPortBitsFunc)(GrafPtr);
 typedef void (*UnpackBitsFunc)(Ptr *, Ptr *, short);
 typedef void (*XorRgnFunc)(RgnHandle, RgnHandle, RgnHandle);
 typedef long (*deltapointFunc)(Point *, Point *);
-#ifdef __cplusplus
 } // extern "C"
-#endif
 class QuickDrawAPIWrapper
 {
 public:
@@ -5358,9 +5354,7 @@ private:
     deltapointFunc m_deltapointFunc;
 };
 QuickDrawAPIWrapper s_wrapper;
-#ifdef __cplusplus
 extern "C" {
-#endif
 void fakeQD_AddComp(ColorComplementUPP a0)
 {
     s_wrapper.fakeQD_AddComp(a0);
@@ -7013,7 +7007,5 @@ long fakeQD_deltapoint(Point * a0, Point * a1)
 {
     return s_wrapper.fakeQD_deltapoint(a0, a1);
 }
-#ifdef __cplusplus
 } // extern "C"
-#endif
 #endif

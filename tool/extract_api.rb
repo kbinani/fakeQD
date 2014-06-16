@@ -308,17 +308,13 @@ def main(qd_api_headers)
 
     f.puts '#include <dlfcn.h>'
 
-    f.puts '#ifdef __cplusplus'
     f.puts 'extern "C" {'
-    f.puts '#endif'
 
     function_symbols.each { |s|
       f.puts "typedef #{s.return_type} (*#{s.name}Func)(#{s.argument_list});"
     }
 
-    f.puts '#ifdef __cplusplus'
     f.puts '} // extern "C"'
-    f.puts '#endif'
 
     f.puts 'class QuickDrawAPIWrapper'
     f.puts '{'
@@ -395,9 +391,7 @@ def main(qd_api_headers)
     f.puts '};'
     f.puts 'QuickDrawAPIWrapper s_wrapper;'
 
-    f.puts '#ifdef __cplusplus'
     f.puts 'extern "C" {'
-    f.puts '#endif'
 
     function_symbols.each { |s|
       index = -1
@@ -414,9 +408,7 @@ def main(qd_api_headers)
       f.puts '}'
     }
 
-    f.puts '#ifdef __cplusplus'
     f.puts '} // extern "C"'
-    f.puts '#endif'
 
     f.puts '#endif'
   }
