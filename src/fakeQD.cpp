@@ -1294,6 +1294,7 @@ public:
             dlclose(m_qd_dylib_handle);
             m_qd_dylib_handle = 0;
         }
+        m_initialized = false;
     }
     void fakeQD_AddPt(Point a0, Point * a1)
     {

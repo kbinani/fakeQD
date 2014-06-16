@@ -400,6 +400,7 @@ def main(qd_api_headers)
     f.puts '            dlclose(m_qd_dylib_handle);'
     f.puts '            m_qd_dylib_handle = 0;'
     f.puts '        }'
+    f.puts '        m_initialized = false;'
     f.puts '    }'
     print_each_symbol(function_symbols, f) { |s|
       index = -1
