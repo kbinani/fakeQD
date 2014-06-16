@@ -1214,8 +1214,8 @@ extern void fakeQD_UnpackBits(Ptr *, Ptr *, short);
 extern void fakeQD_XorRgn(RgnHandle, RgnHandle, RgnHandle);
 extern long fakeQD_deltapoint(Point *, Point *);
 #ifdef __cplusplus
-} // extern "C"
+} /* extern "C" */
 #endif
 #pragma GCC diagnostic pop
-#endif
-#endif // !__LP64__
+#endif /* MAC_OS_X_VERSION_10_6 < MAC_OS_X_VERSION_MIN_REQUIRED */
+#endif /* !__LP64__ */

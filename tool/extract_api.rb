@@ -299,13 +299,13 @@ def main(qd_api_headers)
     }
 
     f.puts '#ifdef __cplusplus'
-    f.puts '} // extern "C"'
+    f.puts '} /* extern "C" */'
     f.puts '#endif'
 
     f.puts '#pragma GCC diagnostic pop'
 
-    f.puts '#endif'
-    f.puts '#endif // !__LP64__'
+    f.puts '#endif /* MAC_OS_X_VERSION_10_6 < MAC_OS_X_VERSION_MIN_REQUIRED */'
+    f.puts '#endif /* !__LP64__ */'
   }
 
   open("#{dir}/../src/fakeQD.cpp", 'w') { |f|
@@ -325,7 +325,7 @@ def main(qd_api_headers)
       f.puts "typedef #{s.return_type} (*#{s.name}Func)(#{s.argument_list});"
     }
 
-    f.puts '} // extern "C"'
+    f.puts '} /* extern "C" */'
 
     f.puts 'class QuickDrawAPIWrapper'
     f.puts '{'
@@ -384,7 +384,7 @@ def main(qd_api_headers)
     f.puts '        return m_qd_dylib_handle;'
     f.puts '    }'
     f.puts '    template<class Func>'
-    f.puts '    Func getProcAddress(const char* name)'
+    f.puts '    Func getProcAddress(char const* name)'
     f.puts '    {'
     f.puts '        void * handle = getHandle();'
     f.puts '        if (handle) {'
@@ -419,12 +419,12 @@ def main(qd_api_headers)
       f.puts '}'
     }
 
-    f.puts '} // extern "C"'
+    f.puts '} /* extern "C" */'
 
     f.puts '#pragma GCC diagnostic pop'
 
-    f.puts '#endif'
-    f.puts '#endif // !__LP64__'
+    f.puts '#endif /* MAC_OS_X_VERSION_10_6 < MAC_OS_X_VERSION_MIN_REQUIRED */'
+    f.puts '#endif /* !__LP64__ */'
   }
 end
 

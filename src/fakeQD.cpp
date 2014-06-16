@@ -428,7 +428,7 @@ typedef OSErr (*UnlockPortBitsFunc)(GrafPtr);
 typedef void (*UnpackBitsFunc)(Ptr *, Ptr *, short);
 typedef void (*XorRgnFunc)(RgnHandle, RgnHandle, RgnHandle);
 typedef long (*deltapointFunc)(Point *, Point *);
-} // extern "C"
+} /* extern "C" */
 class QuickDrawAPIWrapper
 {
 public:
@@ -4930,7 +4930,7 @@ private:
         return m_qd_dylib_handle;
     }
     template<class Func>
-    Func getProcAddress(const char* name)
+    Func getProcAddress(char const* name)
     {
         void * handle = getHandle();
         if (handle) {
@@ -7010,7 +7010,7 @@ long fakeQD_deltapoint(Point * a0, Point * a1)
 {
     return s_wrapper.fakeQD_deltapoint(a0, a1);
 }
-} // extern "C"
+} /* extern "C" */
 #pragma GCC diagnostic pop
-#endif
-#endif // !__LP64__
+#endif /* MAC_OS_X_VERSION_10_6 < MAC_OS_X_VERSION_MIN_REQUIRED */
+#endif /* !__LP64__ */
