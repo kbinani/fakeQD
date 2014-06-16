@@ -29,12 +29,92 @@
  * /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/QD.framework/Headers/QuickdrawTypes.h
  *   8e35fe0aa7611115c9db4300e26c1b99
  */
-#if !__LP64__
 #include <Availability.h>
 #include <ApplicationServices/ApplicationServices.h>
 #if MAC_OS_X_VERSION_10_6 < MAC_OS_X_VERSION_MIN_REQUIRED
-#define AddComp fakeQD_AddComp
 #define AddPt fakeQD_AddPt
+#define DisposeCMBitmapCallBackUPP fakeQD_DisposeCMBitmapCallBackUPP
+#define DisposeColorComplementUPP fakeQD_DisposeColorComplementUPP
+#define DisposeColorSearchUPP fakeQD_DisposeColorSearchUPP
+#define DisposeDragGrayRgnUPP fakeQD_DisposeDragGrayRgnUPP
+#define DisposeQDArcUPP fakeQD_DisposeQDArcUPP
+#define DisposeQDBitsUPP fakeQD_DisposeQDBitsUPP
+#define DisposeQDCommentUPP fakeQD_DisposeQDCommentUPP
+#define DisposeQDGetPicUPP fakeQD_DisposeQDGetPicUPP
+#define DisposeQDJShieldCursorUPP fakeQD_DisposeQDJShieldCursorUPP
+#define DisposeQDLineUPP fakeQD_DisposeQDLineUPP
+#define DisposeQDOpcodeUPP fakeQD_DisposeQDOpcodeUPP
+#define DisposeQDOvalUPP fakeQD_DisposeQDOvalUPP
+#define DisposeQDPolyUPP fakeQD_DisposeQDPolyUPP
+#define DisposeQDPutPicUPP fakeQD_DisposeQDPutPicUPP
+#define DisposeQDRRectUPP fakeQD_DisposeQDRRectUPP
+#define DisposeQDRectUPP fakeQD_DisposeQDRectUPP
+#define DisposeQDRgnUPP fakeQD_DisposeQDRgnUPP
+#define DisposeQDStdGlyphsUPP fakeQD_DisposeQDStdGlyphsUPP
+#define DisposeQDTextUPP fakeQD_DisposeQDTextUPP
+#define DisposeQDTxMeasUPP fakeQD_DisposeQDTxMeasUPP
+#define DisposeRegionToRectsUPP fakeQD_DisposeRegionToRectsUPP
+#define EmptyRect fakeQD_EmptyRect
+#define EqualPt fakeQD_EqualPt
+#define EqualRect fakeQD_EqualRect
+#define InsetRect fakeQD_InsetRect
+#define InvokeCMBitmapCallBackUPP fakeQD_InvokeCMBitmapCallBackUPP
+#define InvokeColorComplementUPP fakeQD_InvokeColorComplementUPP
+#define InvokeColorSearchUPP fakeQD_InvokeColorSearchUPP
+#define InvokeDragGrayRgnUPP fakeQD_InvokeDragGrayRgnUPP
+#define InvokeQDArcUPP fakeQD_InvokeQDArcUPP
+#define InvokeQDBitsUPP fakeQD_InvokeQDBitsUPP
+#define InvokeQDCommentUPP fakeQD_InvokeQDCommentUPP
+#define InvokeQDGetPicUPP fakeQD_InvokeQDGetPicUPP
+#define InvokeQDJShieldCursorUPP fakeQD_InvokeQDJShieldCursorUPP
+#define InvokeQDLineUPP fakeQD_InvokeQDLineUPP
+#define InvokeQDOpcodeUPP fakeQD_InvokeQDOpcodeUPP
+#define InvokeQDOvalUPP fakeQD_InvokeQDOvalUPP
+#define InvokeQDPolyUPP fakeQD_InvokeQDPolyUPP
+#define InvokeQDPutPicUPP fakeQD_InvokeQDPutPicUPP
+#define InvokeQDRRectUPP fakeQD_InvokeQDRRectUPP
+#define InvokeQDRectUPP fakeQD_InvokeQDRectUPP
+#define InvokeQDRgnUPP fakeQD_InvokeQDRgnUPP
+#define InvokeQDStdGlyphsUPP fakeQD_InvokeQDStdGlyphsUPP
+#define InvokeQDTextUPP fakeQD_InvokeQDTextUPP
+#define InvokeQDTxMeasUPP fakeQD_InvokeQDTxMeasUPP
+#define InvokeRegionToRectsUPP fakeQD_InvokeRegionToRectsUPP
+#define MapPt fakeQD_MapPt
+#define MapRect fakeQD_MapRect
+#define NewCMBitmapCallBackUPP fakeQD_NewCMBitmapCallBackUPP
+#define NewColorComplementUPP fakeQD_NewColorComplementUPP
+#define NewColorSearchUPP fakeQD_NewColorSearchUPP
+#define NewDragGrayRgnUPP fakeQD_NewDragGrayRgnUPP
+#define NewQDArcUPP fakeQD_NewQDArcUPP
+#define NewQDBitsUPP fakeQD_NewQDBitsUPP
+#define NewQDCommentUPP fakeQD_NewQDCommentUPP
+#define NewQDGetPicUPP fakeQD_NewQDGetPicUPP
+#define NewQDJShieldCursorUPP fakeQD_NewQDJShieldCursorUPP
+#define NewQDLineUPP fakeQD_NewQDLineUPP
+#define NewQDOpcodeUPP fakeQD_NewQDOpcodeUPP
+#define NewQDOvalUPP fakeQD_NewQDOvalUPP
+#define NewQDPolyUPP fakeQD_NewQDPolyUPP
+#define NewQDPutPicUPP fakeQD_NewQDPutPicUPP
+#define NewQDRRectUPP fakeQD_NewQDRRectUPP
+#define NewQDRectUPP fakeQD_NewQDRectUPP
+#define NewQDRgnUPP fakeQD_NewQDRgnUPP
+#define NewQDStdGlyphsUPP fakeQD_NewQDStdGlyphsUPP
+#define NewQDTextUPP fakeQD_NewQDTextUPP
+#define NewQDTxMeasUPP fakeQD_NewQDTxMeasUPP
+#define NewRegionToRectsUPP fakeQD_NewRegionToRectsUPP
+#define OffsetRect fakeQD_OffsetRect
+#define Pt2Rect fakeQD_Pt2Rect
+#define PtInRect fakeQD_PtInRect
+#define PtToAngle fakeQD_PtToAngle
+#define QDRegionToRects fakeQD_QDRegionToRects
+#define ScalePt fakeQD_ScalePt
+#define SectRect fakeQD_SectRect
+#define SetPt fakeQD_SetPt
+#define SetRect fakeQD_SetRect
+#define SubPt fakeQD_SubPt
+#define UnionRect fakeQD_UnionRect
+#if !__LP64__
+#define AddComp fakeQD_AddComp
 #define AddSearch fakeQD_AddSearch
 #define AllocCursor fakeQD_AllocCursor
 #define AngleFromSlope fakeQD_AngleFromSlope
@@ -71,38 +151,14 @@
 #define DelSearch fakeQD_DelSearch
 #define DeltaPoint fakeQD_DeltaPoint
 #define DiffRgn fakeQD_DiffRgn
-#define DisposeCMBitmapCallBackUPP fakeQD_DisposeCMBitmapCallBackUPP
 #define DisposeCTable fakeQD_DisposeCTable
-#define DisposeColorComplementUPP fakeQD_DisposeColorComplementUPP
-#define DisposeColorSearchUPP fakeQD_DisposeColorSearchUPP
-#define DisposeDragGrayRgnUPP fakeQD_DisposeDragGrayRgnUPP
 #define DisposeGDevice fakeQD_DisposeGDevice
 #define DisposePixMap fakeQD_DisposePixMap
 #define DisposePixPat fakeQD_DisposePixPat
 #define DisposePort fakeQD_DisposePort
-#define DisposeQDArcUPP fakeQD_DisposeQDArcUPP
-#define DisposeQDBitsUPP fakeQD_DisposeQDBitsUPP
-#define DisposeQDCommentUPP fakeQD_DisposeQDCommentUPP
-#define DisposeQDGetPicUPP fakeQD_DisposeQDGetPicUPP
-#define DisposeQDJShieldCursorUPP fakeQD_DisposeQDJShieldCursorUPP
-#define DisposeQDLineUPP fakeQD_DisposeQDLineUPP
-#define DisposeQDOpcodeUPP fakeQD_DisposeQDOpcodeUPP
-#define DisposeQDOvalUPP fakeQD_DisposeQDOvalUPP
-#define DisposeQDPolyUPP fakeQD_DisposeQDPolyUPP
-#define DisposeQDPutPicUPP fakeQD_DisposeQDPutPicUPP
-#define DisposeQDRRectUPP fakeQD_DisposeQDRRectUPP
-#define DisposeQDRectUPP fakeQD_DisposeQDRectUPP
-#define DisposeQDRgnUPP fakeQD_DisposeQDRgnUPP
-#define DisposeQDStdGlyphsUPP fakeQD_DisposeQDStdGlyphsUPP
-#define DisposeQDTextUPP fakeQD_DisposeQDTextUPP
-#define DisposeQDTxMeasUPP fakeQD_DisposeQDTxMeasUPP
-#define DisposeRegionToRectsUPP fakeQD_DisposeRegionToRectsUPP
 #define DisposeRgn fakeQD_DisposeRgn
 #define DrawPicture fakeQD_DrawPicture
-#define EmptyRect fakeQD_EmptyRect
 #define EmptyRgn fakeQD_EmptyRgn
-#define EqualPt fakeQD_EqualPt
-#define EqualRect fakeQD_EqualRect
 #define EqualRgn fakeQD_EqualRgn
 #define EraseArc fakeQD_EraseArc
 #define EraseOval fakeQD_EraseOval
@@ -193,7 +249,6 @@
 #define Index2Color fakeQD_Index2Color
 #define InitCursor fakeQD_InitCursor
 #define InitGDevice fakeQD_InitGDevice
-#define InsetRect fakeQD_InsetRect
 #define InsetRgn fakeQD_InsetRgn
 #define InvertArc fakeQD_InvertArc
 #define InvertColor fakeQD_InvertColor
@@ -202,27 +257,6 @@
 #define InvertRect fakeQD_InvertRect
 #define InvertRgn fakeQD_InvertRgn
 #define InvertRoundRect fakeQD_InvertRoundRect
-#define InvokeCMBitmapCallBackUPP fakeQD_InvokeCMBitmapCallBackUPP
-#define InvokeColorComplementUPP fakeQD_InvokeColorComplementUPP
-#define InvokeColorSearchUPP fakeQD_InvokeColorSearchUPP
-#define InvokeDragGrayRgnUPP fakeQD_InvokeDragGrayRgnUPP
-#define InvokeQDArcUPP fakeQD_InvokeQDArcUPP
-#define InvokeQDBitsUPP fakeQD_InvokeQDBitsUPP
-#define InvokeQDCommentUPP fakeQD_InvokeQDCommentUPP
-#define InvokeQDGetPicUPP fakeQD_InvokeQDGetPicUPP
-#define InvokeQDJShieldCursorUPP fakeQD_InvokeQDJShieldCursorUPP
-#define InvokeQDLineUPP fakeQD_InvokeQDLineUPP
-#define InvokeQDOpcodeUPP fakeQD_InvokeQDOpcodeUPP
-#define InvokeQDOvalUPP fakeQD_InvokeQDOvalUPP
-#define InvokeQDPolyUPP fakeQD_InvokeQDPolyUPP
-#define InvokeQDPutPicUPP fakeQD_InvokeQDPutPicUPP
-#define InvokeQDRRectUPP fakeQD_InvokeQDRRectUPP
-#define InvokeQDRectUPP fakeQD_InvokeQDRectUPP
-#define InvokeQDRgnUPP fakeQD_InvokeQDRgnUPP
-#define InvokeQDStdGlyphsUPP fakeQD_InvokeQDStdGlyphsUPP
-#define InvokeQDTextUPP fakeQD_InvokeQDTextUPP
-#define InvokeQDTxMeasUPP fakeQD_InvokeQDTxMeasUPP
-#define InvokeRegionToRectsUPP fakeQD_InvokeRegionToRectsUPP
 #define IsPortClipRegionEmpty fakeQD_IsPortClipRegionEmpty
 #define IsPortColor fakeQD_IsPortColor
 #define IsPortOffscreen fakeQD_IsPortOffscreen
@@ -271,8 +305,6 @@
 #define LockPortBits fakeQD_LockPortBits
 #define MakeRGBPat fakeQD_MakeRGBPat
 #define MapPoly fakeQD_MapPoly
-#define MapPt fakeQD_MapPt
-#define MapRect fakeQD_MapRect
 #define MapRgn fakeQD_MapRgn
 #define Move fakeQD_Move
 #define MovePortTo fakeQD_MovePortTo
@@ -280,34 +312,12 @@
 #define NCMBeginMatching fakeQD_NCMBeginMatching
 #define NCMDrawMatchedPicture fakeQD_NCMDrawMatchedPicture
 #define NCMUseProfileComment fakeQD_NCMUseProfileComment
-#define NewCMBitmapCallBackUPP fakeQD_NewCMBitmapCallBackUPP
-#define NewColorComplementUPP fakeQD_NewColorComplementUPP
-#define NewColorSearchUPP fakeQD_NewColorSearchUPP
-#define NewDragGrayRgnUPP fakeQD_NewDragGrayRgnUPP
 #define NewGDevice fakeQD_NewGDevice
 #define NewPixMap fakeQD_NewPixMap
 #define NewPixPat fakeQD_NewPixPat
-#define NewQDArcUPP fakeQD_NewQDArcUPP
-#define NewQDBitsUPP fakeQD_NewQDBitsUPP
-#define NewQDCommentUPP fakeQD_NewQDCommentUPP
-#define NewQDGetPicUPP fakeQD_NewQDGetPicUPP
-#define NewQDJShieldCursorUPP fakeQD_NewQDJShieldCursorUPP
-#define NewQDLineUPP fakeQD_NewQDLineUPP
-#define NewQDOpcodeUPP fakeQD_NewQDOpcodeUPP
-#define NewQDOvalUPP fakeQD_NewQDOvalUPP
-#define NewQDPolyUPP fakeQD_NewQDPolyUPP
-#define NewQDPutPicUPP fakeQD_NewQDPutPicUPP
-#define NewQDRRectUPP fakeQD_NewQDRRectUPP
-#define NewQDRectUPP fakeQD_NewQDRectUPP
-#define NewQDRgnUPP fakeQD_NewQDRgnUPP
-#define NewQDStdGlyphsUPP fakeQD_NewQDStdGlyphsUPP
-#define NewQDTextUPP fakeQD_NewQDTextUPP
-#define NewQDTxMeasUPP fakeQD_NewQDTxMeasUPP
-#define NewRegionToRectsUPP fakeQD_NewRegionToRectsUPP
 #define NewRgn fakeQD_NewRgn
 #define ObscureCursor fakeQD_ObscureCursor
 #define OffsetPoly fakeQD_OffsetPoly
-#define OffsetRect fakeQD_OffsetRect
 #define OffsetRgn fakeQD_OffsetRgn
 #define OpColor fakeQD_OpColor
 #define OpenCPicture fakeQD_OpenCPicture
@@ -330,10 +340,7 @@
 #define PicComment fakeQD_PicComment
 #define PortSize fakeQD_PortSize
 #define ProtectEntry fakeQD_ProtectEntry
-#define Pt2Rect fakeQD_Pt2Rect
-#define PtInRect fakeQD_PtInRect
 #define PtInRgn fakeQD_PtInRgn
-#define PtToAngle fakeQD_PtToAngle
 #define QDAddRectToDirtyRegion fakeQD_QDAddRectToDirtyRegion
 #define QDAddRegionToDirtyRegion fakeQD_QDAddRegionToDirtyRegion
 #define QDBeginCGContext fakeQD_QDBeginCGContext
@@ -356,7 +363,6 @@
 #define QDLocalToGlobalPoint fakeQD_QDLocalToGlobalPoint
 #define QDLocalToGlobalRect fakeQD_QDLocalToGlobalRect
 #define QDLocalToGlobalRegion fakeQD_QDLocalToGlobalRegion
-#define QDRegionToRects fakeQD_QDRegionToRects
 #define QDRegisterNamedPixMapCursor fakeQD_QDRegisterNamedPixMapCursor
 #define QDSetCursorScale fakeQD_QDSetCursorScale
 #define QDSetDirtyRegion fakeQD_QDSetDirtyRegion
@@ -375,10 +381,8 @@
 #define RectRgn fakeQD_RectRgn
 #define ReserveEntry fakeQD_ReserveEntry
 #define RgnToHandle fakeQD_RgnToHandle
-#define ScalePt fakeQD_ScalePt
 #define ScreenRes fakeQD_ScreenRes
 #define ScrollRect fakeQD_ScrollRect
-#define SectRect fakeQD_SectRect
 #define SectRegionWithPortClipRegion fakeQD_SectRegionWithPortClipRegion
 #define SectRegionWithPortVisibleRegion fakeQD_SectRegionWithPortVisibleRegion
 #define SectRgn fakeQD_SectRgn
@@ -411,10 +415,8 @@
 #define SetPortTextMode fakeQD_SetPortTextMode
 #define SetPortTextSize fakeQD_SetPortTextSize
 #define SetPortVisibleRegion fakeQD_SetPortVisibleRegion
-#define SetPt fakeQD_SetPt
 #define SetQDError fakeQD_SetQDError
 #define SetQDGlobalsRandomSeed fakeQD_SetQDGlobalsRandomSeed
-#define SetRect fakeQD_SetRect
 #define SetRectRgn fakeQD_SetRectRgn
 #define SetStdCProcs fakeQD_SetStdCProcs
 #define ShieldCursor fakeQD_ShieldCursor
@@ -434,18 +436,17 @@
 #define StdRect fakeQD_StdRect
 #define StdRgn fakeQD_StdRgn
 #define StuffHex fakeQD_StuffHex
-#define SubPt fakeQD_SubPt
 #define SwapPortPicSaveHandle fakeQD_SwapPortPicSaveHandle
 #define SwapPortPolySaveHandle fakeQD_SwapPortPolySaveHandle
 #define SwapPortRegionSaveHandle fakeQD_SwapPortRegionSaveHandle
 #define SyncCGContextOriginWithPort fakeQD_SyncCGContextOriginWithPort
 #define TestDeviceAttribute fakeQD_TestDeviceAttribute
-#define UnionRect fakeQD_UnionRect
 #define UnionRgn fakeQD_UnionRgn
 #define UnlockPortBits fakeQD_UnlockPortBits
 #define UnpackBits fakeQD_UnpackBits
 #define XorRgn fakeQD_XorRgn
 #define deltapoint fakeQD_deltapoint
+#endif /* !__LP64__ */
 #define MacSetPort fakeQD_SetPort
 #define MacSetCursor fakeQD_SetCursor
 #define MacShowCursor fakeQD_ShowCursor
@@ -821,8 +822,89 @@ enum
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void fakeQD_AddComp(ColorComplementUPP);
 extern void fakeQD_AddPt(Point, Point *);
+extern void fakeQD_DisposeCMBitmapCallBackUPP(CMBitmapCallBackUPP);
+extern void fakeQD_DisposeColorComplementUPP(ColorComplementUPP);
+extern void fakeQD_DisposeColorSearchUPP(ColorSearchUPP);
+extern void fakeQD_DisposeDragGrayRgnUPP(DragGrayRgnUPP);
+extern void fakeQD_DisposeQDArcUPP(QDArcUPP);
+extern void fakeQD_DisposeQDBitsUPP(QDBitsUPP);
+extern void fakeQD_DisposeQDCommentUPP(QDCommentUPP);
+extern void fakeQD_DisposeQDGetPicUPP(QDGetPicUPP);
+extern void fakeQD_DisposeQDJShieldCursorUPP(QDJShieldCursorUPP);
+extern void fakeQD_DisposeQDLineUPP(QDLineUPP);
+extern void fakeQD_DisposeQDOpcodeUPP(QDOpcodeUPP);
+extern void fakeQD_DisposeQDOvalUPP(QDOvalUPP);
+extern void fakeQD_DisposeQDPolyUPP(QDPolyUPP);
+extern void fakeQD_DisposeQDPutPicUPP(QDPutPicUPP);
+extern void fakeQD_DisposeQDRRectUPP(QDRRectUPP);
+extern void fakeQD_DisposeQDRectUPP(QDRectUPP);
+extern void fakeQD_DisposeQDRgnUPP(QDRgnUPP);
+extern void fakeQD_DisposeQDStdGlyphsUPP(QDStdGlyphsUPP);
+extern void fakeQD_DisposeQDTextUPP(QDTextUPP);
+extern void fakeQD_DisposeQDTxMeasUPP(QDTxMeasUPP);
+extern void fakeQD_DisposeRegionToRectsUPP(RegionToRectsUPP);
+extern Boolean fakeQD_EmptyRect(const Rect *);
+extern Boolean fakeQD_EqualPt(Point, Point);
+extern Boolean fakeQD_EqualRect(const Rect *, const Rect *);
+extern void fakeQD_InsetRect(Rect *, short, short);
+extern Boolean fakeQD_InvokeCMBitmapCallBackUPP(long, void *, CMBitmapCallBackUPP);
+extern Boolean fakeQD_InvokeColorComplementUPP(RGBColor *, ColorComplementUPP);
+extern Boolean fakeQD_InvokeColorSearchUPP(RGBColor *, long *, ColorSearchUPP);
+extern void fakeQD_InvokeDragGrayRgnUPP(DragGrayRgnUPP);
+extern void fakeQD_InvokeQDArcUPP(GrafVerb, const Rect *, short, short, QDArcUPP);
+extern void fakeQD_InvokeQDBitsUPP(const BitMap *, const Rect *, const Rect *, short, RgnHandle, QDBitsUPP);
+extern void fakeQD_InvokeQDCommentUPP(short, short, Handle, QDCommentUPP);
+extern void fakeQD_InvokeQDGetPicUPP(void *, short, QDGetPicUPP);
+extern void fakeQD_InvokeQDJShieldCursorUPP(short, short, short, short, QDJShieldCursorUPP);
+extern void fakeQD_InvokeQDLineUPP(Point, QDLineUPP);
+extern void fakeQD_InvokeQDOpcodeUPP(const Rect *, const Rect *, UInt16, SInt16, QDOpcodeUPP);
+extern void fakeQD_InvokeQDOvalUPP(GrafVerb, const Rect *, QDOvalUPP);
+extern void fakeQD_InvokeQDPolyUPP(GrafVerb, PolyHandle, QDPolyUPP);
+extern void fakeQD_InvokeQDPutPicUPP(const void *, short, QDPutPicUPP);
+extern void fakeQD_InvokeQDRRectUPP(GrafVerb, const Rect *, short, short, QDRRectUPP);
+extern void fakeQD_InvokeQDRectUPP(GrafVerb, const Rect *, QDRectUPP);
+extern void fakeQD_InvokeQDRgnUPP(GrafVerb, RgnHandle, QDRgnUPP);
+extern OSStatus fakeQD_InvokeQDStdGlyphsUPP(void *, ByteCount, QDStdGlyphsUPP);
+extern void fakeQD_InvokeQDTextUPP(short, const void *, Point, Point, QDTextUPP);
+extern short fakeQD_InvokeQDTxMeasUPP(short, const void *, Point *, Point *, FontInfo *, QDTxMeasUPP);
+extern OSStatus fakeQD_InvokeRegionToRectsUPP(UInt16, RgnHandle, const Rect *, void *, RegionToRectsUPP);
+extern void fakeQD_MapPt(Point *, const Rect *, const Rect *);
+extern void fakeQD_MapRect(Rect *, const Rect *, const Rect *);
+extern CMBitmapCallBackUPP fakeQD_NewCMBitmapCallBackUPP(CMBitmapCallBackProcPtr);
+extern ColorComplementUPP fakeQD_NewColorComplementUPP(ColorComplementProcPtr);
+extern ColorSearchUPP fakeQD_NewColorSearchUPP(ColorSearchProcPtr);
+extern DragGrayRgnUPP fakeQD_NewDragGrayRgnUPP(DragGrayRgnProcPtr);
+extern QDArcUPP fakeQD_NewQDArcUPP(QDArcProcPtr);
+extern QDBitsUPP fakeQD_NewQDBitsUPP(QDBitsProcPtr);
+extern QDCommentUPP fakeQD_NewQDCommentUPP(QDCommentProcPtr);
+extern QDGetPicUPP fakeQD_NewQDGetPicUPP(QDGetPicProcPtr);
+extern QDJShieldCursorUPP fakeQD_NewQDJShieldCursorUPP(QDJShieldCursorProcPtr);
+extern QDLineUPP fakeQD_NewQDLineUPP(QDLineProcPtr);
+extern QDOpcodeUPP fakeQD_NewQDOpcodeUPP(QDOpcodeProcPtr);
+extern QDOvalUPP fakeQD_NewQDOvalUPP(QDOvalProcPtr);
+extern QDPolyUPP fakeQD_NewQDPolyUPP(QDPolyProcPtr);
+extern QDPutPicUPP fakeQD_NewQDPutPicUPP(QDPutPicProcPtr);
+extern QDRRectUPP fakeQD_NewQDRRectUPP(QDRRectProcPtr);
+extern QDRectUPP fakeQD_NewQDRectUPP(QDRectProcPtr);
+extern QDRgnUPP fakeQD_NewQDRgnUPP(QDRgnProcPtr);
+extern QDStdGlyphsUPP fakeQD_NewQDStdGlyphsUPP(QDStdGlyphsProcPtr);
+extern QDTextUPP fakeQD_NewQDTextUPP(QDTextProcPtr);
+extern QDTxMeasUPP fakeQD_NewQDTxMeasUPP(QDTxMeasProcPtr);
+extern RegionToRectsUPP fakeQD_NewRegionToRectsUPP(RegionToRectsProcPtr);
+extern void fakeQD_OffsetRect(Rect *, short, short);
+extern void fakeQD_Pt2Rect(Point, Point, Rect *);
+extern Boolean fakeQD_PtInRect(Point, const Rect *);
+extern void fakeQD_PtToAngle(const Rect *, Point, short *);
+extern OSStatus fakeQD_QDRegionToRects(RgnHandle, QDRegionParseDirection, RegionToRectsUPP, void *);
+extern void fakeQD_ScalePt(Point *, const Rect *, const Rect *);
+extern Boolean fakeQD_SectRect(const Rect *, const Rect *, Rect *);
+extern void fakeQD_SetPt(Point *, short, short);
+extern void fakeQD_SetRect(Rect *, short, short, short, short);
+extern void fakeQD_SubPt(Point, Point *);
+extern void fakeQD_UnionRect(const Rect *, const Rect *, Rect *);
+#if !__LP64__
+extern void fakeQD_AddComp(ColorComplementUPP);
 extern void fakeQD_AddSearch(ColorSearchUPP);
 extern void fakeQD_AllocCursor();
 extern short fakeQD_AngleFromSlope(Fixed);
@@ -859,38 +941,14 @@ extern void fakeQD_DelComp(ColorComplementUPP);
 extern void fakeQD_DelSearch(ColorSearchUPP);
 extern long fakeQD_DeltaPoint(Point, Point);
 extern void fakeQD_DiffRgn(RgnHandle, RgnHandle, RgnHandle);
-extern void fakeQD_DisposeCMBitmapCallBackUPP(CMBitmapCallBackUPP);
 extern void fakeQD_DisposeCTable(CTabHandle);
-extern void fakeQD_DisposeColorComplementUPP(ColorComplementUPP);
-extern void fakeQD_DisposeColorSearchUPP(ColorSearchUPP);
-extern void fakeQD_DisposeDragGrayRgnUPP(DragGrayRgnUPP);
 extern void fakeQD_DisposeGDevice(GDHandle);
 extern void fakeQD_DisposePixMap(PixMapHandle);
 extern void fakeQD_DisposePixPat(PixPatHandle);
 extern void fakeQD_DisposePort(CGrafPtr);
-extern void fakeQD_DisposeQDArcUPP(QDArcUPP);
-extern void fakeQD_DisposeQDBitsUPP(QDBitsUPP);
-extern void fakeQD_DisposeQDCommentUPP(QDCommentUPP);
-extern void fakeQD_DisposeQDGetPicUPP(QDGetPicUPP);
-extern void fakeQD_DisposeQDJShieldCursorUPP(QDJShieldCursorUPP);
-extern void fakeQD_DisposeQDLineUPP(QDLineUPP);
-extern void fakeQD_DisposeQDOpcodeUPP(QDOpcodeUPP);
-extern void fakeQD_DisposeQDOvalUPP(QDOvalUPP);
-extern void fakeQD_DisposeQDPolyUPP(QDPolyUPP);
-extern void fakeQD_DisposeQDPutPicUPP(QDPutPicUPP);
-extern void fakeQD_DisposeQDRRectUPP(QDRRectUPP);
-extern void fakeQD_DisposeQDRectUPP(QDRectUPP);
-extern void fakeQD_DisposeQDRgnUPP(QDRgnUPP);
-extern void fakeQD_DisposeQDStdGlyphsUPP(QDStdGlyphsUPP);
-extern void fakeQD_DisposeQDTextUPP(QDTextUPP);
-extern void fakeQD_DisposeQDTxMeasUPP(QDTxMeasUPP);
-extern void fakeQD_DisposeRegionToRectsUPP(RegionToRectsUPP);
 extern void fakeQD_DisposeRgn(RgnHandle);
 extern void fakeQD_DrawPicture(PicHandle, const Rect *);
-extern Boolean fakeQD_EmptyRect(const Rect *);
 extern Boolean fakeQD_EmptyRgn(RgnHandle);
-extern Boolean fakeQD_EqualPt(Point, Point);
-extern Boolean fakeQD_EqualRect(const Rect *, const Rect *);
 extern Boolean fakeQD_EqualRgn(RgnHandle, RgnHandle);
 extern void fakeQD_EraseArc(const Rect *, short, short);
 extern void fakeQD_EraseOval(const Rect *);
@@ -981,7 +1039,6 @@ extern void fakeQD_HiliteColor(const RGBColor *);
 extern void fakeQD_Index2Color(long, RGBColor *);
 extern void fakeQD_InitCursor();
 extern void fakeQD_InitGDevice(short, long, GDHandle);
-extern void fakeQD_InsetRect(Rect *, short, short);
 extern void fakeQD_InsetRgn(RgnHandle, short, short);
 extern void fakeQD_InvertArc(const Rect *, short, short);
 extern void fakeQD_InvertColor(RGBColor *);
@@ -990,27 +1047,6 @@ extern void fakeQD_InvertPoly(PolyHandle);
 extern void fakeQD_InvertRect(const Rect *);
 extern void fakeQD_InvertRgn(RgnHandle);
 extern void fakeQD_InvertRoundRect(const Rect *, short, short);
-extern Boolean fakeQD_InvokeCMBitmapCallBackUPP(long, void *, CMBitmapCallBackUPP);
-extern Boolean fakeQD_InvokeColorComplementUPP(RGBColor *, ColorComplementUPP);
-extern Boolean fakeQD_InvokeColorSearchUPP(RGBColor *, long *, ColorSearchUPP);
-extern void fakeQD_InvokeDragGrayRgnUPP(DragGrayRgnUPP);
-extern void fakeQD_InvokeQDArcUPP(GrafVerb, const Rect *, short, short, QDArcUPP);
-extern void fakeQD_InvokeQDBitsUPP(const BitMap *, const Rect *, const Rect *, short, RgnHandle, QDBitsUPP);
-extern void fakeQD_InvokeQDCommentUPP(short, short, Handle, QDCommentUPP);
-extern void fakeQD_InvokeQDGetPicUPP(void *, short, QDGetPicUPP);
-extern void fakeQD_InvokeQDJShieldCursorUPP(short, short, short, short, QDJShieldCursorUPP);
-extern void fakeQD_InvokeQDLineUPP(Point, QDLineUPP);
-extern void fakeQD_InvokeQDOpcodeUPP(const Rect *, const Rect *, UInt16, SInt16, QDOpcodeUPP);
-extern void fakeQD_InvokeQDOvalUPP(GrafVerb, const Rect *, QDOvalUPP);
-extern void fakeQD_InvokeQDPolyUPP(GrafVerb, PolyHandle, QDPolyUPP);
-extern void fakeQD_InvokeQDPutPicUPP(const void *, short, QDPutPicUPP);
-extern void fakeQD_InvokeQDRRectUPP(GrafVerb, const Rect *, short, short, QDRRectUPP);
-extern void fakeQD_InvokeQDRectUPP(GrafVerb, const Rect *, QDRectUPP);
-extern void fakeQD_InvokeQDRgnUPP(GrafVerb, RgnHandle, QDRgnUPP);
-extern OSStatus fakeQD_InvokeQDStdGlyphsUPP(void *, ByteCount, QDStdGlyphsUPP);
-extern void fakeQD_InvokeQDTextUPP(short, const void *, Point, Point, QDTextUPP);
-extern short fakeQD_InvokeQDTxMeasUPP(short, const void *, Point *, Point *, FontInfo *, QDTxMeasUPP);
-extern OSStatus fakeQD_InvokeRegionToRectsUPP(UInt16, RgnHandle, const Rect *, void *, RegionToRectsUPP);
 extern Boolean fakeQD_IsPortClipRegionEmpty(CGrafPtr);
 extern Boolean fakeQD_IsPortColor(CGrafPtr);
 extern Boolean fakeQD_IsPortOffscreen(CGrafPtr);
@@ -1059,8 +1095,6 @@ extern void fakeQD_LocalToGlobal(Point *);
 extern OSErr fakeQD_LockPortBits(GrafPtr);
 extern void fakeQD_MakeRGBPat(PixPatHandle, const RGBColor *);
 extern void fakeQD_MapPoly(PolyHandle, const Rect *, const Rect *);
-extern void fakeQD_MapPt(Point *, const Rect *, const Rect *);
-extern void fakeQD_MapRect(Rect *, const Rect *, const Rect *);
 extern void fakeQD_MapRgn(RgnHandle, const Rect *, const Rect *);
 extern void fakeQD_Move(short, short);
 extern void fakeQD_MovePortTo(short, short);
@@ -1068,34 +1102,12 @@ extern void fakeQD_MoveTo(short, short);
 extern CMError fakeQD_NCMBeginMatching(CMProfileRef, CMProfileRef, CMMatchRef *);
 extern void fakeQD_NCMDrawMatchedPicture(PicHandle, CMProfileRef, Rect *);
 extern CMError fakeQD_NCMUseProfileComment(CMProfileRef, UInt32);
-extern CMBitmapCallBackUPP fakeQD_NewCMBitmapCallBackUPP(CMBitmapCallBackProcPtr);
-extern ColorComplementUPP fakeQD_NewColorComplementUPP(ColorComplementProcPtr);
-extern ColorSearchUPP fakeQD_NewColorSearchUPP(ColorSearchProcPtr);
-extern DragGrayRgnUPP fakeQD_NewDragGrayRgnUPP(DragGrayRgnProcPtr);
 extern GDHandle fakeQD_NewGDevice(short, long);
 extern PixMapHandle fakeQD_NewPixMap();
 extern PixPatHandle fakeQD_NewPixPat();
-extern QDArcUPP fakeQD_NewQDArcUPP(QDArcProcPtr);
-extern QDBitsUPP fakeQD_NewQDBitsUPP(QDBitsProcPtr);
-extern QDCommentUPP fakeQD_NewQDCommentUPP(QDCommentProcPtr);
-extern QDGetPicUPP fakeQD_NewQDGetPicUPP(QDGetPicProcPtr);
-extern QDJShieldCursorUPP fakeQD_NewQDJShieldCursorUPP(QDJShieldCursorProcPtr);
-extern QDLineUPP fakeQD_NewQDLineUPP(QDLineProcPtr);
-extern QDOpcodeUPP fakeQD_NewQDOpcodeUPP(QDOpcodeProcPtr);
-extern QDOvalUPP fakeQD_NewQDOvalUPP(QDOvalProcPtr);
-extern QDPolyUPP fakeQD_NewQDPolyUPP(QDPolyProcPtr);
-extern QDPutPicUPP fakeQD_NewQDPutPicUPP(QDPutPicProcPtr);
-extern QDRRectUPP fakeQD_NewQDRRectUPP(QDRRectProcPtr);
-extern QDRectUPP fakeQD_NewQDRectUPP(QDRectProcPtr);
-extern QDRgnUPP fakeQD_NewQDRgnUPP(QDRgnProcPtr);
-extern QDStdGlyphsUPP fakeQD_NewQDStdGlyphsUPP(QDStdGlyphsProcPtr);
-extern QDTextUPP fakeQD_NewQDTextUPP(QDTextProcPtr);
-extern QDTxMeasUPP fakeQD_NewQDTxMeasUPP(QDTxMeasProcPtr);
-extern RegionToRectsUPP fakeQD_NewRegionToRectsUPP(RegionToRectsProcPtr);
 extern RgnHandle fakeQD_NewRgn();
 extern void fakeQD_ObscureCursor();
 extern void fakeQD_OffsetPoly(PolyHandle, short, short);
-extern void fakeQD_OffsetRect(Rect *, short, short);
 extern void fakeQD_OffsetRgn(RgnHandle, short, short);
 extern void fakeQD_OpColor(const RGBColor *);
 extern PicHandle fakeQD_OpenCPicture(const OpenCPicParams *);
@@ -1118,10 +1130,7 @@ extern void fakeQD_PenSize(short, short);
 extern void fakeQD_PicComment(short, short, Handle);
 extern void fakeQD_PortSize(short, short);
 extern void fakeQD_ProtectEntry(short, Boolean);
-extern void fakeQD_Pt2Rect(Point, Point, Rect *);
-extern Boolean fakeQD_PtInRect(Point, const Rect *);
 extern Boolean fakeQD_PtInRgn(Point, RgnHandle);
-extern void fakeQD_PtToAngle(const Rect *, Point, short *);
 extern OSStatus fakeQD_QDAddRectToDirtyRegion(CGrafPtr, const Rect *);
 extern OSStatus fakeQD_QDAddRegionToDirtyRegion(CGrafPtr, RgnHandle);
 extern OSStatus fakeQD_QDBeginCGContext(CGrafPtr, CGContextRef *);
@@ -1144,7 +1153,6 @@ extern Boolean fakeQD_QDIsPortBuffered(CGrafPtr);
 extern Point * fakeQD_QDLocalToGlobalPoint(CGrafPtr, Point *);
 extern Rect * fakeQD_QDLocalToGlobalRect(CGrafPtr, Rect *);
 extern RgnHandle fakeQD_QDLocalToGlobalRegion(CGrafPtr, RgnHandle);
-extern OSStatus fakeQD_QDRegionToRects(RgnHandle, QDRegionParseDirection, RegionToRectsUPP, void *);
 extern OSStatus fakeQD_QDRegisterNamedPixMapCursor(PixMapHandle, PixMapHandle, Point, const char);
 extern OSStatus fakeQD_QDSetCursorScale(float);
 extern OSStatus fakeQD_QDSetDirtyRegion(CGrafPtr, RgnHandle);
@@ -1163,10 +1171,8 @@ extern Boolean fakeQD_RectInRgn(const Rect *, RgnHandle);
 extern void fakeQD_RectRgn(RgnHandle, const Rect *);
 extern void fakeQD_ReserveEntry(short, Boolean);
 extern void fakeQD_RgnToHandle(RgnHandle, Handle);
-extern void fakeQD_ScalePt(Point *, const Rect *, const Rect *);
 extern void fakeQD_ScreenRes(short *, short *);
 extern void fakeQD_ScrollRect(const Rect *, short, short, RgnHandle);
-extern Boolean fakeQD_SectRect(const Rect *, const Rect *, Rect *);
 extern void fakeQD_SectRegionWithPortClipRegion(CGrafPtr, RgnHandle);
 extern void fakeQD_SectRegionWithPortVisibleRegion(CGrafPtr, RgnHandle);
 extern void fakeQD_SectRgn(RgnHandle, RgnHandle, RgnHandle);
@@ -1199,10 +1205,8 @@ extern void fakeQD_SetPortTextFont(CGrafPtr, short);
 extern void fakeQD_SetPortTextMode(CGrafPtr, short);
 extern void fakeQD_SetPortTextSize(CGrafPtr, short);
 extern void fakeQD_SetPortVisibleRegion(CGrafPtr, RgnHandle);
-extern void fakeQD_SetPt(Point *, short, short);
 extern void fakeQD_SetQDError(OSErr);
 extern void fakeQD_SetQDGlobalsRandomSeed(long);
-extern void fakeQD_SetRect(Rect *, short, short, short, short);
 extern void fakeQD_SetRectRgn(RgnHandle, short, short, short, short);
 extern void fakeQD_SetStdCProcs(CQDProcs *);
 extern void fakeQD_ShieldCursor(const Rect *, Point);
@@ -1222,21 +1226,19 @@ extern void fakeQD_StdRRect(GrafVerb, const Rect *, short, short);
 extern void fakeQD_StdRect(GrafVerb, const Rect *);
 extern void fakeQD_StdRgn(GrafVerb, RgnHandle);
 extern void fakeQD_StuffHex(void *, ConstStr255Param);
-extern void fakeQD_SubPt(Point, Point *);
 extern Handle fakeQD_SwapPortPicSaveHandle(CGrafPtr, Handle);
 extern Handle fakeQD_SwapPortPolySaveHandle(CGrafPtr, Handle);
 extern Handle fakeQD_SwapPortRegionSaveHandle(CGrafPtr, Handle);
 extern OSStatus fakeQD_SyncCGContextOriginWithPort(CGContextRef, CGrafPtr);
 extern Boolean fakeQD_TestDeviceAttribute(GDHandle, short);
-extern void fakeQD_UnionRect(const Rect *, const Rect *, Rect *);
 extern void fakeQD_UnionRgn(RgnHandle, RgnHandle, RgnHandle);
 extern OSErr fakeQD_UnlockPortBits(GrafPtr);
 extern void fakeQD_UnpackBits(Ptr *, Ptr *, short);
 extern void fakeQD_XorRgn(RgnHandle, RgnHandle, RgnHandle);
 extern long fakeQD_deltapoint(Point *, Point *);
+#endif /* !__LP64__ */
 #ifdef __cplusplus
 } /* extern "C" */
 #endif
 #pragma GCC diagnostic pop
 #endif /* MAC_OS_X_VERSION_10_6 < MAC_OS_X_VERSION_MIN_REQUIRED */
-#endif /* !__LP64__ */

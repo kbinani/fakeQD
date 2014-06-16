@@ -29,15 +29,95 @@
  * /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/QD.framework/Headers/QuickdrawTypes.h
  *   8e35fe0aa7611115c9db4300e26c1b99
  */
-#if !__LP64__
 #include "fakeQD.h"
 #if MAC_OS_X_VERSION_10_6 < MAC_OS_X_VERSION_MIN_REQUIRED
 #include <dlfcn.h>
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 extern "C" {
-typedef void (*AddCompFunc)(ColorComplementUPP);
 typedef void (*AddPtFunc)(Point, Point *);
+typedef void (*DisposeCMBitmapCallBackUPPFunc)(CMBitmapCallBackUPP);
+typedef void (*DisposeColorComplementUPPFunc)(ColorComplementUPP);
+typedef void (*DisposeColorSearchUPPFunc)(ColorSearchUPP);
+typedef void (*DisposeDragGrayRgnUPPFunc)(DragGrayRgnUPP);
+typedef void (*DisposeQDArcUPPFunc)(QDArcUPP);
+typedef void (*DisposeQDBitsUPPFunc)(QDBitsUPP);
+typedef void (*DisposeQDCommentUPPFunc)(QDCommentUPP);
+typedef void (*DisposeQDGetPicUPPFunc)(QDGetPicUPP);
+typedef void (*DisposeQDJShieldCursorUPPFunc)(QDJShieldCursorUPP);
+typedef void (*DisposeQDLineUPPFunc)(QDLineUPP);
+typedef void (*DisposeQDOpcodeUPPFunc)(QDOpcodeUPP);
+typedef void (*DisposeQDOvalUPPFunc)(QDOvalUPP);
+typedef void (*DisposeQDPolyUPPFunc)(QDPolyUPP);
+typedef void (*DisposeQDPutPicUPPFunc)(QDPutPicUPP);
+typedef void (*DisposeQDRRectUPPFunc)(QDRRectUPP);
+typedef void (*DisposeQDRectUPPFunc)(QDRectUPP);
+typedef void (*DisposeQDRgnUPPFunc)(QDRgnUPP);
+typedef void (*DisposeQDStdGlyphsUPPFunc)(QDStdGlyphsUPP);
+typedef void (*DisposeQDTextUPPFunc)(QDTextUPP);
+typedef void (*DisposeQDTxMeasUPPFunc)(QDTxMeasUPP);
+typedef void (*DisposeRegionToRectsUPPFunc)(RegionToRectsUPP);
+typedef Boolean (*EmptyRectFunc)(const Rect *);
+typedef Boolean (*EqualPtFunc)(Point, Point);
+typedef Boolean (*EqualRectFunc)(const Rect *, const Rect *);
+typedef void (*InsetRectFunc)(Rect *, short, short);
+typedef Boolean (*InvokeCMBitmapCallBackUPPFunc)(long, void *, CMBitmapCallBackUPP);
+typedef Boolean (*InvokeColorComplementUPPFunc)(RGBColor *, ColorComplementUPP);
+typedef Boolean (*InvokeColorSearchUPPFunc)(RGBColor *, long *, ColorSearchUPP);
+typedef void (*InvokeDragGrayRgnUPPFunc)(DragGrayRgnUPP);
+typedef void (*InvokeQDArcUPPFunc)(GrafVerb, const Rect *, short, short, QDArcUPP);
+typedef void (*InvokeQDBitsUPPFunc)(const BitMap *, const Rect *, const Rect *, short, RgnHandle, QDBitsUPP);
+typedef void (*InvokeQDCommentUPPFunc)(short, short, Handle, QDCommentUPP);
+typedef void (*InvokeQDGetPicUPPFunc)(void *, short, QDGetPicUPP);
+typedef void (*InvokeQDJShieldCursorUPPFunc)(short, short, short, short, QDJShieldCursorUPP);
+typedef void (*InvokeQDLineUPPFunc)(Point, QDLineUPP);
+typedef void (*InvokeQDOpcodeUPPFunc)(const Rect *, const Rect *, UInt16, SInt16, QDOpcodeUPP);
+typedef void (*InvokeQDOvalUPPFunc)(GrafVerb, const Rect *, QDOvalUPP);
+typedef void (*InvokeQDPolyUPPFunc)(GrafVerb, PolyHandle, QDPolyUPP);
+typedef void (*InvokeQDPutPicUPPFunc)(const void *, short, QDPutPicUPP);
+typedef void (*InvokeQDRRectUPPFunc)(GrafVerb, const Rect *, short, short, QDRRectUPP);
+typedef void (*InvokeQDRectUPPFunc)(GrafVerb, const Rect *, QDRectUPP);
+typedef void (*InvokeQDRgnUPPFunc)(GrafVerb, RgnHandle, QDRgnUPP);
+typedef OSStatus (*InvokeQDStdGlyphsUPPFunc)(void *, ByteCount, QDStdGlyphsUPP);
+typedef void (*InvokeQDTextUPPFunc)(short, const void *, Point, Point, QDTextUPP);
+typedef short (*InvokeQDTxMeasUPPFunc)(short, const void *, Point *, Point *, FontInfo *, QDTxMeasUPP);
+typedef OSStatus (*InvokeRegionToRectsUPPFunc)(UInt16, RgnHandle, const Rect *, void *, RegionToRectsUPP);
+typedef void (*MapPtFunc)(Point *, const Rect *, const Rect *);
+typedef void (*MapRectFunc)(Rect *, const Rect *, const Rect *);
+typedef CMBitmapCallBackUPP (*NewCMBitmapCallBackUPPFunc)(CMBitmapCallBackProcPtr);
+typedef ColorComplementUPP (*NewColorComplementUPPFunc)(ColorComplementProcPtr);
+typedef ColorSearchUPP (*NewColorSearchUPPFunc)(ColorSearchProcPtr);
+typedef DragGrayRgnUPP (*NewDragGrayRgnUPPFunc)(DragGrayRgnProcPtr);
+typedef QDArcUPP (*NewQDArcUPPFunc)(QDArcProcPtr);
+typedef QDBitsUPP (*NewQDBitsUPPFunc)(QDBitsProcPtr);
+typedef QDCommentUPP (*NewQDCommentUPPFunc)(QDCommentProcPtr);
+typedef QDGetPicUPP (*NewQDGetPicUPPFunc)(QDGetPicProcPtr);
+typedef QDJShieldCursorUPP (*NewQDJShieldCursorUPPFunc)(QDJShieldCursorProcPtr);
+typedef QDLineUPP (*NewQDLineUPPFunc)(QDLineProcPtr);
+typedef QDOpcodeUPP (*NewQDOpcodeUPPFunc)(QDOpcodeProcPtr);
+typedef QDOvalUPP (*NewQDOvalUPPFunc)(QDOvalProcPtr);
+typedef QDPolyUPP (*NewQDPolyUPPFunc)(QDPolyProcPtr);
+typedef QDPutPicUPP (*NewQDPutPicUPPFunc)(QDPutPicProcPtr);
+typedef QDRRectUPP (*NewQDRRectUPPFunc)(QDRRectProcPtr);
+typedef QDRectUPP (*NewQDRectUPPFunc)(QDRectProcPtr);
+typedef QDRgnUPP (*NewQDRgnUPPFunc)(QDRgnProcPtr);
+typedef QDStdGlyphsUPP (*NewQDStdGlyphsUPPFunc)(QDStdGlyphsProcPtr);
+typedef QDTextUPP (*NewQDTextUPPFunc)(QDTextProcPtr);
+typedef QDTxMeasUPP (*NewQDTxMeasUPPFunc)(QDTxMeasProcPtr);
+typedef RegionToRectsUPP (*NewRegionToRectsUPPFunc)(RegionToRectsProcPtr);
+typedef void (*OffsetRectFunc)(Rect *, short, short);
+typedef void (*Pt2RectFunc)(Point, Point, Rect *);
+typedef Boolean (*PtInRectFunc)(Point, const Rect *);
+typedef void (*PtToAngleFunc)(const Rect *, Point, short *);
+typedef OSStatus (*QDRegionToRectsFunc)(RgnHandle, QDRegionParseDirection, RegionToRectsUPP, void *);
+typedef void (*ScalePtFunc)(Point *, const Rect *, const Rect *);
+typedef Boolean (*SectRectFunc)(const Rect *, const Rect *, Rect *);
+typedef void (*SetPtFunc)(Point *, short, short);
+typedef void (*SetRectFunc)(Rect *, short, short, short, short);
+typedef void (*SubPtFunc)(Point, Point *);
+typedef void (*UnionRectFunc)(const Rect *, const Rect *, Rect *);
+#if !__LP64__
+typedef void (*AddCompFunc)(ColorComplementUPP);
 typedef void (*AddSearchFunc)(ColorSearchUPP);
 typedef void (*AllocCursorFunc)();
 typedef short (*AngleFromSlopeFunc)(Fixed);
@@ -74,38 +154,14 @@ typedef void (*DelCompFunc)(ColorComplementUPP);
 typedef void (*DelSearchFunc)(ColorSearchUPP);
 typedef long (*DeltaPointFunc)(Point, Point);
 typedef void (*DiffRgnFunc)(RgnHandle, RgnHandle, RgnHandle);
-typedef void (*DisposeCMBitmapCallBackUPPFunc)(CMBitmapCallBackUPP);
 typedef void (*DisposeCTableFunc)(CTabHandle);
-typedef void (*DisposeColorComplementUPPFunc)(ColorComplementUPP);
-typedef void (*DisposeColorSearchUPPFunc)(ColorSearchUPP);
-typedef void (*DisposeDragGrayRgnUPPFunc)(DragGrayRgnUPP);
 typedef void (*DisposeGDeviceFunc)(GDHandle);
 typedef void (*DisposePixMapFunc)(PixMapHandle);
 typedef void (*DisposePixPatFunc)(PixPatHandle);
 typedef void (*DisposePortFunc)(CGrafPtr);
-typedef void (*DisposeQDArcUPPFunc)(QDArcUPP);
-typedef void (*DisposeQDBitsUPPFunc)(QDBitsUPP);
-typedef void (*DisposeQDCommentUPPFunc)(QDCommentUPP);
-typedef void (*DisposeQDGetPicUPPFunc)(QDGetPicUPP);
-typedef void (*DisposeQDJShieldCursorUPPFunc)(QDJShieldCursorUPP);
-typedef void (*DisposeQDLineUPPFunc)(QDLineUPP);
-typedef void (*DisposeQDOpcodeUPPFunc)(QDOpcodeUPP);
-typedef void (*DisposeQDOvalUPPFunc)(QDOvalUPP);
-typedef void (*DisposeQDPolyUPPFunc)(QDPolyUPP);
-typedef void (*DisposeQDPutPicUPPFunc)(QDPutPicUPP);
-typedef void (*DisposeQDRRectUPPFunc)(QDRRectUPP);
-typedef void (*DisposeQDRectUPPFunc)(QDRectUPP);
-typedef void (*DisposeQDRgnUPPFunc)(QDRgnUPP);
-typedef void (*DisposeQDStdGlyphsUPPFunc)(QDStdGlyphsUPP);
-typedef void (*DisposeQDTextUPPFunc)(QDTextUPP);
-typedef void (*DisposeQDTxMeasUPPFunc)(QDTxMeasUPP);
-typedef void (*DisposeRegionToRectsUPPFunc)(RegionToRectsUPP);
 typedef void (*DisposeRgnFunc)(RgnHandle);
 typedef void (*DrawPictureFunc)(PicHandle, const Rect *);
-typedef Boolean (*EmptyRectFunc)(const Rect *);
 typedef Boolean (*EmptyRgnFunc)(RgnHandle);
-typedef Boolean (*EqualPtFunc)(Point, Point);
-typedef Boolean (*EqualRectFunc)(const Rect *, const Rect *);
 typedef Boolean (*EqualRgnFunc)(RgnHandle, RgnHandle);
 typedef void (*EraseArcFunc)(const Rect *, short, short);
 typedef void (*EraseOvalFunc)(const Rect *);
@@ -196,7 +252,6 @@ typedef void (*HiliteColorFunc)(const RGBColor *);
 typedef void (*Index2ColorFunc)(long, RGBColor *);
 typedef void (*InitCursorFunc)();
 typedef void (*InitGDeviceFunc)(short, long, GDHandle);
-typedef void (*InsetRectFunc)(Rect *, short, short);
 typedef void (*InsetRgnFunc)(RgnHandle, short, short);
 typedef void (*InvertArcFunc)(const Rect *, short, short);
 typedef void (*InvertColorFunc)(RGBColor *);
@@ -205,27 +260,6 @@ typedef void (*InvertPolyFunc)(PolyHandle);
 typedef void (*InvertRectFunc)(const Rect *);
 typedef void (*InvertRgnFunc)(RgnHandle);
 typedef void (*InvertRoundRectFunc)(const Rect *, short, short);
-typedef Boolean (*InvokeCMBitmapCallBackUPPFunc)(long, void *, CMBitmapCallBackUPP);
-typedef Boolean (*InvokeColorComplementUPPFunc)(RGBColor *, ColorComplementUPP);
-typedef Boolean (*InvokeColorSearchUPPFunc)(RGBColor *, long *, ColorSearchUPP);
-typedef void (*InvokeDragGrayRgnUPPFunc)(DragGrayRgnUPP);
-typedef void (*InvokeQDArcUPPFunc)(GrafVerb, const Rect *, short, short, QDArcUPP);
-typedef void (*InvokeQDBitsUPPFunc)(const BitMap *, const Rect *, const Rect *, short, RgnHandle, QDBitsUPP);
-typedef void (*InvokeQDCommentUPPFunc)(short, short, Handle, QDCommentUPP);
-typedef void (*InvokeQDGetPicUPPFunc)(void *, short, QDGetPicUPP);
-typedef void (*InvokeQDJShieldCursorUPPFunc)(short, short, short, short, QDJShieldCursorUPP);
-typedef void (*InvokeQDLineUPPFunc)(Point, QDLineUPP);
-typedef void (*InvokeQDOpcodeUPPFunc)(const Rect *, const Rect *, UInt16, SInt16, QDOpcodeUPP);
-typedef void (*InvokeQDOvalUPPFunc)(GrafVerb, const Rect *, QDOvalUPP);
-typedef void (*InvokeQDPolyUPPFunc)(GrafVerb, PolyHandle, QDPolyUPP);
-typedef void (*InvokeQDPutPicUPPFunc)(const void *, short, QDPutPicUPP);
-typedef void (*InvokeQDRRectUPPFunc)(GrafVerb, const Rect *, short, short, QDRRectUPP);
-typedef void (*InvokeQDRectUPPFunc)(GrafVerb, const Rect *, QDRectUPP);
-typedef void (*InvokeQDRgnUPPFunc)(GrafVerb, RgnHandle, QDRgnUPP);
-typedef OSStatus (*InvokeQDStdGlyphsUPPFunc)(void *, ByteCount, QDStdGlyphsUPP);
-typedef void (*InvokeQDTextUPPFunc)(short, const void *, Point, Point, QDTextUPP);
-typedef short (*InvokeQDTxMeasUPPFunc)(short, const void *, Point *, Point *, FontInfo *, QDTxMeasUPP);
-typedef OSStatus (*InvokeRegionToRectsUPPFunc)(UInt16, RgnHandle, const Rect *, void *, RegionToRectsUPP);
 typedef Boolean (*IsPortClipRegionEmptyFunc)(CGrafPtr);
 typedef Boolean (*IsPortColorFunc)(CGrafPtr);
 typedef Boolean (*IsPortOffscreenFunc)(CGrafPtr);
@@ -274,8 +308,6 @@ typedef void (*LocalToGlobalFunc)(Point *);
 typedef OSErr (*LockPortBitsFunc)(GrafPtr);
 typedef void (*MakeRGBPatFunc)(PixPatHandle, const RGBColor *);
 typedef void (*MapPolyFunc)(PolyHandle, const Rect *, const Rect *);
-typedef void (*MapPtFunc)(Point *, const Rect *, const Rect *);
-typedef void (*MapRectFunc)(Rect *, const Rect *, const Rect *);
 typedef void (*MapRgnFunc)(RgnHandle, const Rect *, const Rect *);
 typedef void (*MoveFunc)(short, short);
 typedef void (*MovePortToFunc)(short, short);
@@ -283,34 +315,12 @@ typedef void (*MoveToFunc)(short, short);
 typedef CMError (*NCMBeginMatchingFunc)(CMProfileRef, CMProfileRef, CMMatchRef *);
 typedef void (*NCMDrawMatchedPictureFunc)(PicHandle, CMProfileRef, Rect *);
 typedef CMError (*NCMUseProfileCommentFunc)(CMProfileRef, UInt32);
-typedef CMBitmapCallBackUPP (*NewCMBitmapCallBackUPPFunc)(CMBitmapCallBackProcPtr);
-typedef ColorComplementUPP (*NewColorComplementUPPFunc)(ColorComplementProcPtr);
-typedef ColorSearchUPP (*NewColorSearchUPPFunc)(ColorSearchProcPtr);
-typedef DragGrayRgnUPP (*NewDragGrayRgnUPPFunc)(DragGrayRgnProcPtr);
 typedef GDHandle (*NewGDeviceFunc)(short, long);
 typedef PixMapHandle (*NewPixMapFunc)();
 typedef PixPatHandle (*NewPixPatFunc)();
-typedef QDArcUPP (*NewQDArcUPPFunc)(QDArcProcPtr);
-typedef QDBitsUPP (*NewQDBitsUPPFunc)(QDBitsProcPtr);
-typedef QDCommentUPP (*NewQDCommentUPPFunc)(QDCommentProcPtr);
-typedef QDGetPicUPP (*NewQDGetPicUPPFunc)(QDGetPicProcPtr);
-typedef QDJShieldCursorUPP (*NewQDJShieldCursorUPPFunc)(QDJShieldCursorProcPtr);
-typedef QDLineUPP (*NewQDLineUPPFunc)(QDLineProcPtr);
-typedef QDOpcodeUPP (*NewQDOpcodeUPPFunc)(QDOpcodeProcPtr);
-typedef QDOvalUPP (*NewQDOvalUPPFunc)(QDOvalProcPtr);
-typedef QDPolyUPP (*NewQDPolyUPPFunc)(QDPolyProcPtr);
-typedef QDPutPicUPP (*NewQDPutPicUPPFunc)(QDPutPicProcPtr);
-typedef QDRRectUPP (*NewQDRRectUPPFunc)(QDRRectProcPtr);
-typedef QDRectUPP (*NewQDRectUPPFunc)(QDRectProcPtr);
-typedef QDRgnUPP (*NewQDRgnUPPFunc)(QDRgnProcPtr);
-typedef QDStdGlyphsUPP (*NewQDStdGlyphsUPPFunc)(QDStdGlyphsProcPtr);
-typedef QDTextUPP (*NewQDTextUPPFunc)(QDTextProcPtr);
-typedef QDTxMeasUPP (*NewQDTxMeasUPPFunc)(QDTxMeasProcPtr);
-typedef RegionToRectsUPP (*NewRegionToRectsUPPFunc)(RegionToRectsProcPtr);
 typedef RgnHandle (*NewRgnFunc)();
 typedef void (*ObscureCursorFunc)();
 typedef void (*OffsetPolyFunc)(PolyHandle, short, short);
-typedef void (*OffsetRectFunc)(Rect *, short, short);
 typedef void (*OffsetRgnFunc)(RgnHandle, short, short);
 typedef void (*OpColorFunc)(const RGBColor *);
 typedef PicHandle (*OpenCPictureFunc)(const OpenCPicParams *);
@@ -333,10 +343,7 @@ typedef void (*PenSizeFunc)(short, short);
 typedef void (*PicCommentFunc)(short, short, Handle);
 typedef void (*PortSizeFunc)(short, short);
 typedef void (*ProtectEntryFunc)(short, Boolean);
-typedef void (*Pt2RectFunc)(Point, Point, Rect *);
-typedef Boolean (*PtInRectFunc)(Point, const Rect *);
 typedef Boolean (*PtInRgnFunc)(Point, RgnHandle);
-typedef void (*PtToAngleFunc)(const Rect *, Point, short *);
 typedef OSStatus (*QDAddRectToDirtyRegionFunc)(CGrafPtr, const Rect *);
 typedef OSStatus (*QDAddRegionToDirtyRegionFunc)(CGrafPtr, RgnHandle);
 typedef OSStatus (*QDBeginCGContextFunc)(CGrafPtr, CGContextRef *);
@@ -359,7 +366,6 @@ typedef Boolean (*QDIsPortBufferedFunc)(CGrafPtr);
 typedef Point * (*QDLocalToGlobalPointFunc)(CGrafPtr, Point *);
 typedef Rect * (*QDLocalToGlobalRectFunc)(CGrafPtr, Rect *);
 typedef RgnHandle (*QDLocalToGlobalRegionFunc)(CGrafPtr, RgnHandle);
-typedef OSStatus (*QDRegionToRectsFunc)(RgnHandle, QDRegionParseDirection, RegionToRectsUPP, void *);
 typedef OSStatus (*QDRegisterNamedPixMapCursorFunc)(PixMapHandle, PixMapHandle, Point, const char);
 typedef OSStatus (*QDSetCursorScaleFunc)(float);
 typedef OSStatus (*QDSetDirtyRegionFunc)(CGrafPtr, RgnHandle);
@@ -378,10 +384,8 @@ typedef Boolean (*RectInRgnFunc)(const Rect *, RgnHandle);
 typedef void (*RectRgnFunc)(RgnHandle, const Rect *);
 typedef void (*ReserveEntryFunc)(short, Boolean);
 typedef void (*RgnToHandleFunc)(RgnHandle, Handle);
-typedef void (*ScalePtFunc)(Point *, const Rect *, const Rect *);
 typedef void (*ScreenResFunc)(short *, short *);
 typedef void (*ScrollRectFunc)(const Rect *, short, short, RgnHandle);
-typedef Boolean (*SectRectFunc)(const Rect *, const Rect *, Rect *);
 typedef void (*SectRegionWithPortClipRegionFunc)(CGrafPtr, RgnHandle);
 typedef void (*SectRegionWithPortVisibleRegionFunc)(CGrafPtr, RgnHandle);
 typedef void (*SectRgnFunc)(RgnHandle, RgnHandle, RgnHandle);
@@ -414,10 +418,8 @@ typedef void (*SetPortTextFontFunc)(CGrafPtr, short);
 typedef void (*SetPortTextModeFunc)(CGrafPtr, short);
 typedef void (*SetPortTextSizeFunc)(CGrafPtr, short);
 typedef void (*SetPortVisibleRegionFunc)(CGrafPtr, RgnHandle);
-typedef void (*SetPtFunc)(Point *, short, short);
 typedef void (*SetQDErrorFunc)(OSErr);
 typedef void (*SetQDGlobalsRandomSeedFunc)(long);
-typedef void (*SetRectFunc)(Rect *, short, short, short, short);
 typedef void (*SetRectRgnFunc)(RgnHandle, short, short, short, short);
 typedef void (*SetStdCProcsFunc)(CQDProcs *);
 typedef void (*ShieldCursorFunc)(const Rect *, Point);
@@ -437,18 +439,17 @@ typedef void (*StdRRectFunc)(GrafVerb, const Rect *, short, short);
 typedef void (*StdRectFunc)(GrafVerb, const Rect *);
 typedef void (*StdRgnFunc)(GrafVerb, RgnHandle);
 typedef void (*StuffHexFunc)(void *, ConstStr255Param);
-typedef void (*SubPtFunc)(Point, Point *);
 typedef Handle (*SwapPortPicSaveHandleFunc)(CGrafPtr, Handle);
 typedef Handle (*SwapPortPolySaveHandleFunc)(CGrafPtr, Handle);
 typedef Handle (*SwapPortRegionSaveHandleFunc)(CGrafPtr, Handle);
 typedef OSStatus (*SyncCGContextOriginWithPortFunc)(CGContextRef, CGrafPtr);
 typedef Boolean (*TestDeviceAttributeFunc)(GDHandle, short);
-typedef void (*UnionRectFunc)(const Rect *, const Rect *, Rect *);
 typedef void (*UnionRgnFunc)(RgnHandle, RgnHandle, RgnHandle);
 typedef OSErr (*UnlockPortBitsFunc)(GrafPtr);
 typedef void (*UnpackBitsFunc)(Ptr *, Ptr *, short);
 typedef void (*XorRgnFunc)(RgnHandle, RgnHandle, RgnHandle);
 typedef long (*deltapointFunc)(Point *, Point *);
+#endif /* !__LP64__ */
 } /* extern "C" */
 class QuickDrawAPIWrapper
 {
@@ -456,8 +457,89 @@ public:
     QuickDrawAPIWrapper()
         : m_initialized(false)
         , m_qd_dylib_handle(0)
-        , m_AddCompFunc(0)
         , m_AddPtFunc(0)
+        , m_DisposeCMBitmapCallBackUPPFunc(0)
+        , m_DisposeColorComplementUPPFunc(0)
+        , m_DisposeColorSearchUPPFunc(0)
+        , m_DisposeDragGrayRgnUPPFunc(0)
+        , m_DisposeQDArcUPPFunc(0)
+        , m_DisposeQDBitsUPPFunc(0)
+        , m_DisposeQDCommentUPPFunc(0)
+        , m_DisposeQDGetPicUPPFunc(0)
+        , m_DisposeQDJShieldCursorUPPFunc(0)
+        , m_DisposeQDLineUPPFunc(0)
+        , m_DisposeQDOpcodeUPPFunc(0)
+        , m_DisposeQDOvalUPPFunc(0)
+        , m_DisposeQDPolyUPPFunc(0)
+        , m_DisposeQDPutPicUPPFunc(0)
+        , m_DisposeQDRRectUPPFunc(0)
+        , m_DisposeQDRectUPPFunc(0)
+        , m_DisposeQDRgnUPPFunc(0)
+        , m_DisposeQDStdGlyphsUPPFunc(0)
+        , m_DisposeQDTextUPPFunc(0)
+        , m_DisposeQDTxMeasUPPFunc(0)
+        , m_DisposeRegionToRectsUPPFunc(0)
+        , m_EmptyRectFunc(0)
+        , m_EqualPtFunc(0)
+        , m_EqualRectFunc(0)
+        , m_InsetRectFunc(0)
+        , m_InvokeCMBitmapCallBackUPPFunc(0)
+        , m_InvokeColorComplementUPPFunc(0)
+        , m_InvokeColorSearchUPPFunc(0)
+        , m_InvokeDragGrayRgnUPPFunc(0)
+        , m_InvokeQDArcUPPFunc(0)
+        , m_InvokeQDBitsUPPFunc(0)
+        , m_InvokeQDCommentUPPFunc(0)
+        , m_InvokeQDGetPicUPPFunc(0)
+        , m_InvokeQDJShieldCursorUPPFunc(0)
+        , m_InvokeQDLineUPPFunc(0)
+        , m_InvokeQDOpcodeUPPFunc(0)
+        , m_InvokeQDOvalUPPFunc(0)
+        , m_InvokeQDPolyUPPFunc(0)
+        , m_InvokeQDPutPicUPPFunc(0)
+        , m_InvokeQDRRectUPPFunc(0)
+        , m_InvokeQDRectUPPFunc(0)
+        , m_InvokeQDRgnUPPFunc(0)
+        , m_InvokeQDStdGlyphsUPPFunc(0)
+        , m_InvokeQDTextUPPFunc(0)
+        , m_InvokeQDTxMeasUPPFunc(0)
+        , m_InvokeRegionToRectsUPPFunc(0)
+        , m_MapPtFunc(0)
+        , m_MapRectFunc(0)
+        , m_NewCMBitmapCallBackUPPFunc(0)
+        , m_NewColorComplementUPPFunc(0)
+        , m_NewColorSearchUPPFunc(0)
+        , m_NewDragGrayRgnUPPFunc(0)
+        , m_NewQDArcUPPFunc(0)
+        , m_NewQDBitsUPPFunc(0)
+        , m_NewQDCommentUPPFunc(0)
+        , m_NewQDGetPicUPPFunc(0)
+        , m_NewQDJShieldCursorUPPFunc(0)
+        , m_NewQDLineUPPFunc(0)
+        , m_NewQDOpcodeUPPFunc(0)
+        , m_NewQDOvalUPPFunc(0)
+        , m_NewQDPolyUPPFunc(0)
+        , m_NewQDPutPicUPPFunc(0)
+        , m_NewQDRRectUPPFunc(0)
+        , m_NewQDRectUPPFunc(0)
+        , m_NewQDRgnUPPFunc(0)
+        , m_NewQDStdGlyphsUPPFunc(0)
+        , m_NewQDTextUPPFunc(0)
+        , m_NewQDTxMeasUPPFunc(0)
+        , m_NewRegionToRectsUPPFunc(0)
+        , m_OffsetRectFunc(0)
+        , m_Pt2RectFunc(0)
+        , m_PtInRectFunc(0)
+        , m_PtToAngleFunc(0)
+        , m_QDRegionToRectsFunc(0)
+        , m_ScalePtFunc(0)
+        , m_SectRectFunc(0)
+        , m_SetPtFunc(0)
+        , m_SetRectFunc(0)
+        , m_SubPtFunc(0)
+        , m_UnionRectFunc(0)
+#if !__LP64__
+        , m_AddCompFunc(0)
         , m_AddSearchFunc(0)
         , m_AllocCursorFunc(0)
         , m_AngleFromSlopeFunc(0)
@@ -494,38 +576,14 @@ public:
         , m_DelSearchFunc(0)
         , m_DeltaPointFunc(0)
         , m_DiffRgnFunc(0)
-        , m_DisposeCMBitmapCallBackUPPFunc(0)
         , m_DisposeCTableFunc(0)
-        , m_DisposeColorComplementUPPFunc(0)
-        , m_DisposeColorSearchUPPFunc(0)
-        , m_DisposeDragGrayRgnUPPFunc(0)
         , m_DisposeGDeviceFunc(0)
         , m_DisposePixMapFunc(0)
         , m_DisposePixPatFunc(0)
         , m_DisposePortFunc(0)
-        , m_DisposeQDArcUPPFunc(0)
-        , m_DisposeQDBitsUPPFunc(0)
-        , m_DisposeQDCommentUPPFunc(0)
-        , m_DisposeQDGetPicUPPFunc(0)
-        , m_DisposeQDJShieldCursorUPPFunc(0)
-        , m_DisposeQDLineUPPFunc(0)
-        , m_DisposeQDOpcodeUPPFunc(0)
-        , m_DisposeQDOvalUPPFunc(0)
-        , m_DisposeQDPolyUPPFunc(0)
-        , m_DisposeQDPutPicUPPFunc(0)
-        , m_DisposeQDRRectUPPFunc(0)
-        , m_DisposeQDRectUPPFunc(0)
-        , m_DisposeQDRgnUPPFunc(0)
-        , m_DisposeQDStdGlyphsUPPFunc(0)
-        , m_DisposeQDTextUPPFunc(0)
-        , m_DisposeQDTxMeasUPPFunc(0)
-        , m_DisposeRegionToRectsUPPFunc(0)
         , m_DisposeRgnFunc(0)
         , m_DrawPictureFunc(0)
-        , m_EmptyRectFunc(0)
         , m_EmptyRgnFunc(0)
-        , m_EqualPtFunc(0)
-        , m_EqualRectFunc(0)
         , m_EqualRgnFunc(0)
         , m_EraseArcFunc(0)
         , m_EraseOvalFunc(0)
@@ -616,7 +674,6 @@ public:
         , m_Index2ColorFunc(0)
         , m_InitCursorFunc(0)
         , m_InitGDeviceFunc(0)
-        , m_InsetRectFunc(0)
         , m_InsetRgnFunc(0)
         , m_InvertArcFunc(0)
         , m_InvertColorFunc(0)
@@ -625,27 +682,6 @@ public:
         , m_InvertRectFunc(0)
         , m_InvertRgnFunc(0)
         , m_InvertRoundRectFunc(0)
-        , m_InvokeCMBitmapCallBackUPPFunc(0)
-        , m_InvokeColorComplementUPPFunc(0)
-        , m_InvokeColorSearchUPPFunc(0)
-        , m_InvokeDragGrayRgnUPPFunc(0)
-        , m_InvokeQDArcUPPFunc(0)
-        , m_InvokeQDBitsUPPFunc(0)
-        , m_InvokeQDCommentUPPFunc(0)
-        , m_InvokeQDGetPicUPPFunc(0)
-        , m_InvokeQDJShieldCursorUPPFunc(0)
-        , m_InvokeQDLineUPPFunc(0)
-        , m_InvokeQDOpcodeUPPFunc(0)
-        , m_InvokeQDOvalUPPFunc(0)
-        , m_InvokeQDPolyUPPFunc(0)
-        , m_InvokeQDPutPicUPPFunc(0)
-        , m_InvokeQDRRectUPPFunc(0)
-        , m_InvokeQDRectUPPFunc(0)
-        , m_InvokeQDRgnUPPFunc(0)
-        , m_InvokeQDStdGlyphsUPPFunc(0)
-        , m_InvokeQDTextUPPFunc(0)
-        , m_InvokeQDTxMeasUPPFunc(0)
-        , m_InvokeRegionToRectsUPPFunc(0)
         , m_IsPortClipRegionEmptyFunc(0)
         , m_IsPortColorFunc(0)
         , m_IsPortOffscreenFunc(0)
@@ -694,8 +730,6 @@ public:
         , m_LockPortBitsFunc(0)
         , m_MakeRGBPatFunc(0)
         , m_MapPolyFunc(0)
-        , m_MapPtFunc(0)
-        , m_MapRectFunc(0)
         , m_MapRgnFunc(0)
         , m_MoveFunc(0)
         , m_MovePortToFunc(0)
@@ -703,34 +737,12 @@ public:
         , m_NCMBeginMatchingFunc(0)
         , m_NCMDrawMatchedPictureFunc(0)
         , m_NCMUseProfileCommentFunc(0)
-        , m_NewCMBitmapCallBackUPPFunc(0)
-        , m_NewColorComplementUPPFunc(0)
-        , m_NewColorSearchUPPFunc(0)
-        , m_NewDragGrayRgnUPPFunc(0)
         , m_NewGDeviceFunc(0)
         , m_NewPixMapFunc(0)
         , m_NewPixPatFunc(0)
-        , m_NewQDArcUPPFunc(0)
-        , m_NewQDBitsUPPFunc(0)
-        , m_NewQDCommentUPPFunc(0)
-        , m_NewQDGetPicUPPFunc(0)
-        , m_NewQDJShieldCursorUPPFunc(0)
-        , m_NewQDLineUPPFunc(0)
-        , m_NewQDOpcodeUPPFunc(0)
-        , m_NewQDOvalUPPFunc(0)
-        , m_NewQDPolyUPPFunc(0)
-        , m_NewQDPutPicUPPFunc(0)
-        , m_NewQDRRectUPPFunc(0)
-        , m_NewQDRectUPPFunc(0)
-        , m_NewQDRgnUPPFunc(0)
-        , m_NewQDStdGlyphsUPPFunc(0)
-        , m_NewQDTextUPPFunc(0)
-        , m_NewQDTxMeasUPPFunc(0)
-        , m_NewRegionToRectsUPPFunc(0)
         , m_NewRgnFunc(0)
         , m_ObscureCursorFunc(0)
         , m_OffsetPolyFunc(0)
-        , m_OffsetRectFunc(0)
         , m_OffsetRgnFunc(0)
         , m_OpColorFunc(0)
         , m_OpenCPictureFunc(0)
@@ -753,10 +765,7 @@ public:
         , m_PicCommentFunc(0)
         , m_PortSizeFunc(0)
         , m_ProtectEntryFunc(0)
-        , m_Pt2RectFunc(0)
-        , m_PtInRectFunc(0)
         , m_PtInRgnFunc(0)
-        , m_PtToAngleFunc(0)
         , m_QDAddRectToDirtyRegionFunc(0)
         , m_QDAddRegionToDirtyRegionFunc(0)
         , m_QDBeginCGContextFunc(0)
@@ -779,7 +788,6 @@ public:
         , m_QDLocalToGlobalPointFunc(0)
         , m_QDLocalToGlobalRectFunc(0)
         , m_QDLocalToGlobalRegionFunc(0)
-        , m_QDRegionToRectsFunc(0)
         , m_QDRegisterNamedPixMapCursorFunc(0)
         , m_QDSetCursorScaleFunc(0)
         , m_QDSetDirtyRegionFunc(0)
@@ -798,10 +806,8 @@ public:
         , m_RectRgnFunc(0)
         , m_ReserveEntryFunc(0)
         , m_RgnToHandleFunc(0)
-        , m_ScalePtFunc(0)
         , m_ScreenResFunc(0)
         , m_ScrollRectFunc(0)
-        , m_SectRectFunc(0)
         , m_SectRegionWithPortClipRegionFunc(0)
         , m_SectRegionWithPortVisibleRegionFunc(0)
         , m_SectRgnFunc(0)
@@ -834,10 +840,8 @@ public:
         , m_SetPortTextModeFunc(0)
         , m_SetPortTextSizeFunc(0)
         , m_SetPortVisibleRegionFunc(0)
-        , m_SetPtFunc(0)
         , m_SetQDErrorFunc(0)
         , m_SetQDGlobalsRandomSeedFunc(0)
-        , m_SetRectFunc(0)
         , m_SetRectRgnFunc(0)
         , m_SetStdCProcsFunc(0)
         , m_ShieldCursorFunc(0)
@@ -857,23 +861,103 @@ public:
         , m_StdRectFunc(0)
         , m_StdRgnFunc(0)
         , m_StuffHexFunc(0)
-        , m_SubPtFunc(0)
         , m_SwapPortPicSaveHandleFunc(0)
         , m_SwapPortPolySaveHandleFunc(0)
         , m_SwapPortRegionSaveHandleFunc(0)
         , m_SyncCGContextOriginWithPortFunc(0)
         , m_TestDeviceAttributeFunc(0)
-        , m_UnionRectFunc(0)
         , m_UnionRgnFunc(0)
         , m_UnlockPortBitsFunc(0)
         , m_UnpackBitsFunc(0)
         , m_XorRgnFunc(0)
         , m_deltapointFunc(0)
+#endif /* !__LP64__ */
     {}
     ~QuickDrawAPIWrapper()
     {
-        m_AddCompFunc = 0;
         m_AddPtFunc = 0;
+        m_DisposeCMBitmapCallBackUPPFunc = 0;
+        m_DisposeColorComplementUPPFunc = 0;
+        m_DisposeColorSearchUPPFunc = 0;
+        m_DisposeDragGrayRgnUPPFunc = 0;
+        m_DisposeQDArcUPPFunc = 0;
+        m_DisposeQDBitsUPPFunc = 0;
+        m_DisposeQDCommentUPPFunc = 0;
+        m_DisposeQDGetPicUPPFunc = 0;
+        m_DisposeQDJShieldCursorUPPFunc = 0;
+        m_DisposeQDLineUPPFunc = 0;
+        m_DisposeQDOpcodeUPPFunc = 0;
+        m_DisposeQDOvalUPPFunc = 0;
+        m_DisposeQDPolyUPPFunc = 0;
+        m_DisposeQDPutPicUPPFunc = 0;
+        m_DisposeQDRRectUPPFunc = 0;
+        m_DisposeQDRectUPPFunc = 0;
+        m_DisposeQDRgnUPPFunc = 0;
+        m_DisposeQDStdGlyphsUPPFunc = 0;
+        m_DisposeQDTextUPPFunc = 0;
+        m_DisposeQDTxMeasUPPFunc = 0;
+        m_DisposeRegionToRectsUPPFunc = 0;
+        m_EmptyRectFunc = 0;
+        m_EqualPtFunc = 0;
+        m_EqualRectFunc = 0;
+        m_InsetRectFunc = 0;
+        m_InvokeCMBitmapCallBackUPPFunc = 0;
+        m_InvokeColorComplementUPPFunc = 0;
+        m_InvokeColorSearchUPPFunc = 0;
+        m_InvokeDragGrayRgnUPPFunc = 0;
+        m_InvokeQDArcUPPFunc = 0;
+        m_InvokeQDBitsUPPFunc = 0;
+        m_InvokeQDCommentUPPFunc = 0;
+        m_InvokeQDGetPicUPPFunc = 0;
+        m_InvokeQDJShieldCursorUPPFunc = 0;
+        m_InvokeQDLineUPPFunc = 0;
+        m_InvokeQDOpcodeUPPFunc = 0;
+        m_InvokeQDOvalUPPFunc = 0;
+        m_InvokeQDPolyUPPFunc = 0;
+        m_InvokeQDPutPicUPPFunc = 0;
+        m_InvokeQDRRectUPPFunc = 0;
+        m_InvokeQDRectUPPFunc = 0;
+        m_InvokeQDRgnUPPFunc = 0;
+        m_InvokeQDStdGlyphsUPPFunc = 0;
+        m_InvokeQDTextUPPFunc = 0;
+        m_InvokeQDTxMeasUPPFunc = 0;
+        m_InvokeRegionToRectsUPPFunc = 0;
+        m_MapPtFunc = 0;
+        m_MapRectFunc = 0;
+        m_NewCMBitmapCallBackUPPFunc = 0;
+        m_NewColorComplementUPPFunc = 0;
+        m_NewColorSearchUPPFunc = 0;
+        m_NewDragGrayRgnUPPFunc = 0;
+        m_NewQDArcUPPFunc = 0;
+        m_NewQDBitsUPPFunc = 0;
+        m_NewQDCommentUPPFunc = 0;
+        m_NewQDGetPicUPPFunc = 0;
+        m_NewQDJShieldCursorUPPFunc = 0;
+        m_NewQDLineUPPFunc = 0;
+        m_NewQDOpcodeUPPFunc = 0;
+        m_NewQDOvalUPPFunc = 0;
+        m_NewQDPolyUPPFunc = 0;
+        m_NewQDPutPicUPPFunc = 0;
+        m_NewQDRRectUPPFunc = 0;
+        m_NewQDRectUPPFunc = 0;
+        m_NewQDRgnUPPFunc = 0;
+        m_NewQDStdGlyphsUPPFunc = 0;
+        m_NewQDTextUPPFunc = 0;
+        m_NewQDTxMeasUPPFunc = 0;
+        m_NewRegionToRectsUPPFunc = 0;
+        m_OffsetRectFunc = 0;
+        m_Pt2RectFunc = 0;
+        m_PtInRectFunc = 0;
+        m_PtToAngleFunc = 0;
+        m_QDRegionToRectsFunc = 0;
+        m_ScalePtFunc = 0;
+        m_SectRectFunc = 0;
+        m_SetPtFunc = 0;
+        m_SetRectFunc = 0;
+        m_SubPtFunc = 0;
+        m_UnionRectFunc = 0;
+#if !__LP64__
+        m_AddCompFunc = 0;
         m_AddSearchFunc = 0;
         m_AllocCursorFunc = 0;
         m_AngleFromSlopeFunc = 0;
@@ -910,38 +994,14 @@ public:
         m_DelSearchFunc = 0;
         m_DeltaPointFunc = 0;
         m_DiffRgnFunc = 0;
-        m_DisposeCMBitmapCallBackUPPFunc = 0;
         m_DisposeCTableFunc = 0;
-        m_DisposeColorComplementUPPFunc = 0;
-        m_DisposeColorSearchUPPFunc = 0;
-        m_DisposeDragGrayRgnUPPFunc = 0;
         m_DisposeGDeviceFunc = 0;
         m_DisposePixMapFunc = 0;
         m_DisposePixPatFunc = 0;
         m_DisposePortFunc = 0;
-        m_DisposeQDArcUPPFunc = 0;
-        m_DisposeQDBitsUPPFunc = 0;
-        m_DisposeQDCommentUPPFunc = 0;
-        m_DisposeQDGetPicUPPFunc = 0;
-        m_DisposeQDJShieldCursorUPPFunc = 0;
-        m_DisposeQDLineUPPFunc = 0;
-        m_DisposeQDOpcodeUPPFunc = 0;
-        m_DisposeQDOvalUPPFunc = 0;
-        m_DisposeQDPolyUPPFunc = 0;
-        m_DisposeQDPutPicUPPFunc = 0;
-        m_DisposeQDRRectUPPFunc = 0;
-        m_DisposeQDRectUPPFunc = 0;
-        m_DisposeQDRgnUPPFunc = 0;
-        m_DisposeQDStdGlyphsUPPFunc = 0;
-        m_DisposeQDTextUPPFunc = 0;
-        m_DisposeQDTxMeasUPPFunc = 0;
-        m_DisposeRegionToRectsUPPFunc = 0;
         m_DisposeRgnFunc = 0;
         m_DrawPictureFunc = 0;
-        m_EmptyRectFunc = 0;
         m_EmptyRgnFunc = 0;
-        m_EqualPtFunc = 0;
-        m_EqualRectFunc = 0;
         m_EqualRgnFunc = 0;
         m_EraseArcFunc = 0;
         m_EraseOvalFunc = 0;
@@ -1032,7 +1092,6 @@ public:
         m_Index2ColorFunc = 0;
         m_InitCursorFunc = 0;
         m_InitGDeviceFunc = 0;
-        m_InsetRectFunc = 0;
         m_InsetRgnFunc = 0;
         m_InvertArcFunc = 0;
         m_InvertColorFunc = 0;
@@ -1041,27 +1100,6 @@ public:
         m_InvertRectFunc = 0;
         m_InvertRgnFunc = 0;
         m_InvertRoundRectFunc = 0;
-        m_InvokeCMBitmapCallBackUPPFunc = 0;
-        m_InvokeColorComplementUPPFunc = 0;
-        m_InvokeColorSearchUPPFunc = 0;
-        m_InvokeDragGrayRgnUPPFunc = 0;
-        m_InvokeQDArcUPPFunc = 0;
-        m_InvokeQDBitsUPPFunc = 0;
-        m_InvokeQDCommentUPPFunc = 0;
-        m_InvokeQDGetPicUPPFunc = 0;
-        m_InvokeQDJShieldCursorUPPFunc = 0;
-        m_InvokeQDLineUPPFunc = 0;
-        m_InvokeQDOpcodeUPPFunc = 0;
-        m_InvokeQDOvalUPPFunc = 0;
-        m_InvokeQDPolyUPPFunc = 0;
-        m_InvokeQDPutPicUPPFunc = 0;
-        m_InvokeQDRRectUPPFunc = 0;
-        m_InvokeQDRectUPPFunc = 0;
-        m_InvokeQDRgnUPPFunc = 0;
-        m_InvokeQDStdGlyphsUPPFunc = 0;
-        m_InvokeQDTextUPPFunc = 0;
-        m_InvokeQDTxMeasUPPFunc = 0;
-        m_InvokeRegionToRectsUPPFunc = 0;
         m_IsPortClipRegionEmptyFunc = 0;
         m_IsPortColorFunc = 0;
         m_IsPortOffscreenFunc = 0;
@@ -1110,8 +1148,6 @@ public:
         m_LockPortBitsFunc = 0;
         m_MakeRGBPatFunc = 0;
         m_MapPolyFunc = 0;
-        m_MapPtFunc = 0;
-        m_MapRectFunc = 0;
         m_MapRgnFunc = 0;
         m_MoveFunc = 0;
         m_MovePortToFunc = 0;
@@ -1119,34 +1155,12 @@ public:
         m_NCMBeginMatchingFunc = 0;
         m_NCMDrawMatchedPictureFunc = 0;
         m_NCMUseProfileCommentFunc = 0;
-        m_NewCMBitmapCallBackUPPFunc = 0;
-        m_NewColorComplementUPPFunc = 0;
-        m_NewColorSearchUPPFunc = 0;
-        m_NewDragGrayRgnUPPFunc = 0;
         m_NewGDeviceFunc = 0;
         m_NewPixMapFunc = 0;
         m_NewPixPatFunc = 0;
-        m_NewQDArcUPPFunc = 0;
-        m_NewQDBitsUPPFunc = 0;
-        m_NewQDCommentUPPFunc = 0;
-        m_NewQDGetPicUPPFunc = 0;
-        m_NewQDJShieldCursorUPPFunc = 0;
-        m_NewQDLineUPPFunc = 0;
-        m_NewQDOpcodeUPPFunc = 0;
-        m_NewQDOvalUPPFunc = 0;
-        m_NewQDPolyUPPFunc = 0;
-        m_NewQDPutPicUPPFunc = 0;
-        m_NewQDRRectUPPFunc = 0;
-        m_NewQDRectUPPFunc = 0;
-        m_NewQDRgnUPPFunc = 0;
-        m_NewQDStdGlyphsUPPFunc = 0;
-        m_NewQDTextUPPFunc = 0;
-        m_NewQDTxMeasUPPFunc = 0;
-        m_NewRegionToRectsUPPFunc = 0;
         m_NewRgnFunc = 0;
         m_ObscureCursorFunc = 0;
         m_OffsetPolyFunc = 0;
-        m_OffsetRectFunc = 0;
         m_OffsetRgnFunc = 0;
         m_OpColorFunc = 0;
         m_OpenCPictureFunc = 0;
@@ -1169,10 +1183,7 @@ public:
         m_PicCommentFunc = 0;
         m_PortSizeFunc = 0;
         m_ProtectEntryFunc = 0;
-        m_Pt2RectFunc = 0;
-        m_PtInRectFunc = 0;
         m_PtInRgnFunc = 0;
-        m_PtToAngleFunc = 0;
         m_QDAddRectToDirtyRegionFunc = 0;
         m_QDAddRegionToDirtyRegionFunc = 0;
         m_QDBeginCGContextFunc = 0;
@@ -1195,7 +1206,6 @@ public:
         m_QDLocalToGlobalPointFunc = 0;
         m_QDLocalToGlobalRectFunc = 0;
         m_QDLocalToGlobalRegionFunc = 0;
-        m_QDRegionToRectsFunc = 0;
         m_QDRegisterNamedPixMapCursorFunc = 0;
         m_QDSetCursorScaleFunc = 0;
         m_QDSetDirtyRegionFunc = 0;
@@ -1214,10 +1224,8 @@ public:
         m_RectRgnFunc = 0;
         m_ReserveEntryFunc = 0;
         m_RgnToHandleFunc = 0;
-        m_ScalePtFunc = 0;
         m_ScreenResFunc = 0;
         m_ScrollRectFunc = 0;
-        m_SectRectFunc = 0;
         m_SectRegionWithPortClipRegionFunc = 0;
         m_SectRegionWithPortVisibleRegionFunc = 0;
         m_SectRgnFunc = 0;
@@ -1250,10 +1258,8 @@ public:
         m_SetPortTextModeFunc = 0;
         m_SetPortTextSizeFunc = 0;
         m_SetPortVisibleRegionFunc = 0;
-        m_SetPtFunc = 0;
         m_SetQDErrorFunc = 0;
         m_SetQDGlobalsRandomSeedFunc = 0;
-        m_SetRectFunc = 0;
         m_SetRectRgnFunc = 0;
         m_SetStdCProcsFunc = 0;
         m_ShieldCursorFunc = 0;
@@ -1273,28 +1279,20 @@ public:
         m_StdRectFunc = 0;
         m_StdRgnFunc = 0;
         m_StuffHexFunc = 0;
-        m_SubPtFunc = 0;
         m_SwapPortPicSaveHandleFunc = 0;
         m_SwapPortPolySaveHandleFunc = 0;
         m_SwapPortRegionSaveHandleFunc = 0;
         m_SyncCGContextOriginWithPortFunc = 0;
         m_TestDeviceAttributeFunc = 0;
-        m_UnionRectFunc = 0;
         m_UnionRgnFunc = 0;
         m_UnlockPortBitsFunc = 0;
         m_UnpackBitsFunc = 0;
         m_XorRgnFunc = 0;
         m_deltapointFunc = 0;
+#endif /* !__LP64__ */
         if (m_qd_dylib_handle) {
             dlclose(m_qd_dylib_handle);
             m_qd_dylib_handle = 0;
-        }
-    }
-    void fakeQD_AddComp(ColorComplementUPP a0)
-    {
-        initializeIfNeeded();
-        if (m_AddCompFunc) {
-            m_AddCompFunc(a0);
         }
     }
     void fakeQD_AddPt(Point a0, Point * a1)
@@ -1302,6 +1300,640 @@ public:
         initializeIfNeeded();
         if (m_AddPtFunc) {
             m_AddPtFunc(a0, a1);
+        }
+    }
+    void fakeQD_DisposeCMBitmapCallBackUPP(CMBitmapCallBackUPP a0)
+    {
+        initializeIfNeeded();
+        if (m_DisposeCMBitmapCallBackUPPFunc) {
+            m_DisposeCMBitmapCallBackUPPFunc(a0);
+        }
+    }
+    void fakeQD_DisposeColorComplementUPP(ColorComplementUPP a0)
+    {
+        initializeIfNeeded();
+        if (m_DisposeColorComplementUPPFunc) {
+            m_DisposeColorComplementUPPFunc(a0);
+        }
+    }
+    void fakeQD_DisposeColorSearchUPP(ColorSearchUPP a0)
+    {
+        initializeIfNeeded();
+        if (m_DisposeColorSearchUPPFunc) {
+            m_DisposeColorSearchUPPFunc(a0);
+        }
+    }
+    void fakeQD_DisposeDragGrayRgnUPP(DragGrayRgnUPP a0)
+    {
+        initializeIfNeeded();
+        if (m_DisposeDragGrayRgnUPPFunc) {
+            m_DisposeDragGrayRgnUPPFunc(a0);
+        }
+    }
+    void fakeQD_DisposeQDArcUPP(QDArcUPP a0)
+    {
+        initializeIfNeeded();
+        if (m_DisposeQDArcUPPFunc) {
+            m_DisposeQDArcUPPFunc(a0);
+        }
+    }
+    void fakeQD_DisposeQDBitsUPP(QDBitsUPP a0)
+    {
+        initializeIfNeeded();
+        if (m_DisposeQDBitsUPPFunc) {
+            m_DisposeQDBitsUPPFunc(a0);
+        }
+    }
+    void fakeQD_DisposeQDCommentUPP(QDCommentUPP a0)
+    {
+        initializeIfNeeded();
+        if (m_DisposeQDCommentUPPFunc) {
+            m_DisposeQDCommentUPPFunc(a0);
+        }
+    }
+    void fakeQD_DisposeQDGetPicUPP(QDGetPicUPP a0)
+    {
+        initializeIfNeeded();
+        if (m_DisposeQDGetPicUPPFunc) {
+            m_DisposeQDGetPicUPPFunc(a0);
+        }
+    }
+    void fakeQD_DisposeQDJShieldCursorUPP(QDJShieldCursorUPP a0)
+    {
+        initializeIfNeeded();
+        if (m_DisposeQDJShieldCursorUPPFunc) {
+            m_DisposeQDJShieldCursorUPPFunc(a0);
+        }
+    }
+    void fakeQD_DisposeQDLineUPP(QDLineUPP a0)
+    {
+        initializeIfNeeded();
+        if (m_DisposeQDLineUPPFunc) {
+            m_DisposeQDLineUPPFunc(a0);
+        }
+    }
+    void fakeQD_DisposeQDOpcodeUPP(QDOpcodeUPP a0)
+    {
+        initializeIfNeeded();
+        if (m_DisposeQDOpcodeUPPFunc) {
+            m_DisposeQDOpcodeUPPFunc(a0);
+        }
+    }
+    void fakeQD_DisposeQDOvalUPP(QDOvalUPP a0)
+    {
+        initializeIfNeeded();
+        if (m_DisposeQDOvalUPPFunc) {
+            m_DisposeQDOvalUPPFunc(a0);
+        }
+    }
+    void fakeQD_DisposeQDPolyUPP(QDPolyUPP a0)
+    {
+        initializeIfNeeded();
+        if (m_DisposeQDPolyUPPFunc) {
+            m_DisposeQDPolyUPPFunc(a0);
+        }
+    }
+    void fakeQD_DisposeQDPutPicUPP(QDPutPicUPP a0)
+    {
+        initializeIfNeeded();
+        if (m_DisposeQDPutPicUPPFunc) {
+            m_DisposeQDPutPicUPPFunc(a0);
+        }
+    }
+    void fakeQD_DisposeQDRRectUPP(QDRRectUPP a0)
+    {
+        initializeIfNeeded();
+        if (m_DisposeQDRRectUPPFunc) {
+            m_DisposeQDRRectUPPFunc(a0);
+        }
+    }
+    void fakeQD_DisposeQDRectUPP(QDRectUPP a0)
+    {
+        initializeIfNeeded();
+        if (m_DisposeQDRectUPPFunc) {
+            m_DisposeQDRectUPPFunc(a0);
+        }
+    }
+    void fakeQD_DisposeQDRgnUPP(QDRgnUPP a0)
+    {
+        initializeIfNeeded();
+        if (m_DisposeQDRgnUPPFunc) {
+            m_DisposeQDRgnUPPFunc(a0);
+        }
+    }
+    void fakeQD_DisposeQDStdGlyphsUPP(QDStdGlyphsUPP a0)
+    {
+        initializeIfNeeded();
+        if (m_DisposeQDStdGlyphsUPPFunc) {
+            m_DisposeQDStdGlyphsUPPFunc(a0);
+        }
+    }
+    void fakeQD_DisposeQDTextUPP(QDTextUPP a0)
+    {
+        initializeIfNeeded();
+        if (m_DisposeQDTextUPPFunc) {
+            m_DisposeQDTextUPPFunc(a0);
+        }
+    }
+    void fakeQD_DisposeQDTxMeasUPP(QDTxMeasUPP a0)
+    {
+        initializeIfNeeded();
+        if (m_DisposeQDTxMeasUPPFunc) {
+            m_DisposeQDTxMeasUPPFunc(a0);
+        }
+    }
+    void fakeQD_DisposeRegionToRectsUPP(RegionToRectsUPP a0)
+    {
+        initializeIfNeeded();
+        if (m_DisposeRegionToRectsUPPFunc) {
+            m_DisposeRegionToRectsUPPFunc(a0);
+        }
+    }
+    Boolean fakeQD_EmptyRect(const Rect * a0)
+    {
+        initializeIfNeeded();
+        if (m_EmptyRectFunc) {
+            return m_EmptyRectFunc(a0);
+        } else {
+            return (Boolean)0;
+        }
+    }
+    Boolean fakeQD_EqualPt(Point a0, Point a1)
+    {
+        initializeIfNeeded();
+        if (m_EqualPtFunc) {
+            return m_EqualPtFunc(a0, a1);
+        } else {
+            return (Boolean)0;
+        }
+    }
+    Boolean fakeQD_EqualRect(const Rect * a0, const Rect * a1)
+    {
+        initializeIfNeeded();
+        if (m_EqualRectFunc) {
+            return m_EqualRectFunc(a0, a1);
+        } else {
+            return (Boolean)0;
+        }
+    }
+    void fakeQD_InsetRect(Rect * a0, short a1, short a2)
+    {
+        initializeIfNeeded();
+        if (m_InsetRectFunc) {
+            m_InsetRectFunc(a0, a1, a2);
+        }
+    }
+    Boolean fakeQD_InvokeCMBitmapCallBackUPP(long a0, void * a1, CMBitmapCallBackUPP a2)
+    {
+        initializeIfNeeded();
+        if (m_InvokeCMBitmapCallBackUPPFunc) {
+            return m_InvokeCMBitmapCallBackUPPFunc(a0, a1, a2);
+        } else {
+            return (Boolean)0;
+        }
+    }
+    Boolean fakeQD_InvokeColorComplementUPP(RGBColor * a0, ColorComplementUPP a1)
+    {
+        initializeIfNeeded();
+        if (m_InvokeColorComplementUPPFunc) {
+            return m_InvokeColorComplementUPPFunc(a0, a1);
+        } else {
+            return (Boolean)0;
+        }
+    }
+    Boolean fakeQD_InvokeColorSearchUPP(RGBColor * a0, long * a1, ColorSearchUPP a2)
+    {
+        initializeIfNeeded();
+        if (m_InvokeColorSearchUPPFunc) {
+            return m_InvokeColorSearchUPPFunc(a0, a1, a2);
+        } else {
+            return (Boolean)0;
+        }
+    }
+    void fakeQD_InvokeDragGrayRgnUPP(DragGrayRgnUPP a0)
+    {
+        initializeIfNeeded();
+        if (m_InvokeDragGrayRgnUPPFunc) {
+            m_InvokeDragGrayRgnUPPFunc(a0);
+        }
+    }
+    void fakeQD_InvokeQDArcUPP(GrafVerb a0, const Rect * a1, short a2, short a3, QDArcUPP a4)
+    {
+        initializeIfNeeded();
+        if (m_InvokeQDArcUPPFunc) {
+            m_InvokeQDArcUPPFunc(a0, a1, a2, a3, a4);
+        }
+    }
+    void fakeQD_InvokeQDBitsUPP(const BitMap * a0, const Rect * a1, const Rect * a2, short a3, RgnHandle a4, QDBitsUPP a5)
+    {
+        initializeIfNeeded();
+        if (m_InvokeQDBitsUPPFunc) {
+            m_InvokeQDBitsUPPFunc(a0, a1, a2, a3, a4, a5);
+        }
+    }
+    void fakeQD_InvokeQDCommentUPP(short a0, short a1, Handle a2, QDCommentUPP a3)
+    {
+        initializeIfNeeded();
+        if (m_InvokeQDCommentUPPFunc) {
+            m_InvokeQDCommentUPPFunc(a0, a1, a2, a3);
+        }
+    }
+    void fakeQD_InvokeQDGetPicUPP(void * a0, short a1, QDGetPicUPP a2)
+    {
+        initializeIfNeeded();
+        if (m_InvokeQDGetPicUPPFunc) {
+            m_InvokeQDGetPicUPPFunc(a0, a1, a2);
+        }
+    }
+    void fakeQD_InvokeQDJShieldCursorUPP(short a0, short a1, short a2, short a3, QDJShieldCursorUPP a4)
+    {
+        initializeIfNeeded();
+        if (m_InvokeQDJShieldCursorUPPFunc) {
+            m_InvokeQDJShieldCursorUPPFunc(a0, a1, a2, a3, a4);
+        }
+    }
+    void fakeQD_InvokeQDLineUPP(Point a0, QDLineUPP a1)
+    {
+        initializeIfNeeded();
+        if (m_InvokeQDLineUPPFunc) {
+            m_InvokeQDLineUPPFunc(a0, a1);
+        }
+    }
+    void fakeQD_InvokeQDOpcodeUPP(const Rect * a0, const Rect * a1, UInt16 a2, SInt16 a3, QDOpcodeUPP a4)
+    {
+        initializeIfNeeded();
+        if (m_InvokeQDOpcodeUPPFunc) {
+            m_InvokeQDOpcodeUPPFunc(a0, a1, a2, a3, a4);
+        }
+    }
+    void fakeQD_InvokeQDOvalUPP(GrafVerb a0, const Rect * a1, QDOvalUPP a2)
+    {
+        initializeIfNeeded();
+        if (m_InvokeQDOvalUPPFunc) {
+            m_InvokeQDOvalUPPFunc(a0, a1, a2);
+        }
+    }
+    void fakeQD_InvokeQDPolyUPP(GrafVerb a0, PolyHandle a1, QDPolyUPP a2)
+    {
+        initializeIfNeeded();
+        if (m_InvokeQDPolyUPPFunc) {
+            m_InvokeQDPolyUPPFunc(a0, a1, a2);
+        }
+    }
+    void fakeQD_InvokeQDPutPicUPP(const void * a0, short a1, QDPutPicUPP a2)
+    {
+        initializeIfNeeded();
+        if (m_InvokeQDPutPicUPPFunc) {
+            m_InvokeQDPutPicUPPFunc(a0, a1, a2);
+        }
+    }
+    void fakeQD_InvokeQDRRectUPP(GrafVerb a0, const Rect * a1, short a2, short a3, QDRRectUPP a4)
+    {
+        initializeIfNeeded();
+        if (m_InvokeQDRRectUPPFunc) {
+            m_InvokeQDRRectUPPFunc(a0, a1, a2, a3, a4);
+        }
+    }
+    void fakeQD_InvokeQDRectUPP(GrafVerb a0, const Rect * a1, QDRectUPP a2)
+    {
+        initializeIfNeeded();
+        if (m_InvokeQDRectUPPFunc) {
+            m_InvokeQDRectUPPFunc(a0, a1, a2);
+        }
+    }
+    void fakeQD_InvokeQDRgnUPP(GrafVerb a0, RgnHandle a1, QDRgnUPP a2)
+    {
+        initializeIfNeeded();
+        if (m_InvokeQDRgnUPPFunc) {
+            m_InvokeQDRgnUPPFunc(a0, a1, a2);
+        }
+    }
+    OSStatus fakeQD_InvokeQDStdGlyphsUPP(void * a0, ByteCount a1, QDStdGlyphsUPP a2)
+    {
+        initializeIfNeeded();
+        if (m_InvokeQDStdGlyphsUPPFunc) {
+            return m_InvokeQDStdGlyphsUPPFunc(a0, a1, a2);
+        } else {
+            return (OSStatus)0;
+        }
+    }
+    void fakeQD_InvokeQDTextUPP(short a0, const void * a1, Point a2, Point a3, QDTextUPP a4)
+    {
+        initializeIfNeeded();
+        if (m_InvokeQDTextUPPFunc) {
+            m_InvokeQDTextUPPFunc(a0, a1, a2, a3, a4);
+        }
+    }
+    short fakeQD_InvokeQDTxMeasUPP(short a0, const void * a1, Point * a2, Point * a3, FontInfo * a4, QDTxMeasUPP a5)
+    {
+        initializeIfNeeded();
+        if (m_InvokeQDTxMeasUPPFunc) {
+            return m_InvokeQDTxMeasUPPFunc(a0, a1, a2, a3, a4, a5);
+        } else {
+            return (short)0;
+        }
+    }
+    OSStatus fakeQD_InvokeRegionToRectsUPP(UInt16 a0, RgnHandle a1, const Rect * a2, void * a3, RegionToRectsUPP a4)
+    {
+        initializeIfNeeded();
+        if (m_InvokeRegionToRectsUPPFunc) {
+            return m_InvokeRegionToRectsUPPFunc(a0, a1, a2, a3, a4);
+        } else {
+            return (OSStatus)0;
+        }
+    }
+    void fakeQD_MapPt(Point * a0, const Rect * a1, const Rect * a2)
+    {
+        initializeIfNeeded();
+        if (m_MapPtFunc) {
+            m_MapPtFunc(a0, a1, a2);
+        }
+    }
+    void fakeQD_MapRect(Rect * a0, const Rect * a1, const Rect * a2)
+    {
+        initializeIfNeeded();
+        if (m_MapRectFunc) {
+            m_MapRectFunc(a0, a1, a2);
+        }
+    }
+    CMBitmapCallBackUPP fakeQD_NewCMBitmapCallBackUPP(CMBitmapCallBackProcPtr a0)
+    {
+        initializeIfNeeded();
+        if (m_NewCMBitmapCallBackUPPFunc) {
+            return m_NewCMBitmapCallBackUPPFunc(a0);
+        } else {
+            return (CMBitmapCallBackUPP)0;
+        }
+    }
+    ColorComplementUPP fakeQD_NewColorComplementUPP(ColorComplementProcPtr a0)
+    {
+        initializeIfNeeded();
+        if (m_NewColorComplementUPPFunc) {
+            return m_NewColorComplementUPPFunc(a0);
+        } else {
+            return (ColorComplementUPP)0;
+        }
+    }
+    ColorSearchUPP fakeQD_NewColorSearchUPP(ColorSearchProcPtr a0)
+    {
+        initializeIfNeeded();
+        if (m_NewColorSearchUPPFunc) {
+            return m_NewColorSearchUPPFunc(a0);
+        } else {
+            return (ColorSearchUPP)0;
+        }
+    }
+    DragGrayRgnUPP fakeQD_NewDragGrayRgnUPP(DragGrayRgnProcPtr a0)
+    {
+        initializeIfNeeded();
+        if (m_NewDragGrayRgnUPPFunc) {
+            return m_NewDragGrayRgnUPPFunc(a0);
+        } else {
+            return (DragGrayRgnUPP)0;
+        }
+    }
+    QDArcUPP fakeQD_NewQDArcUPP(QDArcProcPtr a0)
+    {
+        initializeIfNeeded();
+        if (m_NewQDArcUPPFunc) {
+            return m_NewQDArcUPPFunc(a0);
+        } else {
+            return (QDArcUPP)0;
+        }
+    }
+    QDBitsUPP fakeQD_NewQDBitsUPP(QDBitsProcPtr a0)
+    {
+        initializeIfNeeded();
+        if (m_NewQDBitsUPPFunc) {
+            return m_NewQDBitsUPPFunc(a0);
+        } else {
+            return (QDBitsUPP)0;
+        }
+    }
+    QDCommentUPP fakeQD_NewQDCommentUPP(QDCommentProcPtr a0)
+    {
+        initializeIfNeeded();
+        if (m_NewQDCommentUPPFunc) {
+            return m_NewQDCommentUPPFunc(a0);
+        } else {
+            return (QDCommentUPP)0;
+        }
+    }
+    QDGetPicUPP fakeQD_NewQDGetPicUPP(QDGetPicProcPtr a0)
+    {
+        initializeIfNeeded();
+        if (m_NewQDGetPicUPPFunc) {
+            return m_NewQDGetPicUPPFunc(a0);
+        } else {
+            return (QDGetPicUPP)0;
+        }
+    }
+    QDJShieldCursorUPP fakeQD_NewQDJShieldCursorUPP(QDJShieldCursorProcPtr a0)
+    {
+        initializeIfNeeded();
+        if (m_NewQDJShieldCursorUPPFunc) {
+            return m_NewQDJShieldCursorUPPFunc(a0);
+        } else {
+            return (QDJShieldCursorUPP)0;
+        }
+    }
+    QDLineUPP fakeQD_NewQDLineUPP(QDLineProcPtr a0)
+    {
+        initializeIfNeeded();
+        if (m_NewQDLineUPPFunc) {
+            return m_NewQDLineUPPFunc(a0);
+        } else {
+            return (QDLineUPP)0;
+        }
+    }
+    QDOpcodeUPP fakeQD_NewQDOpcodeUPP(QDOpcodeProcPtr a0)
+    {
+        initializeIfNeeded();
+        if (m_NewQDOpcodeUPPFunc) {
+            return m_NewQDOpcodeUPPFunc(a0);
+        } else {
+            return (QDOpcodeUPP)0;
+        }
+    }
+    QDOvalUPP fakeQD_NewQDOvalUPP(QDOvalProcPtr a0)
+    {
+        initializeIfNeeded();
+        if (m_NewQDOvalUPPFunc) {
+            return m_NewQDOvalUPPFunc(a0);
+        } else {
+            return (QDOvalUPP)0;
+        }
+    }
+    QDPolyUPP fakeQD_NewQDPolyUPP(QDPolyProcPtr a0)
+    {
+        initializeIfNeeded();
+        if (m_NewQDPolyUPPFunc) {
+            return m_NewQDPolyUPPFunc(a0);
+        } else {
+            return (QDPolyUPP)0;
+        }
+    }
+    QDPutPicUPP fakeQD_NewQDPutPicUPP(QDPutPicProcPtr a0)
+    {
+        initializeIfNeeded();
+        if (m_NewQDPutPicUPPFunc) {
+            return m_NewQDPutPicUPPFunc(a0);
+        } else {
+            return (QDPutPicUPP)0;
+        }
+    }
+    QDRRectUPP fakeQD_NewQDRRectUPP(QDRRectProcPtr a0)
+    {
+        initializeIfNeeded();
+        if (m_NewQDRRectUPPFunc) {
+            return m_NewQDRRectUPPFunc(a0);
+        } else {
+            return (QDRRectUPP)0;
+        }
+    }
+    QDRectUPP fakeQD_NewQDRectUPP(QDRectProcPtr a0)
+    {
+        initializeIfNeeded();
+        if (m_NewQDRectUPPFunc) {
+            return m_NewQDRectUPPFunc(a0);
+        } else {
+            return (QDRectUPP)0;
+        }
+    }
+    QDRgnUPP fakeQD_NewQDRgnUPP(QDRgnProcPtr a0)
+    {
+        initializeIfNeeded();
+        if (m_NewQDRgnUPPFunc) {
+            return m_NewQDRgnUPPFunc(a0);
+        } else {
+            return (QDRgnUPP)0;
+        }
+    }
+    QDStdGlyphsUPP fakeQD_NewQDStdGlyphsUPP(QDStdGlyphsProcPtr a0)
+    {
+        initializeIfNeeded();
+        if (m_NewQDStdGlyphsUPPFunc) {
+            return m_NewQDStdGlyphsUPPFunc(a0);
+        } else {
+            return (QDStdGlyphsUPP)0;
+        }
+    }
+    QDTextUPP fakeQD_NewQDTextUPP(QDTextProcPtr a0)
+    {
+        initializeIfNeeded();
+        if (m_NewQDTextUPPFunc) {
+            return m_NewQDTextUPPFunc(a0);
+        } else {
+            return (QDTextUPP)0;
+        }
+    }
+    QDTxMeasUPP fakeQD_NewQDTxMeasUPP(QDTxMeasProcPtr a0)
+    {
+        initializeIfNeeded();
+        if (m_NewQDTxMeasUPPFunc) {
+            return m_NewQDTxMeasUPPFunc(a0);
+        } else {
+            return (QDTxMeasUPP)0;
+        }
+    }
+    RegionToRectsUPP fakeQD_NewRegionToRectsUPP(RegionToRectsProcPtr a0)
+    {
+        initializeIfNeeded();
+        if (m_NewRegionToRectsUPPFunc) {
+            return m_NewRegionToRectsUPPFunc(a0);
+        } else {
+            return (RegionToRectsUPP)0;
+        }
+    }
+    void fakeQD_OffsetRect(Rect * a0, short a1, short a2)
+    {
+        initializeIfNeeded();
+        if (m_OffsetRectFunc) {
+            m_OffsetRectFunc(a0, a1, a2);
+        }
+    }
+    void fakeQD_Pt2Rect(Point a0, Point a1, Rect * a2)
+    {
+        initializeIfNeeded();
+        if (m_Pt2RectFunc) {
+            m_Pt2RectFunc(a0, a1, a2);
+        }
+    }
+    Boolean fakeQD_PtInRect(Point a0, const Rect * a1)
+    {
+        initializeIfNeeded();
+        if (m_PtInRectFunc) {
+            return m_PtInRectFunc(a0, a1);
+        } else {
+            return (Boolean)0;
+        }
+    }
+    void fakeQD_PtToAngle(const Rect * a0, Point a1, short * a2)
+    {
+        initializeIfNeeded();
+        if (m_PtToAngleFunc) {
+            m_PtToAngleFunc(a0, a1, a2);
+        }
+    }
+    OSStatus fakeQD_QDRegionToRects(RgnHandle a0, QDRegionParseDirection a1, RegionToRectsUPP a2, void * a3)
+    {
+        initializeIfNeeded();
+        if (m_QDRegionToRectsFunc) {
+            return m_QDRegionToRectsFunc(a0, a1, a2, a3);
+        } else {
+            return (OSStatus)0;
+        }
+    }
+    void fakeQD_ScalePt(Point * a0, const Rect * a1, const Rect * a2)
+    {
+        initializeIfNeeded();
+        if (m_ScalePtFunc) {
+            m_ScalePtFunc(a0, a1, a2);
+        }
+    }
+    Boolean fakeQD_SectRect(const Rect * a0, const Rect * a1, Rect * a2)
+    {
+        initializeIfNeeded();
+        if (m_SectRectFunc) {
+            return m_SectRectFunc(a0, a1, a2);
+        } else {
+            return (Boolean)0;
+        }
+    }
+    void fakeQD_SetPt(Point * a0, short a1, short a2)
+    {
+        initializeIfNeeded();
+        if (m_SetPtFunc) {
+            m_SetPtFunc(a0, a1, a2);
+        }
+    }
+    void fakeQD_SetRect(Rect * a0, short a1, short a2, short a3, short a4)
+    {
+        initializeIfNeeded();
+        if (m_SetRectFunc) {
+            m_SetRectFunc(a0, a1, a2, a3, a4);
+        }
+    }
+    void fakeQD_SubPt(Point a0, Point * a1)
+    {
+        initializeIfNeeded();
+        if (m_SubPtFunc) {
+            m_SubPtFunc(a0, a1);
+        }
+    }
+    void fakeQD_UnionRect(const Rect * a0, const Rect * a1, Rect * a2)
+    {
+        initializeIfNeeded();
+        if (m_UnionRectFunc) {
+            m_UnionRectFunc(a0, a1, a2);
+        }
+    }
+#if !__LP64__
+    void fakeQD_AddComp(ColorComplementUPP a0)
+    {
+        initializeIfNeeded();
+        if (m_AddCompFunc) {
+            m_AddCompFunc(a0);
         }
     }
     void fakeQD_AddSearch(ColorSearchUPP a0)
@@ -1582,39 +2214,11 @@ public:
             m_DiffRgnFunc(a0, a1, a2);
         }
     }
-    void fakeQD_DisposeCMBitmapCallBackUPP(CMBitmapCallBackUPP a0)
-    {
-        initializeIfNeeded();
-        if (m_DisposeCMBitmapCallBackUPPFunc) {
-            m_DisposeCMBitmapCallBackUPPFunc(a0);
-        }
-    }
     void fakeQD_DisposeCTable(CTabHandle a0)
     {
         initializeIfNeeded();
         if (m_DisposeCTableFunc) {
             m_DisposeCTableFunc(a0);
-        }
-    }
-    void fakeQD_DisposeColorComplementUPP(ColorComplementUPP a0)
-    {
-        initializeIfNeeded();
-        if (m_DisposeColorComplementUPPFunc) {
-            m_DisposeColorComplementUPPFunc(a0);
-        }
-    }
-    void fakeQD_DisposeColorSearchUPP(ColorSearchUPP a0)
-    {
-        initializeIfNeeded();
-        if (m_DisposeColorSearchUPPFunc) {
-            m_DisposeColorSearchUPPFunc(a0);
-        }
-    }
-    void fakeQD_DisposeDragGrayRgnUPP(DragGrayRgnUPP a0)
-    {
-        initializeIfNeeded();
-        if (m_DisposeDragGrayRgnUPPFunc) {
-            m_DisposeDragGrayRgnUPPFunc(a0);
         }
     }
     void fakeQD_DisposeGDevice(GDHandle a0)
@@ -1645,125 +2249,6 @@ public:
             m_DisposePortFunc(a0);
         }
     }
-    void fakeQD_DisposeQDArcUPP(QDArcUPP a0)
-    {
-        initializeIfNeeded();
-        if (m_DisposeQDArcUPPFunc) {
-            m_DisposeQDArcUPPFunc(a0);
-        }
-    }
-    void fakeQD_DisposeQDBitsUPP(QDBitsUPP a0)
-    {
-        initializeIfNeeded();
-        if (m_DisposeQDBitsUPPFunc) {
-            m_DisposeQDBitsUPPFunc(a0);
-        }
-    }
-    void fakeQD_DisposeQDCommentUPP(QDCommentUPP a0)
-    {
-        initializeIfNeeded();
-        if (m_DisposeQDCommentUPPFunc) {
-            m_DisposeQDCommentUPPFunc(a0);
-        }
-    }
-    void fakeQD_DisposeQDGetPicUPP(QDGetPicUPP a0)
-    {
-        initializeIfNeeded();
-        if (m_DisposeQDGetPicUPPFunc) {
-            m_DisposeQDGetPicUPPFunc(a0);
-        }
-    }
-    void fakeQD_DisposeQDJShieldCursorUPP(QDJShieldCursorUPP a0)
-    {
-        initializeIfNeeded();
-        if (m_DisposeQDJShieldCursorUPPFunc) {
-            m_DisposeQDJShieldCursorUPPFunc(a0);
-        }
-    }
-    void fakeQD_DisposeQDLineUPP(QDLineUPP a0)
-    {
-        initializeIfNeeded();
-        if (m_DisposeQDLineUPPFunc) {
-            m_DisposeQDLineUPPFunc(a0);
-        }
-    }
-    void fakeQD_DisposeQDOpcodeUPP(QDOpcodeUPP a0)
-    {
-        initializeIfNeeded();
-        if (m_DisposeQDOpcodeUPPFunc) {
-            m_DisposeQDOpcodeUPPFunc(a0);
-        }
-    }
-    void fakeQD_DisposeQDOvalUPP(QDOvalUPP a0)
-    {
-        initializeIfNeeded();
-        if (m_DisposeQDOvalUPPFunc) {
-            m_DisposeQDOvalUPPFunc(a0);
-        }
-    }
-    void fakeQD_DisposeQDPolyUPP(QDPolyUPP a0)
-    {
-        initializeIfNeeded();
-        if (m_DisposeQDPolyUPPFunc) {
-            m_DisposeQDPolyUPPFunc(a0);
-        }
-    }
-    void fakeQD_DisposeQDPutPicUPP(QDPutPicUPP a0)
-    {
-        initializeIfNeeded();
-        if (m_DisposeQDPutPicUPPFunc) {
-            m_DisposeQDPutPicUPPFunc(a0);
-        }
-    }
-    void fakeQD_DisposeQDRRectUPP(QDRRectUPP a0)
-    {
-        initializeIfNeeded();
-        if (m_DisposeQDRRectUPPFunc) {
-            m_DisposeQDRRectUPPFunc(a0);
-        }
-    }
-    void fakeQD_DisposeQDRectUPP(QDRectUPP a0)
-    {
-        initializeIfNeeded();
-        if (m_DisposeQDRectUPPFunc) {
-            m_DisposeQDRectUPPFunc(a0);
-        }
-    }
-    void fakeQD_DisposeQDRgnUPP(QDRgnUPP a0)
-    {
-        initializeIfNeeded();
-        if (m_DisposeQDRgnUPPFunc) {
-            m_DisposeQDRgnUPPFunc(a0);
-        }
-    }
-    void fakeQD_DisposeQDStdGlyphsUPP(QDStdGlyphsUPP a0)
-    {
-        initializeIfNeeded();
-        if (m_DisposeQDStdGlyphsUPPFunc) {
-            m_DisposeQDStdGlyphsUPPFunc(a0);
-        }
-    }
-    void fakeQD_DisposeQDTextUPP(QDTextUPP a0)
-    {
-        initializeIfNeeded();
-        if (m_DisposeQDTextUPPFunc) {
-            m_DisposeQDTextUPPFunc(a0);
-        }
-    }
-    void fakeQD_DisposeQDTxMeasUPP(QDTxMeasUPP a0)
-    {
-        initializeIfNeeded();
-        if (m_DisposeQDTxMeasUPPFunc) {
-            m_DisposeQDTxMeasUPPFunc(a0);
-        }
-    }
-    void fakeQD_DisposeRegionToRectsUPP(RegionToRectsUPP a0)
-    {
-        initializeIfNeeded();
-        if (m_DisposeRegionToRectsUPPFunc) {
-            m_DisposeRegionToRectsUPPFunc(a0);
-        }
-    }
     void fakeQD_DisposeRgn(RgnHandle a0)
     {
         initializeIfNeeded();
@@ -1778,38 +2263,11 @@ public:
             m_DrawPictureFunc(a0, a1);
         }
     }
-    Boolean fakeQD_EmptyRect(const Rect * a0)
-    {
-        initializeIfNeeded();
-        if (m_EmptyRectFunc) {
-            return m_EmptyRectFunc(a0);
-        } else {
-            return (Boolean)0;
-        }
-    }
     Boolean fakeQD_EmptyRgn(RgnHandle a0)
     {
         initializeIfNeeded();
         if (m_EmptyRgnFunc) {
             return m_EmptyRgnFunc(a0);
-        } else {
-            return (Boolean)0;
-        }
-    }
-    Boolean fakeQD_EqualPt(Point a0, Point a1)
-    {
-        initializeIfNeeded();
-        if (m_EqualPtFunc) {
-            return m_EqualPtFunc(a0, a1);
-        } else {
-            return (Boolean)0;
-        }
-    }
-    Boolean fakeQD_EqualRect(const Rect * a0, const Rect * a1)
-    {
-        initializeIfNeeded();
-        if (m_EqualRectFunc) {
-            return m_EqualRectFunc(a0, a1);
         } else {
             return (Boolean)0;
         }
@@ -2540,13 +2998,6 @@ public:
             m_InitGDeviceFunc(a0, a1, a2);
         }
     }
-    void fakeQD_InsetRect(Rect * a0, short a1, short a2)
-    {
-        initializeIfNeeded();
-        if (m_InsetRectFunc) {
-            m_InsetRectFunc(a0, a1, a2);
-        }
-    }
     void fakeQD_InsetRgn(RgnHandle a0, short a1, short a2)
     {
         initializeIfNeeded();
@@ -2601,165 +3052,6 @@ public:
         initializeIfNeeded();
         if (m_InvertRoundRectFunc) {
             m_InvertRoundRectFunc(a0, a1, a2);
-        }
-    }
-    Boolean fakeQD_InvokeCMBitmapCallBackUPP(long a0, void * a1, CMBitmapCallBackUPP a2)
-    {
-        initializeIfNeeded();
-        if (m_InvokeCMBitmapCallBackUPPFunc) {
-            return m_InvokeCMBitmapCallBackUPPFunc(a0, a1, a2);
-        } else {
-            return (Boolean)0;
-        }
-    }
-    Boolean fakeQD_InvokeColorComplementUPP(RGBColor * a0, ColorComplementUPP a1)
-    {
-        initializeIfNeeded();
-        if (m_InvokeColorComplementUPPFunc) {
-            return m_InvokeColorComplementUPPFunc(a0, a1);
-        } else {
-            return (Boolean)0;
-        }
-    }
-    Boolean fakeQD_InvokeColorSearchUPP(RGBColor * a0, long * a1, ColorSearchUPP a2)
-    {
-        initializeIfNeeded();
-        if (m_InvokeColorSearchUPPFunc) {
-            return m_InvokeColorSearchUPPFunc(a0, a1, a2);
-        } else {
-            return (Boolean)0;
-        }
-    }
-    void fakeQD_InvokeDragGrayRgnUPP(DragGrayRgnUPP a0)
-    {
-        initializeIfNeeded();
-        if (m_InvokeDragGrayRgnUPPFunc) {
-            m_InvokeDragGrayRgnUPPFunc(a0);
-        }
-    }
-    void fakeQD_InvokeQDArcUPP(GrafVerb a0, const Rect * a1, short a2, short a3, QDArcUPP a4)
-    {
-        initializeIfNeeded();
-        if (m_InvokeQDArcUPPFunc) {
-            m_InvokeQDArcUPPFunc(a0, a1, a2, a3, a4);
-        }
-    }
-    void fakeQD_InvokeQDBitsUPP(const BitMap * a0, const Rect * a1, const Rect * a2, short a3, RgnHandle a4, QDBitsUPP a5)
-    {
-        initializeIfNeeded();
-        if (m_InvokeQDBitsUPPFunc) {
-            m_InvokeQDBitsUPPFunc(a0, a1, a2, a3, a4, a5);
-        }
-    }
-    void fakeQD_InvokeQDCommentUPP(short a0, short a1, Handle a2, QDCommentUPP a3)
-    {
-        initializeIfNeeded();
-        if (m_InvokeQDCommentUPPFunc) {
-            m_InvokeQDCommentUPPFunc(a0, a1, a2, a3);
-        }
-    }
-    void fakeQD_InvokeQDGetPicUPP(void * a0, short a1, QDGetPicUPP a2)
-    {
-        initializeIfNeeded();
-        if (m_InvokeQDGetPicUPPFunc) {
-            m_InvokeQDGetPicUPPFunc(a0, a1, a2);
-        }
-    }
-    void fakeQD_InvokeQDJShieldCursorUPP(short a0, short a1, short a2, short a3, QDJShieldCursorUPP a4)
-    {
-        initializeIfNeeded();
-        if (m_InvokeQDJShieldCursorUPPFunc) {
-            m_InvokeQDJShieldCursorUPPFunc(a0, a1, a2, a3, a4);
-        }
-    }
-    void fakeQD_InvokeQDLineUPP(Point a0, QDLineUPP a1)
-    {
-        initializeIfNeeded();
-        if (m_InvokeQDLineUPPFunc) {
-            m_InvokeQDLineUPPFunc(a0, a1);
-        }
-    }
-    void fakeQD_InvokeQDOpcodeUPP(const Rect * a0, const Rect * a1, UInt16 a2, SInt16 a3, QDOpcodeUPP a4)
-    {
-        initializeIfNeeded();
-        if (m_InvokeQDOpcodeUPPFunc) {
-            m_InvokeQDOpcodeUPPFunc(a0, a1, a2, a3, a4);
-        }
-    }
-    void fakeQD_InvokeQDOvalUPP(GrafVerb a0, const Rect * a1, QDOvalUPP a2)
-    {
-        initializeIfNeeded();
-        if (m_InvokeQDOvalUPPFunc) {
-            m_InvokeQDOvalUPPFunc(a0, a1, a2);
-        }
-    }
-    void fakeQD_InvokeQDPolyUPP(GrafVerb a0, PolyHandle a1, QDPolyUPP a2)
-    {
-        initializeIfNeeded();
-        if (m_InvokeQDPolyUPPFunc) {
-            m_InvokeQDPolyUPPFunc(a0, a1, a2);
-        }
-    }
-    void fakeQD_InvokeQDPutPicUPP(const void * a0, short a1, QDPutPicUPP a2)
-    {
-        initializeIfNeeded();
-        if (m_InvokeQDPutPicUPPFunc) {
-            m_InvokeQDPutPicUPPFunc(a0, a1, a2);
-        }
-    }
-    void fakeQD_InvokeQDRRectUPP(GrafVerb a0, const Rect * a1, short a2, short a3, QDRRectUPP a4)
-    {
-        initializeIfNeeded();
-        if (m_InvokeQDRRectUPPFunc) {
-            m_InvokeQDRRectUPPFunc(a0, a1, a2, a3, a4);
-        }
-    }
-    void fakeQD_InvokeQDRectUPP(GrafVerb a0, const Rect * a1, QDRectUPP a2)
-    {
-        initializeIfNeeded();
-        if (m_InvokeQDRectUPPFunc) {
-            m_InvokeQDRectUPPFunc(a0, a1, a2);
-        }
-    }
-    void fakeQD_InvokeQDRgnUPP(GrafVerb a0, RgnHandle a1, QDRgnUPP a2)
-    {
-        initializeIfNeeded();
-        if (m_InvokeQDRgnUPPFunc) {
-            m_InvokeQDRgnUPPFunc(a0, a1, a2);
-        }
-    }
-    OSStatus fakeQD_InvokeQDStdGlyphsUPP(void * a0, ByteCount a1, QDStdGlyphsUPP a2)
-    {
-        initializeIfNeeded();
-        if (m_InvokeQDStdGlyphsUPPFunc) {
-            return m_InvokeQDStdGlyphsUPPFunc(a0, a1, a2);
-        } else {
-            return (OSStatus)0;
-        }
-    }
-    void fakeQD_InvokeQDTextUPP(short a0, const void * a1, Point a2, Point a3, QDTextUPP a4)
-    {
-        initializeIfNeeded();
-        if (m_InvokeQDTextUPPFunc) {
-            m_InvokeQDTextUPPFunc(a0, a1, a2, a3, a4);
-        }
-    }
-    short fakeQD_InvokeQDTxMeasUPP(short a0, const void * a1, Point * a2, Point * a3, FontInfo * a4, QDTxMeasUPP a5)
-    {
-        initializeIfNeeded();
-        if (m_InvokeQDTxMeasUPPFunc) {
-            return m_InvokeQDTxMeasUPPFunc(a0, a1, a2, a3, a4, a5);
-        } else {
-            return (short)0;
-        }
-    }
-    OSStatus fakeQD_InvokeRegionToRectsUPP(UInt16 a0, RgnHandle a1, const Rect * a2, void * a3, RegionToRectsUPP a4)
-    {
-        initializeIfNeeded();
-        if (m_InvokeRegionToRectsUPPFunc) {
-            return m_InvokeRegionToRectsUPPFunc(a0, a1, a2, a3, a4);
-        } else {
-            return (OSStatus)0;
         }
     }
     Boolean fakeQD_IsPortClipRegionEmpty(CGrafPtr a0)
@@ -3148,20 +3440,6 @@ public:
             m_MapPolyFunc(a0, a1, a2);
         }
     }
-    void fakeQD_MapPt(Point * a0, const Rect * a1, const Rect * a2)
-    {
-        initializeIfNeeded();
-        if (m_MapPtFunc) {
-            m_MapPtFunc(a0, a1, a2);
-        }
-    }
-    void fakeQD_MapRect(Rect * a0, const Rect * a1, const Rect * a2)
-    {
-        initializeIfNeeded();
-        if (m_MapRectFunc) {
-            m_MapRectFunc(a0, a1, a2);
-        }
-    }
     void fakeQD_MapRgn(RgnHandle a0, const Rect * a1, const Rect * a2)
     {
         initializeIfNeeded();
@@ -3215,42 +3493,6 @@ public:
             return (CMError)0;
         }
     }
-    CMBitmapCallBackUPP fakeQD_NewCMBitmapCallBackUPP(CMBitmapCallBackProcPtr a0)
-    {
-        initializeIfNeeded();
-        if (m_NewCMBitmapCallBackUPPFunc) {
-            return m_NewCMBitmapCallBackUPPFunc(a0);
-        } else {
-            return (CMBitmapCallBackUPP)0;
-        }
-    }
-    ColorComplementUPP fakeQD_NewColorComplementUPP(ColorComplementProcPtr a0)
-    {
-        initializeIfNeeded();
-        if (m_NewColorComplementUPPFunc) {
-            return m_NewColorComplementUPPFunc(a0);
-        } else {
-            return (ColorComplementUPP)0;
-        }
-    }
-    ColorSearchUPP fakeQD_NewColorSearchUPP(ColorSearchProcPtr a0)
-    {
-        initializeIfNeeded();
-        if (m_NewColorSearchUPPFunc) {
-            return m_NewColorSearchUPPFunc(a0);
-        } else {
-            return (ColorSearchUPP)0;
-        }
-    }
-    DragGrayRgnUPP fakeQD_NewDragGrayRgnUPP(DragGrayRgnProcPtr a0)
-    {
-        initializeIfNeeded();
-        if (m_NewDragGrayRgnUPPFunc) {
-            return m_NewDragGrayRgnUPPFunc(a0);
-        } else {
-            return (DragGrayRgnUPP)0;
-        }
-    }
     GDHandle fakeQD_NewGDevice(short a0, long a1)
     {
         initializeIfNeeded();
@@ -3278,159 +3520,6 @@ public:
             return (PixPatHandle)0;
         }
     }
-    QDArcUPP fakeQD_NewQDArcUPP(QDArcProcPtr a0)
-    {
-        initializeIfNeeded();
-        if (m_NewQDArcUPPFunc) {
-            return m_NewQDArcUPPFunc(a0);
-        } else {
-            return (QDArcUPP)0;
-        }
-    }
-    QDBitsUPP fakeQD_NewQDBitsUPP(QDBitsProcPtr a0)
-    {
-        initializeIfNeeded();
-        if (m_NewQDBitsUPPFunc) {
-            return m_NewQDBitsUPPFunc(a0);
-        } else {
-            return (QDBitsUPP)0;
-        }
-    }
-    QDCommentUPP fakeQD_NewQDCommentUPP(QDCommentProcPtr a0)
-    {
-        initializeIfNeeded();
-        if (m_NewQDCommentUPPFunc) {
-            return m_NewQDCommentUPPFunc(a0);
-        } else {
-            return (QDCommentUPP)0;
-        }
-    }
-    QDGetPicUPP fakeQD_NewQDGetPicUPP(QDGetPicProcPtr a0)
-    {
-        initializeIfNeeded();
-        if (m_NewQDGetPicUPPFunc) {
-            return m_NewQDGetPicUPPFunc(a0);
-        } else {
-            return (QDGetPicUPP)0;
-        }
-    }
-    QDJShieldCursorUPP fakeQD_NewQDJShieldCursorUPP(QDJShieldCursorProcPtr a0)
-    {
-        initializeIfNeeded();
-        if (m_NewQDJShieldCursorUPPFunc) {
-            return m_NewQDJShieldCursorUPPFunc(a0);
-        } else {
-            return (QDJShieldCursorUPP)0;
-        }
-    }
-    QDLineUPP fakeQD_NewQDLineUPP(QDLineProcPtr a0)
-    {
-        initializeIfNeeded();
-        if (m_NewQDLineUPPFunc) {
-            return m_NewQDLineUPPFunc(a0);
-        } else {
-            return (QDLineUPP)0;
-        }
-    }
-    QDOpcodeUPP fakeQD_NewQDOpcodeUPP(QDOpcodeProcPtr a0)
-    {
-        initializeIfNeeded();
-        if (m_NewQDOpcodeUPPFunc) {
-            return m_NewQDOpcodeUPPFunc(a0);
-        } else {
-            return (QDOpcodeUPP)0;
-        }
-    }
-    QDOvalUPP fakeQD_NewQDOvalUPP(QDOvalProcPtr a0)
-    {
-        initializeIfNeeded();
-        if (m_NewQDOvalUPPFunc) {
-            return m_NewQDOvalUPPFunc(a0);
-        } else {
-            return (QDOvalUPP)0;
-        }
-    }
-    QDPolyUPP fakeQD_NewQDPolyUPP(QDPolyProcPtr a0)
-    {
-        initializeIfNeeded();
-        if (m_NewQDPolyUPPFunc) {
-            return m_NewQDPolyUPPFunc(a0);
-        } else {
-            return (QDPolyUPP)0;
-        }
-    }
-    QDPutPicUPP fakeQD_NewQDPutPicUPP(QDPutPicProcPtr a0)
-    {
-        initializeIfNeeded();
-        if (m_NewQDPutPicUPPFunc) {
-            return m_NewQDPutPicUPPFunc(a0);
-        } else {
-            return (QDPutPicUPP)0;
-        }
-    }
-    QDRRectUPP fakeQD_NewQDRRectUPP(QDRRectProcPtr a0)
-    {
-        initializeIfNeeded();
-        if (m_NewQDRRectUPPFunc) {
-            return m_NewQDRRectUPPFunc(a0);
-        } else {
-            return (QDRRectUPP)0;
-        }
-    }
-    QDRectUPP fakeQD_NewQDRectUPP(QDRectProcPtr a0)
-    {
-        initializeIfNeeded();
-        if (m_NewQDRectUPPFunc) {
-            return m_NewQDRectUPPFunc(a0);
-        } else {
-            return (QDRectUPP)0;
-        }
-    }
-    QDRgnUPP fakeQD_NewQDRgnUPP(QDRgnProcPtr a0)
-    {
-        initializeIfNeeded();
-        if (m_NewQDRgnUPPFunc) {
-            return m_NewQDRgnUPPFunc(a0);
-        } else {
-            return (QDRgnUPP)0;
-        }
-    }
-    QDStdGlyphsUPP fakeQD_NewQDStdGlyphsUPP(QDStdGlyphsProcPtr a0)
-    {
-        initializeIfNeeded();
-        if (m_NewQDStdGlyphsUPPFunc) {
-            return m_NewQDStdGlyphsUPPFunc(a0);
-        } else {
-            return (QDStdGlyphsUPP)0;
-        }
-    }
-    QDTextUPP fakeQD_NewQDTextUPP(QDTextProcPtr a0)
-    {
-        initializeIfNeeded();
-        if (m_NewQDTextUPPFunc) {
-            return m_NewQDTextUPPFunc(a0);
-        } else {
-            return (QDTextUPP)0;
-        }
-    }
-    QDTxMeasUPP fakeQD_NewQDTxMeasUPP(QDTxMeasProcPtr a0)
-    {
-        initializeIfNeeded();
-        if (m_NewQDTxMeasUPPFunc) {
-            return m_NewQDTxMeasUPPFunc(a0);
-        } else {
-            return (QDTxMeasUPP)0;
-        }
-    }
-    RegionToRectsUPP fakeQD_NewRegionToRectsUPP(RegionToRectsProcPtr a0)
-    {
-        initializeIfNeeded();
-        if (m_NewRegionToRectsUPPFunc) {
-            return m_NewRegionToRectsUPPFunc(a0);
-        } else {
-            return (RegionToRectsUPP)0;
-        }
-    }
     RgnHandle fakeQD_NewRgn()
     {
         initializeIfNeeded();
@@ -3452,13 +3541,6 @@ public:
         initializeIfNeeded();
         if (m_OffsetPolyFunc) {
             m_OffsetPolyFunc(a0, a1, a2);
-        }
-    }
-    void fakeQD_OffsetRect(Rect * a0, short a1, short a2)
-    {
-        initializeIfNeeded();
-        if (m_OffsetRectFunc) {
-            m_OffsetRectFunc(a0, a1, a2);
         }
     }
     void fakeQD_OffsetRgn(RgnHandle a0, short a1, short a2)
@@ -3623,22 +3705,6 @@ public:
             m_ProtectEntryFunc(a0, a1);
         }
     }
-    void fakeQD_Pt2Rect(Point a0, Point a1, Rect * a2)
-    {
-        initializeIfNeeded();
-        if (m_Pt2RectFunc) {
-            m_Pt2RectFunc(a0, a1, a2);
-        }
-    }
-    Boolean fakeQD_PtInRect(Point a0, const Rect * a1)
-    {
-        initializeIfNeeded();
-        if (m_PtInRectFunc) {
-            return m_PtInRectFunc(a0, a1);
-        } else {
-            return (Boolean)0;
-        }
-    }
     Boolean fakeQD_PtInRgn(Point a0, RgnHandle a1)
     {
         initializeIfNeeded();
@@ -3646,13 +3712,6 @@ public:
             return m_PtInRgnFunc(a0, a1);
         } else {
             return (Boolean)0;
-        }
-    }
-    void fakeQD_PtToAngle(const Rect * a0, Point a1, short * a2)
-    {
-        initializeIfNeeded();
-        if (m_PtToAngleFunc) {
-            m_PtToAngleFunc(a0, a1, a2);
         }
     }
     OSStatus fakeQD_QDAddRectToDirtyRegion(CGrafPtr a0, const Rect * a1)
@@ -3847,15 +3906,6 @@ public:
             return (RgnHandle)0;
         }
     }
-    OSStatus fakeQD_QDRegionToRects(RgnHandle a0, QDRegionParseDirection a1, RegionToRectsUPP a2, void * a3)
-    {
-        initializeIfNeeded();
-        if (m_QDRegionToRectsFunc) {
-            return m_QDRegionToRectsFunc(a0, a1, a2, a3);
-        } else {
-            return (OSStatus)0;
-        }
-    }
     OSStatus fakeQD_QDRegisterNamedPixMapCursor(PixMapHandle a0, PixMapHandle a1, Point a2, const char a3)
     {
         initializeIfNeeded();
@@ -4006,13 +4056,6 @@ public:
             m_RgnToHandleFunc(a0, a1);
         }
     }
-    void fakeQD_ScalePt(Point * a0, const Rect * a1, const Rect * a2)
-    {
-        initializeIfNeeded();
-        if (m_ScalePtFunc) {
-            m_ScalePtFunc(a0, a1, a2);
-        }
-    }
     void fakeQD_ScreenRes(short * a0, short * a1)
     {
         initializeIfNeeded();
@@ -4025,15 +4068,6 @@ public:
         initializeIfNeeded();
         if (m_ScrollRectFunc) {
             m_ScrollRectFunc(a0, a1, a2, a3);
-        }
-    }
-    Boolean fakeQD_SectRect(const Rect * a0, const Rect * a1, Rect * a2)
-    {
-        initializeIfNeeded();
-        if (m_SectRectFunc) {
-            return m_SectRectFunc(a0, a1, a2);
-        } else {
-            return (Boolean)0;
         }
     }
     void fakeQD_SectRegionWithPortClipRegion(CGrafPtr a0, RgnHandle a1)
@@ -4262,13 +4296,6 @@ public:
             m_SetPortVisibleRegionFunc(a0, a1);
         }
     }
-    void fakeQD_SetPt(Point * a0, short a1, short a2)
-    {
-        initializeIfNeeded();
-        if (m_SetPtFunc) {
-            m_SetPtFunc(a0, a1, a2);
-        }
-    }
     void fakeQD_SetQDError(OSErr a0)
     {
         initializeIfNeeded();
@@ -4281,13 +4308,6 @@ public:
         initializeIfNeeded();
         if (m_SetQDGlobalsRandomSeedFunc) {
             m_SetQDGlobalsRandomSeedFunc(a0);
-        }
-    }
-    void fakeQD_SetRect(Rect * a0, short a1, short a2, short a3, short a4)
-    {
-        initializeIfNeeded();
-        if (m_SetRectFunc) {
-            m_SetRectFunc(a0, a1, a2, a3, a4);
         }
     }
     void fakeQD_SetRectRgn(RgnHandle a0, short a1, short a2, short a3, short a4)
@@ -4425,13 +4445,6 @@ public:
             m_StuffHexFunc(a0, a1);
         }
     }
-    void fakeQD_SubPt(Point a0, Point * a1)
-    {
-        initializeIfNeeded();
-        if (m_SubPtFunc) {
-            m_SubPtFunc(a0, a1);
-        }
-    }
     Handle fakeQD_SwapPortPicSaveHandle(CGrafPtr a0, Handle a1)
     {
         initializeIfNeeded();
@@ -4477,13 +4490,6 @@ public:
             return (Boolean)0;
         }
     }
-    void fakeQD_UnionRect(const Rect * a0, const Rect * a1, Rect * a2)
-    {
-        initializeIfNeeded();
-        if (m_UnionRectFunc) {
-            m_UnionRectFunc(a0, a1, a2);
-        }
-    }
     void fakeQD_UnionRgn(RgnHandle a0, RgnHandle a1, RgnHandle a2)
     {
         initializeIfNeeded();
@@ -4523,12 +4529,94 @@ public:
             return (long)0;
         }
     }
+#endif /* !__LP64__ */
 private:
     void initializeIfNeeded()
     {
         if (!m_initialized) {
-            m_AddCompFunc = getProcAddress<AddCompFunc>("AddComp");
             m_AddPtFunc = getProcAddress<AddPtFunc>("AddPt");
+            m_DisposeCMBitmapCallBackUPPFunc = getProcAddress<DisposeCMBitmapCallBackUPPFunc>("DisposeCMBitmapCallBackUPP");
+            m_DisposeColorComplementUPPFunc = getProcAddress<DisposeColorComplementUPPFunc>("DisposeColorComplementUPP");
+            m_DisposeColorSearchUPPFunc = getProcAddress<DisposeColorSearchUPPFunc>("DisposeColorSearchUPP");
+            m_DisposeDragGrayRgnUPPFunc = getProcAddress<DisposeDragGrayRgnUPPFunc>("DisposeDragGrayRgnUPP");
+            m_DisposeQDArcUPPFunc = getProcAddress<DisposeQDArcUPPFunc>("DisposeQDArcUPP");
+            m_DisposeQDBitsUPPFunc = getProcAddress<DisposeQDBitsUPPFunc>("DisposeQDBitsUPP");
+            m_DisposeQDCommentUPPFunc = getProcAddress<DisposeQDCommentUPPFunc>("DisposeQDCommentUPP");
+            m_DisposeQDGetPicUPPFunc = getProcAddress<DisposeQDGetPicUPPFunc>("DisposeQDGetPicUPP");
+            m_DisposeQDJShieldCursorUPPFunc = getProcAddress<DisposeQDJShieldCursorUPPFunc>("DisposeQDJShieldCursorUPP");
+            m_DisposeQDLineUPPFunc = getProcAddress<DisposeQDLineUPPFunc>("DisposeQDLineUPP");
+            m_DisposeQDOpcodeUPPFunc = getProcAddress<DisposeQDOpcodeUPPFunc>("DisposeQDOpcodeUPP");
+            m_DisposeQDOvalUPPFunc = getProcAddress<DisposeQDOvalUPPFunc>("DisposeQDOvalUPP");
+            m_DisposeQDPolyUPPFunc = getProcAddress<DisposeQDPolyUPPFunc>("DisposeQDPolyUPP");
+            m_DisposeQDPutPicUPPFunc = getProcAddress<DisposeQDPutPicUPPFunc>("DisposeQDPutPicUPP");
+            m_DisposeQDRRectUPPFunc = getProcAddress<DisposeQDRRectUPPFunc>("DisposeQDRRectUPP");
+            m_DisposeQDRectUPPFunc = getProcAddress<DisposeQDRectUPPFunc>("DisposeQDRectUPP");
+            m_DisposeQDRgnUPPFunc = getProcAddress<DisposeQDRgnUPPFunc>("DisposeQDRgnUPP");
+            m_DisposeQDStdGlyphsUPPFunc = getProcAddress<DisposeQDStdGlyphsUPPFunc>("DisposeQDStdGlyphsUPP");
+            m_DisposeQDTextUPPFunc = getProcAddress<DisposeQDTextUPPFunc>("DisposeQDTextUPP");
+            m_DisposeQDTxMeasUPPFunc = getProcAddress<DisposeQDTxMeasUPPFunc>("DisposeQDTxMeasUPP");
+            m_DisposeRegionToRectsUPPFunc = getProcAddress<DisposeRegionToRectsUPPFunc>("DisposeRegionToRectsUPP");
+            m_EmptyRectFunc = getProcAddress<EmptyRectFunc>("EmptyRect");
+            m_EqualPtFunc = getProcAddress<EqualPtFunc>("EqualPt");
+            m_EqualRectFunc = getProcAddress<EqualRectFunc>("EqualRect");
+            m_InsetRectFunc = getProcAddress<InsetRectFunc>("InsetRect");
+            m_InvokeCMBitmapCallBackUPPFunc = getProcAddress<InvokeCMBitmapCallBackUPPFunc>("InvokeCMBitmapCallBackUPP");
+            m_InvokeColorComplementUPPFunc = getProcAddress<InvokeColorComplementUPPFunc>("InvokeColorComplementUPP");
+            m_InvokeColorSearchUPPFunc = getProcAddress<InvokeColorSearchUPPFunc>("InvokeColorSearchUPP");
+            m_InvokeDragGrayRgnUPPFunc = getProcAddress<InvokeDragGrayRgnUPPFunc>("InvokeDragGrayRgnUPP");
+            m_InvokeQDArcUPPFunc = getProcAddress<InvokeQDArcUPPFunc>("InvokeQDArcUPP");
+            m_InvokeQDBitsUPPFunc = getProcAddress<InvokeQDBitsUPPFunc>("InvokeQDBitsUPP");
+            m_InvokeQDCommentUPPFunc = getProcAddress<InvokeQDCommentUPPFunc>("InvokeQDCommentUPP");
+            m_InvokeQDGetPicUPPFunc = getProcAddress<InvokeQDGetPicUPPFunc>("InvokeQDGetPicUPP");
+            m_InvokeQDJShieldCursorUPPFunc = getProcAddress<InvokeQDJShieldCursorUPPFunc>("InvokeQDJShieldCursorUPP");
+            m_InvokeQDLineUPPFunc = getProcAddress<InvokeQDLineUPPFunc>("InvokeQDLineUPP");
+            m_InvokeQDOpcodeUPPFunc = getProcAddress<InvokeQDOpcodeUPPFunc>("InvokeQDOpcodeUPP");
+            m_InvokeQDOvalUPPFunc = getProcAddress<InvokeQDOvalUPPFunc>("InvokeQDOvalUPP");
+            m_InvokeQDPolyUPPFunc = getProcAddress<InvokeQDPolyUPPFunc>("InvokeQDPolyUPP");
+            m_InvokeQDPutPicUPPFunc = getProcAddress<InvokeQDPutPicUPPFunc>("InvokeQDPutPicUPP");
+            m_InvokeQDRRectUPPFunc = getProcAddress<InvokeQDRRectUPPFunc>("InvokeQDRRectUPP");
+            m_InvokeQDRectUPPFunc = getProcAddress<InvokeQDRectUPPFunc>("InvokeQDRectUPP");
+            m_InvokeQDRgnUPPFunc = getProcAddress<InvokeQDRgnUPPFunc>("InvokeQDRgnUPP");
+            m_InvokeQDStdGlyphsUPPFunc = getProcAddress<InvokeQDStdGlyphsUPPFunc>("InvokeQDStdGlyphsUPP");
+            m_InvokeQDTextUPPFunc = getProcAddress<InvokeQDTextUPPFunc>("InvokeQDTextUPP");
+            m_InvokeQDTxMeasUPPFunc = getProcAddress<InvokeQDTxMeasUPPFunc>("InvokeQDTxMeasUPP");
+            m_InvokeRegionToRectsUPPFunc = getProcAddress<InvokeRegionToRectsUPPFunc>("InvokeRegionToRectsUPP");
+            m_MapPtFunc = getProcAddress<MapPtFunc>("MapPt");
+            m_MapRectFunc = getProcAddress<MapRectFunc>("MapRect");
+            m_NewCMBitmapCallBackUPPFunc = getProcAddress<NewCMBitmapCallBackUPPFunc>("NewCMBitmapCallBackUPP");
+            m_NewColorComplementUPPFunc = getProcAddress<NewColorComplementUPPFunc>("NewColorComplementUPP");
+            m_NewColorSearchUPPFunc = getProcAddress<NewColorSearchUPPFunc>("NewColorSearchUPP");
+            m_NewDragGrayRgnUPPFunc = getProcAddress<NewDragGrayRgnUPPFunc>("NewDragGrayRgnUPP");
+            m_NewQDArcUPPFunc = getProcAddress<NewQDArcUPPFunc>("NewQDArcUPP");
+            m_NewQDBitsUPPFunc = getProcAddress<NewQDBitsUPPFunc>("NewQDBitsUPP");
+            m_NewQDCommentUPPFunc = getProcAddress<NewQDCommentUPPFunc>("NewQDCommentUPP");
+            m_NewQDGetPicUPPFunc = getProcAddress<NewQDGetPicUPPFunc>("NewQDGetPicUPP");
+            m_NewQDJShieldCursorUPPFunc = getProcAddress<NewQDJShieldCursorUPPFunc>("NewQDJShieldCursorUPP");
+            m_NewQDLineUPPFunc = getProcAddress<NewQDLineUPPFunc>("NewQDLineUPP");
+            m_NewQDOpcodeUPPFunc = getProcAddress<NewQDOpcodeUPPFunc>("NewQDOpcodeUPP");
+            m_NewQDOvalUPPFunc = getProcAddress<NewQDOvalUPPFunc>("NewQDOvalUPP");
+            m_NewQDPolyUPPFunc = getProcAddress<NewQDPolyUPPFunc>("NewQDPolyUPP");
+            m_NewQDPutPicUPPFunc = getProcAddress<NewQDPutPicUPPFunc>("NewQDPutPicUPP");
+            m_NewQDRRectUPPFunc = getProcAddress<NewQDRRectUPPFunc>("NewQDRRectUPP");
+            m_NewQDRectUPPFunc = getProcAddress<NewQDRectUPPFunc>("NewQDRectUPP");
+            m_NewQDRgnUPPFunc = getProcAddress<NewQDRgnUPPFunc>("NewQDRgnUPP");
+            m_NewQDStdGlyphsUPPFunc = getProcAddress<NewQDStdGlyphsUPPFunc>("NewQDStdGlyphsUPP");
+            m_NewQDTextUPPFunc = getProcAddress<NewQDTextUPPFunc>("NewQDTextUPP");
+            m_NewQDTxMeasUPPFunc = getProcAddress<NewQDTxMeasUPPFunc>("NewQDTxMeasUPP");
+            m_NewRegionToRectsUPPFunc = getProcAddress<NewRegionToRectsUPPFunc>("NewRegionToRectsUPP");
+            m_OffsetRectFunc = getProcAddress<OffsetRectFunc>("OffsetRect");
+            m_Pt2RectFunc = getProcAddress<Pt2RectFunc>("Pt2Rect");
+            m_PtInRectFunc = getProcAddress<PtInRectFunc>("PtInRect");
+            m_PtToAngleFunc = getProcAddress<PtToAngleFunc>("PtToAngle");
+            m_QDRegionToRectsFunc = getProcAddress<QDRegionToRectsFunc>("QDRegionToRects");
+            m_ScalePtFunc = getProcAddress<ScalePtFunc>("ScalePt");
+            m_SectRectFunc = getProcAddress<SectRectFunc>("SectRect");
+            m_SetPtFunc = getProcAddress<SetPtFunc>("SetPt");
+            m_SetRectFunc = getProcAddress<SetRectFunc>("SetRect");
+            m_SubPtFunc = getProcAddress<SubPtFunc>("SubPt");
+            m_UnionRectFunc = getProcAddress<UnionRectFunc>("UnionRect");
+#if !__LP64__
+            m_AddCompFunc = getProcAddress<AddCompFunc>("AddComp");
             m_AddSearchFunc = getProcAddress<AddSearchFunc>("AddSearch");
             m_AllocCursorFunc = getProcAddress<AllocCursorFunc>("AllocCursor");
             m_AngleFromSlopeFunc = getProcAddress<AngleFromSlopeFunc>("AngleFromSlope");
@@ -4565,38 +4653,14 @@ private:
             m_DelSearchFunc = getProcAddress<DelSearchFunc>("DelSearch");
             m_DeltaPointFunc = getProcAddress<DeltaPointFunc>("DeltaPoint");
             m_DiffRgnFunc = getProcAddress<DiffRgnFunc>("DiffRgn");
-            m_DisposeCMBitmapCallBackUPPFunc = getProcAddress<DisposeCMBitmapCallBackUPPFunc>("DisposeCMBitmapCallBackUPP");
             m_DisposeCTableFunc = getProcAddress<DisposeCTableFunc>("DisposeCTable");
-            m_DisposeColorComplementUPPFunc = getProcAddress<DisposeColorComplementUPPFunc>("DisposeColorComplementUPP");
-            m_DisposeColorSearchUPPFunc = getProcAddress<DisposeColorSearchUPPFunc>("DisposeColorSearchUPP");
-            m_DisposeDragGrayRgnUPPFunc = getProcAddress<DisposeDragGrayRgnUPPFunc>("DisposeDragGrayRgnUPP");
             m_DisposeGDeviceFunc = getProcAddress<DisposeGDeviceFunc>("DisposeGDevice");
             m_DisposePixMapFunc = getProcAddress<DisposePixMapFunc>("DisposePixMap");
             m_DisposePixPatFunc = getProcAddress<DisposePixPatFunc>("DisposePixPat");
             m_DisposePortFunc = getProcAddress<DisposePortFunc>("DisposePort");
-            m_DisposeQDArcUPPFunc = getProcAddress<DisposeQDArcUPPFunc>("DisposeQDArcUPP");
-            m_DisposeQDBitsUPPFunc = getProcAddress<DisposeQDBitsUPPFunc>("DisposeQDBitsUPP");
-            m_DisposeQDCommentUPPFunc = getProcAddress<DisposeQDCommentUPPFunc>("DisposeQDCommentUPP");
-            m_DisposeQDGetPicUPPFunc = getProcAddress<DisposeQDGetPicUPPFunc>("DisposeQDGetPicUPP");
-            m_DisposeQDJShieldCursorUPPFunc = getProcAddress<DisposeQDJShieldCursorUPPFunc>("DisposeQDJShieldCursorUPP");
-            m_DisposeQDLineUPPFunc = getProcAddress<DisposeQDLineUPPFunc>("DisposeQDLineUPP");
-            m_DisposeQDOpcodeUPPFunc = getProcAddress<DisposeQDOpcodeUPPFunc>("DisposeQDOpcodeUPP");
-            m_DisposeQDOvalUPPFunc = getProcAddress<DisposeQDOvalUPPFunc>("DisposeQDOvalUPP");
-            m_DisposeQDPolyUPPFunc = getProcAddress<DisposeQDPolyUPPFunc>("DisposeQDPolyUPP");
-            m_DisposeQDPutPicUPPFunc = getProcAddress<DisposeQDPutPicUPPFunc>("DisposeQDPutPicUPP");
-            m_DisposeQDRRectUPPFunc = getProcAddress<DisposeQDRRectUPPFunc>("DisposeQDRRectUPP");
-            m_DisposeQDRectUPPFunc = getProcAddress<DisposeQDRectUPPFunc>("DisposeQDRectUPP");
-            m_DisposeQDRgnUPPFunc = getProcAddress<DisposeQDRgnUPPFunc>("DisposeQDRgnUPP");
-            m_DisposeQDStdGlyphsUPPFunc = getProcAddress<DisposeQDStdGlyphsUPPFunc>("DisposeQDStdGlyphsUPP");
-            m_DisposeQDTextUPPFunc = getProcAddress<DisposeQDTextUPPFunc>("DisposeQDTextUPP");
-            m_DisposeQDTxMeasUPPFunc = getProcAddress<DisposeQDTxMeasUPPFunc>("DisposeQDTxMeasUPP");
-            m_DisposeRegionToRectsUPPFunc = getProcAddress<DisposeRegionToRectsUPPFunc>("DisposeRegionToRectsUPP");
             m_DisposeRgnFunc = getProcAddress<DisposeRgnFunc>("DisposeRgn");
             m_DrawPictureFunc = getProcAddress<DrawPictureFunc>("DrawPicture");
-            m_EmptyRectFunc = getProcAddress<EmptyRectFunc>("EmptyRect");
             m_EmptyRgnFunc = getProcAddress<EmptyRgnFunc>("EmptyRgn");
-            m_EqualPtFunc = getProcAddress<EqualPtFunc>("EqualPt");
-            m_EqualRectFunc = getProcAddress<EqualRectFunc>("EqualRect");
             m_EqualRgnFunc = getProcAddress<EqualRgnFunc>("EqualRgn");
             m_EraseArcFunc = getProcAddress<EraseArcFunc>("EraseArc");
             m_EraseOvalFunc = getProcAddress<EraseOvalFunc>("EraseOval");
@@ -4687,7 +4751,6 @@ private:
             m_Index2ColorFunc = getProcAddress<Index2ColorFunc>("Index2Color");
             m_InitCursorFunc = getProcAddress<InitCursorFunc>("InitCursor");
             m_InitGDeviceFunc = getProcAddress<InitGDeviceFunc>("InitGDevice");
-            m_InsetRectFunc = getProcAddress<InsetRectFunc>("InsetRect");
             m_InsetRgnFunc = getProcAddress<InsetRgnFunc>("InsetRgn");
             m_InvertArcFunc = getProcAddress<InvertArcFunc>("InvertArc");
             m_InvertColorFunc = getProcAddress<InvertColorFunc>("InvertColor");
@@ -4696,27 +4759,6 @@ private:
             m_InvertRectFunc = getProcAddress<InvertRectFunc>("InvertRect");
             m_InvertRgnFunc = getProcAddress<InvertRgnFunc>("InvertRgn");
             m_InvertRoundRectFunc = getProcAddress<InvertRoundRectFunc>("InvertRoundRect");
-            m_InvokeCMBitmapCallBackUPPFunc = getProcAddress<InvokeCMBitmapCallBackUPPFunc>("InvokeCMBitmapCallBackUPP");
-            m_InvokeColorComplementUPPFunc = getProcAddress<InvokeColorComplementUPPFunc>("InvokeColorComplementUPP");
-            m_InvokeColorSearchUPPFunc = getProcAddress<InvokeColorSearchUPPFunc>("InvokeColorSearchUPP");
-            m_InvokeDragGrayRgnUPPFunc = getProcAddress<InvokeDragGrayRgnUPPFunc>("InvokeDragGrayRgnUPP");
-            m_InvokeQDArcUPPFunc = getProcAddress<InvokeQDArcUPPFunc>("InvokeQDArcUPP");
-            m_InvokeQDBitsUPPFunc = getProcAddress<InvokeQDBitsUPPFunc>("InvokeQDBitsUPP");
-            m_InvokeQDCommentUPPFunc = getProcAddress<InvokeQDCommentUPPFunc>("InvokeQDCommentUPP");
-            m_InvokeQDGetPicUPPFunc = getProcAddress<InvokeQDGetPicUPPFunc>("InvokeQDGetPicUPP");
-            m_InvokeQDJShieldCursorUPPFunc = getProcAddress<InvokeQDJShieldCursorUPPFunc>("InvokeQDJShieldCursorUPP");
-            m_InvokeQDLineUPPFunc = getProcAddress<InvokeQDLineUPPFunc>("InvokeQDLineUPP");
-            m_InvokeQDOpcodeUPPFunc = getProcAddress<InvokeQDOpcodeUPPFunc>("InvokeQDOpcodeUPP");
-            m_InvokeQDOvalUPPFunc = getProcAddress<InvokeQDOvalUPPFunc>("InvokeQDOvalUPP");
-            m_InvokeQDPolyUPPFunc = getProcAddress<InvokeQDPolyUPPFunc>("InvokeQDPolyUPP");
-            m_InvokeQDPutPicUPPFunc = getProcAddress<InvokeQDPutPicUPPFunc>("InvokeQDPutPicUPP");
-            m_InvokeQDRRectUPPFunc = getProcAddress<InvokeQDRRectUPPFunc>("InvokeQDRRectUPP");
-            m_InvokeQDRectUPPFunc = getProcAddress<InvokeQDRectUPPFunc>("InvokeQDRectUPP");
-            m_InvokeQDRgnUPPFunc = getProcAddress<InvokeQDRgnUPPFunc>("InvokeQDRgnUPP");
-            m_InvokeQDStdGlyphsUPPFunc = getProcAddress<InvokeQDStdGlyphsUPPFunc>("InvokeQDStdGlyphsUPP");
-            m_InvokeQDTextUPPFunc = getProcAddress<InvokeQDTextUPPFunc>("InvokeQDTextUPP");
-            m_InvokeQDTxMeasUPPFunc = getProcAddress<InvokeQDTxMeasUPPFunc>("InvokeQDTxMeasUPP");
-            m_InvokeRegionToRectsUPPFunc = getProcAddress<InvokeRegionToRectsUPPFunc>("InvokeRegionToRectsUPP");
             m_IsPortClipRegionEmptyFunc = getProcAddress<IsPortClipRegionEmptyFunc>("IsPortClipRegionEmpty");
             m_IsPortColorFunc = getProcAddress<IsPortColorFunc>("IsPortColor");
             m_IsPortOffscreenFunc = getProcAddress<IsPortOffscreenFunc>("IsPortOffscreen");
@@ -4765,8 +4807,6 @@ private:
             m_LockPortBitsFunc = getProcAddress<LockPortBitsFunc>("LockPortBits");
             m_MakeRGBPatFunc = getProcAddress<MakeRGBPatFunc>("MakeRGBPat");
             m_MapPolyFunc = getProcAddress<MapPolyFunc>("MapPoly");
-            m_MapPtFunc = getProcAddress<MapPtFunc>("MapPt");
-            m_MapRectFunc = getProcAddress<MapRectFunc>("MapRect");
             m_MapRgnFunc = getProcAddress<MapRgnFunc>("MapRgn");
             m_MoveFunc = getProcAddress<MoveFunc>("Move");
             m_MovePortToFunc = getProcAddress<MovePortToFunc>("MovePortTo");
@@ -4774,34 +4814,12 @@ private:
             m_NCMBeginMatchingFunc = getProcAddress<NCMBeginMatchingFunc>("NCMBeginMatching");
             m_NCMDrawMatchedPictureFunc = getProcAddress<NCMDrawMatchedPictureFunc>("NCMDrawMatchedPicture");
             m_NCMUseProfileCommentFunc = getProcAddress<NCMUseProfileCommentFunc>("NCMUseProfileComment");
-            m_NewCMBitmapCallBackUPPFunc = getProcAddress<NewCMBitmapCallBackUPPFunc>("NewCMBitmapCallBackUPP");
-            m_NewColorComplementUPPFunc = getProcAddress<NewColorComplementUPPFunc>("NewColorComplementUPP");
-            m_NewColorSearchUPPFunc = getProcAddress<NewColorSearchUPPFunc>("NewColorSearchUPP");
-            m_NewDragGrayRgnUPPFunc = getProcAddress<NewDragGrayRgnUPPFunc>("NewDragGrayRgnUPP");
             m_NewGDeviceFunc = getProcAddress<NewGDeviceFunc>("NewGDevice");
             m_NewPixMapFunc = getProcAddress<NewPixMapFunc>("NewPixMap");
             m_NewPixPatFunc = getProcAddress<NewPixPatFunc>("NewPixPat");
-            m_NewQDArcUPPFunc = getProcAddress<NewQDArcUPPFunc>("NewQDArcUPP");
-            m_NewQDBitsUPPFunc = getProcAddress<NewQDBitsUPPFunc>("NewQDBitsUPP");
-            m_NewQDCommentUPPFunc = getProcAddress<NewQDCommentUPPFunc>("NewQDCommentUPP");
-            m_NewQDGetPicUPPFunc = getProcAddress<NewQDGetPicUPPFunc>("NewQDGetPicUPP");
-            m_NewQDJShieldCursorUPPFunc = getProcAddress<NewQDJShieldCursorUPPFunc>("NewQDJShieldCursorUPP");
-            m_NewQDLineUPPFunc = getProcAddress<NewQDLineUPPFunc>("NewQDLineUPP");
-            m_NewQDOpcodeUPPFunc = getProcAddress<NewQDOpcodeUPPFunc>("NewQDOpcodeUPP");
-            m_NewQDOvalUPPFunc = getProcAddress<NewQDOvalUPPFunc>("NewQDOvalUPP");
-            m_NewQDPolyUPPFunc = getProcAddress<NewQDPolyUPPFunc>("NewQDPolyUPP");
-            m_NewQDPutPicUPPFunc = getProcAddress<NewQDPutPicUPPFunc>("NewQDPutPicUPP");
-            m_NewQDRRectUPPFunc = getProcAddress<NewQDRRectUPPFunc>("NewQDRRectUPP");
-            m_NewQDRectUPPFunc = getProcAddress<NewQDRectUPPFunc>("NewQDRectUPP");
-            m_NewQDRgnUPPFunc = getProcAddress<NewQDRgnUPPFunc>("NewQDRgnUPP");
-            m_NewQDStdGlyphsUPPFunc = getProcAddress<NewQDStdGlyphsUPPFunc>("NewQDStdGlyphsUPP");
-            m_NewQDTextUPPFunc = getProcAddress<NewQDTextUPPFunc>("NewQDTextUPP");
-            m_NewQDTxMeasUPPFunc = getProcAddress<NewQDTxMeasUPPFunc>("NewQDTxMeasUPP");
-            m_NewRegionToRectsUPPFunc = getProcAddress<NewRegionToRectsUPPFunc>("NewRegionToRectsUPP");
             m_NewRgnFunc = getProcAddress<NewRgnFunc>("NewRgn");
             m_ObscureCursorFunc = getProcAddress<ObscureCursorFunc>("ObscureCursor");
             m_OffsetPolyFunc = getProcAddress<OffsetPolyFunc>("OffsetPoly");
-            m_OffsetRectFunc = getProcAddress<OffsetRectFunc>("OffsetRect");
             m_OffsetRgnFunc = getProcAddress<OffsetRgnFunc>("OffsetRgn");
             m_OpColorFunc = getProcAddress<OpColorFunc>("OpColor");
             m_OpenCPictureFunc = getProcAddress<OpenCPictureFunc>("OpenCPicture");
@@ -4824,10 +4842,7 @@ private:
             m_PicCommentFunc = getProcAddress<PicCommentFunc>("PicComment");
             m_PortSizeFunc = getProcAddress<PortSizeFunc>("PortSize");
             m_ProtectEntryFunc = getProcAddress<ProtectEntryFunc>("ProtectEntry");
-            m_Pt2RectFunc = getProcAddress<Pt2RectFunc>("Pt2Rect");
-            m_PtInRectFunc = getProcAddress<PtInRectFunc>("PtInRect");
             m_PtInRgnFunc = getProcAddress<PtInRgnFunc>("PtInRgn");
-            m_PtToAngleFunc = getProcAddress<PtToAngleFunc>("PtToAngle");
             m_QDAddRectToDirtyRegionFunc = getProcAddress<QDAddRectToDirtyRegionFunc>("QDAddRectToDirtyRegion");
             m_QDAddRegionToDirtyRegionFunc = getProcAddress<QDAddRegionToDirtyRegionFunc>("QDAddRegionToDirtyRegion");
             m_QDBeginCGContextFunc = getProcAddress<QDBeginCGContextFunc>("QDBeginCGContext");
@@ -4850,7 +4865,6 @@ private:
             m_QDLocalToGlobalPointFunc = getProcAddress<QDLocalToGlobalPointFunc>("QDLocalToGlobalPoint");
             m_QDLocalToGlobalRectFunc = getProcAddress<QDLocalToGlobalRectFunc>("QDLocalToGlobalRect");
             m_QDLocalToGlobalRegionFunc = getProcAddress<QDLocalToGlobalRegionFunc>("QDLocalToGlobalRegion");
-            m_QDRegionToRectsFunc = getProcAddress<QDRegionToRectsFunc>("QDRegionToRects");
             m_QDRegisterNamedPixMapCursorFunc = getProcAddress<QDRegisterNamedPixMapCursorFunc>("QDRegisterNamedPixMapCursor");
             m_QDSetCursorScaleFunc = getProcAddress<QDSetCursorScaleFunc>("QDSetCursorScale");
             m_QDSetDirtyRegionFunc = getProcAddress<QDSetDirtyRegionFunc>("QDSetDirtyRegion");
@@ -4869,10 +4883,8 @@ private:
             m_RectRgnFunc = getProcAddress<RectRgnFunc>("RectRgn");
             m_ReserveEntryFunc = getProcAddress<ReserveEntryFunc>("ReserveEntry");
             m_RgnToHandleFunc = getProcAddress<RgnToHandleFunc>("RgnToHandle");
-            m_ScalePtFunc = getProcAddress<ScalePtFunc>("ScalePt");
             m_ScreenResFunc = getProcAddress<ScreenResFunc>("ScreenRes");
             m_ScrollRectFunc = getProcAddress<ScrollRectFunc>("ScrollRect");
-            m_SectRectFunc = getProcAddress<SectRectFunc>("SectRect");
             m_SectRegionWithPortClipRegionFunc = getProcAddress<SectRegionWithPortClipRegionFunc>("SectRegionWithPortClipRegion");
             m_SectRegionWithPortVisibleRegionFunc = getProcAddress<SectRegionWithPortVisibleRegionFunc>("SectRegionWithPortVisibleRegion");
             m_SectRgnFunc = getProcAddress<SectRgnFunc>("SectRgn");
@@ -4905,10 +4917,8 @@ private:
             m_SetPortTextModeFunc = getProcAddress<SetPortTextModeFunc>("SetPortTextMode");
             m_SetPortTextSizeFunc = getProcAddress<SetPortTextSizeFunc>("SetPortTextSize");
             m_SetPortVisibleRegionFunc = getProcAddress<SetPortVisibleRegionFunc>("SetPortVisibleRegion");
-            m_SetPtFunc = getProcAddress<SetPtFunc>("SetPt");
             m_SetQDErrorFunc = getProcAddress<SetQDErrorFunc>("SetQDError");
             m_SetQDGlobalsRandomSeedFunc = getProcAddress<SetQDGlobalsRandomSeedFunc>("SetQDGlobalsRandomSeed");
-            m_SetRectFunc = getProcAddress<SetRectFunc>("SetRect");
             m_SetRectRgnFunc = getProcAddress<SetRectRgnFunc>("SetRectRgn");
             m_SetStdCProcsFunc = getProcAddress<SetStdCProcsFunc>("SetStdCProcs");
             m_ShieldCursorFunc = getProcAddress<ShieldCursorFunc>("ShieldCursor");
@@ -4928,18 +4938,17 @@ private:
             m_StdRectFunc = getProcAddress<StdRectFunc>("StdRect");
             m_StdRgnFunc = getProcAddress<StdRgnFunc>("StdRgn");
             m_StuffHexFunc = getProcAddress<StuffHexFunc>("StuffHex");
-            m_SubPtFunc = getProcAddress<SubPtFunc>("SubPt");
             m_SwapPortPicSaveHandleFunc = getProcAddress<SwapPortPicSaveHandleFunc>("SwapPortPicSaveHandle");
             m_SwapPortPolySaveHandleFunc = getProcAddress<SwapPortPolySaveHandleFunc>("SwapPortPolySaveHandle");
             m_SwapPortRegionSaveHandleFunc = getProcAddress<SwapPortRegionSaveHandleFunc>("SwapPortRegionSaveHandle");
             m_SyncCGContextOriginWithPortFunc = getProcAddress<SyncCGContextOriginWithPortFunc>("SyncCGContextOriginWithPort");
             m_TestDeviceAttributeFunc = getProcAddress<TestDeviceAttributeFunc>("TestDeviceAttribute");
-            m_UnionRectFunc = getProcAddress<UnionRectFunc>("UnionRect");
             m_UnionRgnFunc = getProcAddress<UnionRgnFunc>("UnionRgn");
             m_UnlockPortBitsFunc = getProcAddress<UnlockPortBitsFunc>("UnlockPortBits");
             m_UnpackBitsFunc = getProcAddress<UnpackBitsFunc>("UnpackBits");
             m_XorRgnFunc = getProcAddress<XorRgnFunc>("XorRgn");
             m_deltapointFunc = getProcAddress<deltapointFunc>("deltapoint");
+#endif /* !__LP64__ */
             m_initialized = true;
         }
     }
@@ -4963,8 +4972,89 @@ private:
 private:
     bool m_initialized;
     void * m_qd_dylib_handle;
-    AddCompFunc m_AddCompFunc;
     AddPtFunc m_AddPtFunc;
+    DisposeCMBitmapCallBackUPPFunc m_DisposeCMBitmapCallBackUPPFunc;
+    DisposeColorComplementUPPFunc m_DisposeColorComplementUPPFunc;
+    DisposeColorSearchUPPFunc m_DisposeColorSearchUPPFunc;
+    DisposeDragGrayRgnUPPFunc m_DisposeDragGrayRgnUPPFunc;
+    DisposeQDArcUPPFunc m_DisposeQDArcUPPFunc;
+    DisposeQDBitsUPPFunc m_DisposeQDBitsUPPFunc;
+    DisposeQDCommentUPPFunc m_DisposeQDCommentUPPFunc;
+    DisposeQDGetPicUPPFunc m_DisposeQDGetPicUPPFunc;
+    DisposeQDJShieldCursorUPPFunc m_DisposeQDJShieldCursorUPPFunc;
+    DisposeQDLineUPPFunc m_DisposeQDLineUPPFunc;
+    DisposeQDOpcodeUPPFunc m_DisposeQDOpcodeUPPFunc;
+    DisposeQDOvalUPPFunc m_DisposeQDOvalUPPFunc;
+    DisposeQDPolyUPPFunc m_DisposeQDPolyUPPFunc;
+    DisposeQDPutPicUPPFunc m_DisposeQDPutPicUPPFunc;
+    DisposeQDRRectUPPFunc m_DisposeQDRRectUPPFunc;
+    DisposeQDRectUPPFunc m_DisposeQDRectUPPFunc;
+    DisposeQDRgnUPPFunc m_DisposeQDRgnUPPFunc;
+    DisposeQDStdGlyphsUPPFunc m_DisposeQDStdGlyphsUPPFunc;
+    DisposeQDTextUPPFunc m_DisposeQDTextUPPFunc;
+    DisposeQDTxMeasUPPFunc m_DisposeQDTxMeasUPPFunc;
+    DisposeRegionToRectsUPPFunc m_DisposeRegionToRectsUPPFunc;
+    EmptyRectFunc m_EmptyRectFunc;
+    EqualPtFunc m_EqualPtFunc;
+    EqualRectFunc m_EqualRectFunc;
+    InsetRectFunc m_InsetRectFunc;
+    InvokeCMBitmapCallBackUPPFunc m_InvokeCMBitmapCallBackUPPFunc;
+    InvokeColorComplementUPPFunc m_InvokeColorComplementUPPFunc;
+    InvokeColorSearchUPPFunc m_InvokeColorSearchUPPFunc;
+    InvokeDragGrayRgnUPPFunc m_InvokeDragGrayRgnUPPFunc;
+    InvokeQDArcUPPFunc m_InvokeQDArcUPPFunc;
+    InvokeQDBitsUPPFunc m_InvokeQDBitsUPPFunc;
+    InvokeQDCommentUPPFunc m_InvokeQDCommentUPPFunc;
+    InvokeQDGetPicUPPFunc m_InvokeQDGetPicUPPFunc;
+    InvokeQDJShieldCursorUPPFunc m_InvokeQDJShieldCursorUPPFunc;
+    InvokeQDLineUPPFunc m_InvokeQDLineUPPFunc;
+    InvokeQDOpcodeUPPFunc m_InvokeQDOpcodeUPPFunc;
+    InvokeQDOvalUPPFunc m_InvokeQDOvalUPPFunc;
+    InvokeQDPolyUPPFunc m_InvokeQDPolyUPPFunc;
+    InvokeQDPutPicUPPFunc m_InvokeQDPutPicUPPFunc;
+    InvokeQDRRectUPPFunc m_InvokeQDRRectUPPFunc;
+    InvokeQDRectUPPFunc m_InvokeQDRectUPPFunc;
+    InvokeQDRgnUPPFunc m_InvokeQDRgnUPPFunc;
+    InvokeQDStdGlyphsUPPFunc m_InvokeQDStdGlyphsUPPFunc;
+    InvokeQDTextUPPFunc m_InvokeQDTextUPPFunc;
+    InvokeQDTxMeasUPPFunc m_InvokeQDTxMeasUPPFunc;
+    InvokeRegionToRectsUPPFunc m_InvokeRegionToRectsUPPFunc;
+    MapPtFunc m_MapPtFunc;
+    MapRectFunc m_MapRectFunc;
+    NewCMBitmapCallBackUPPFunc m_NewCMBitmapCallBackUPPFunc;
+    NewColorComplementUPPFunc m_NewColorComplementUPPFunc;
+    NewColorSearchUPPFunc m_NewColorSearchUPPFunc;
+    NewDragGrayRgnUPPFunc m_NewDragGrayRgnUPPFunc;
+    NewQDArcUPPFunc m_NewQDArcUPPFunc;
+    NewQDBitsUPPFunc m_NewQDBitsUPPFunc;
+    NewQDCommentUPPFunc m_NewQDCommentUPPFunc;
+    NewQDGetPicUPPFunc m_NewQDGetPicUPPFunc;
+    NewQDJShieldCursorUPPFunc m_NewQDJShieldCursorUPPFunc;
+    NewQDLineUPPFunc m_NewQDLineUPPFunc;
+    NewQDOpcodeUPPFunc m_NewQDOpcodeUPPFunc;
+    NewQDOvalUPPFunc m_NewQDOvalUPPFunc;
+    NewQDPolyUPPFunc m_NewQDPolyUPPFunc;
+    NewQDPutPicUPPFunc m_NewQDPutPicUPPFunc;
+    NewQDRRectUPPFunc m_NewQDRRectUPPFunc;
+    NewQDRectUPPFunc m_NewQDRectUPPFunc;
+    NewQDRgnUPPFunc m_NewQDRgnUPPFunc;
+    NewQDStdGlyphsUPPFunc m_NewQDStdGlyphsUPPFunc;
+    NewQDTextUPPFunc m_NewQDTextUPPFunc;
+    NewQDTxMeasUPPFunc m_NewQDTxMeasUPPFunc;
+    NewRegionToRectsUPPFunc m_NewRegionToRectsUPPFunc;
+    OffsetRectFunc m_OffsetRectFunc;
+    Pt2RectFunc m_Pt2RectFunc;
+    PtInRectFunc m_PtInRectFunc;
+    PtToAngleFunc m_PtToAngleFunc;
+    QDRegionToRectsFunc m_QDRegionToRectsFunc;
+    ScalePtFunc m_ScalePtFunc;
+    SectRectFunc m_SectRectFunc;
+    SetPtFunc m_SetPtFunc;
+    SetRectFunc m_SetRectFunc;
+    SubPtFunc m_SubPtFunc;
+    UnionRectFunc m_UnionRectFunc;
+#if !__LP64__
+    AddCompFunc m_AddCompFunc;
     AddSearchFunc m_AddSearchFunc;
     AllocCursorFunc m_AllocCursorFunc;
     AngleFromSlopeFunc m_AngleFromSlopeFunc;
@@ -5001,38 +5091,14 @@ private:
     DelSearchFunc m_DelSearchFunc;
     DeltaPointFunc m_DeltaPointFunc;
     DiffRgnFunc m_DiffRgnFunc;
-    DisposeCMBitmapCallBackUPPFunc m_DisposeCMBitmapCallBackUPPFunc;
     DisposeCTableFunc m_DisposeCTableFunc;
-    DisposeColorComplementUPPFunc m_DisposeColorComplementUPPFunc;
-    DisposeColorSearchUPPFunc m_DisposeColorSearchUPPFunc;
-    DisposeDragGrayRgnUPPFunc m_DisposeDragGrayRgnUPPFunc;
     DisposeGDeviceFunc m_DisposeGDeviceFunc;
     DisposePixMapFunc m_DisposePixMapFunc;
     DisposePixPatFunc m_DisposePixPatFunc;
     DisposePortFunc m_DisposePortFunc;
-    DisposeQDArcUPPFunc m_DisposeQDArcUPPFunc;
-    DisposeQDBitsUPPFunc m_DisposeQDBitsUPPFunc;
-    DisposeQDCommentUPPFunc m_DisposeQDCommentUPPFunc;
-    DisposeQDGetPicUPPFunc m_DisposeQDGetPicUPPFunc;
-    DisposeQDJShieldCursorUPPFunc m_DisposeQDJShieldCursorUPPFunc;
-    DisposeQDLineUPPFunc m_DisposeQDLineUPPFunc;
-    DisposeQDOpcodeUPPFunc m_DisposeQDOpcodeUPPFunc;
-    DisposeQDOvalUPPFunc m_DisposeQDOvalUPPFunc;
-    DisposeQDPolyUPPFunc m_DisposeQDPolyUPPFunc;
-    DisposeQDPutPicUPPFunc m_DisposeQDPutPicUPPFunc;
-    DisposeQDRRectUPPFunc m_DisposeQDRRectUPPFunc;
-    DisposeQDRectUPPFunc m_DisposeQDRectUPPFunc;
-    DisposeQDRgnUPPFunc m_DisposeQDRgnUPPFunc;
-    DisposeQDStdGlyphsUPPFunc m_DisposeQDStdGlyphsUPPFunc;
-    DisposeQDTextUPPFunc m_DisposeQDTextUPPFunc;
-    DisposeQDTxMeasUPPFunc m_DisposeQDTxMeasUPPFunc;
-    DisposeRegionToRectsUPPFunc m_DisposeRegionToRectsUPPFunc;
     DisposeRgnFunc m_DisposeRgnFunc;
     DrawPictureFunc m_DrawPictureFunc;
-    EmptyRectFunc m_EmptyRectFunc;
     EmptyRgnFunc m_EmptyRgnFunc;
-    EqualPtFunc m_EqualPtFunc;
-    EqualRectFunc m_EqualRectFunc;
     EqualRgnFunc m_EqualRgnFunc;
     EraseArcFunc m_EraseArcFunc;
     EraseOvalFunc m_EraseOvalFunc;
@@ -5123,7 +5189,6 @@ private:
     Index2ColorFunc m_Index2ColorFunc;
     InitCursorFunc m_InitCursorFunc;
     InitGDeviceFunc m_InitGDeviceFunc;
-    InsetRectFunc m_InsetRectFunc;
     InsetRgnFunc m_InsetRgnFunc;
     InvertArcFunc m_InvertArcFunc;
     InvertColorFunc m_InvertColorFunc;
@@ -5132,27 +5197,6 @@ private:
     InvertRectFunc m_InvertRectFunc;
     InvertRgnFunc m_InvertRgnFunc;
     InvertRoundRectFunc m_InvertRoundRectFunc;
-    InvokeCMBitmapCallBackUPPFunc m_InvokeCMBitmapCallBackUPPFunc;
-    InvokeColorComplementUPPFunc m_InvokeColorComplementUPPFunc;
-    InvokeColorSearchUPPFunc m_InvokeColorSearchUPPFunc;
-    InvokeDragGrayRgnUPPFunc m_InvokeDragGrayRgnUPPFunc;
-    InvokeQDArcUPPFunc m_InvokeQDArcUPPFunc;
-    InvokeQDBitsUPPFunc m_InvokeQDBitsUPPFunc;
-    InvokeQDCommentUPPFunc m_InvokeQDCommentUPPFunc;
-    InvokeQDGetPicUPPFunc m_InvokeQDGetPicUPPFunc;
-    InvokeQDJShieldCursorUPPFunc m_InvokeQDJShieldCursorUPPFunc;
-    InvokeQDLineUPPFunc m_InvokeQDLineUPPFunc;
-    InvokeQDOpcodeUPPFunc m_InvokeQDOpcodeUPPFunc;
-    InvokeQDOvalUPPFunc m_InvokeQDOvalUPPFunc;
-    InvokeQDPolyUPPFunc m_InvokeQDPolyUPPFunc;
-    InvokeQDPutPicUPPFunc m_InvokeQDPutPicUPPFunc;
-    InvokeQDRRectUPPFunc m_InvokeQDRRectUPPFunc;
-    InvokeQDRectUPPFunc m_InvokeQDRectUPPFunc;
-    InvokeQDRgnUPPFunc m_InvokeQDRgnUPPFunc;
-    InvokeQDStdGlyphsUPPFunc m_InvokeQDStdGlyphsUPPFunc;
-    InvokeQDTextUPPFunc m_InvokeQDTextUPPFunc;
-    InvokeQDTxMeasUPPFunc m_InvokeQDTxMeasUPPFunc;
-    InvokeRegionToRectsUPPFunc m_InvokeRegionToRectsUPPFunc;
     IsPortClipRegionEmptyFunc m_IsPortClipRegionEmptyFunc;
     IsPortColorFunc m_IsPortColorFunc;
     IsPortOffscreenFunc m_IsPortOffscreenFunc;
@@ -5201,8 +5245,6 @@ private:
     LockPortBitsFunc m_LockPortBitsFunc;
     MakeRGBPatFunc m_MakeRGBPatFunc;
     MapPolyFunc m_MapPolyFunc;
-    MapPtFunc m_MapPtFunc;
-    MapRectFunc m_MapRectFunc;
     MapRgnFunc m_MapRgnFunc;
     MoveFunc m_MoveFunc;
     MovePortToFunc m_MovePortToFunc;
@@ -5210,34 +5252,12 @@ private:
     NCMBeginMatchingFunc m_NCMBeginMatchingFunc;
     NCMDrawMatchedPictureFunc m_NCMDrawMatchedPictureFunc;
     NCMUseProfileCommentFunc m_NCMUseProfileCommentFunc;
-    NewCMBitmapCallBackUPPFunc m_NewCMBitmapCallBackUPPFunc;
-    NewColorComplementUPPFunc m_NewColorComplementUPPFunc;
-    NewColorSearchUPPFunc m_NewColorSearchUPPFunc;
-    NewDragGrayRgnUPPFunc m_NewDragGrayRgnUPPFunc;
     NewGDeviceFunc m_NewGDeviceFunc;
     NewPixMapFunc m_NewPixMapFunc;
     NewPixPatFunc m_NewPixPatFunc;
-    NewQDArcUPPFunc m_NewQDArcUPPFunc;
-    NewQDBitsUPPFunc m_NewQDBitsUPPFunc;
-    NewQDCommentUPPFunc m_NewQDCommentUPPFunc;
-    NewQDGetPicUPPFunc m_NewQDGetPicUPPFunc;
-    NewQDJShieldCursorUPPFunc m_NewQDJShieldCursorUPPFunc;
-    NewQDLineUPPFunc m_NewQDLineUPPFunc;
-    NewQDOpcodeUPPFunc m_NewQDOpcodeUPPFunc;
-    NewQDOvalUPPFunc m_NewQDOvalUPPFunc;
-    NewQDPolyUPPFunc m_NewQDPolyUPPFunc;
-    NewQDPutPicUPPFunc m_NewQDPutPicUPPFunc;
-    NewQDRRectUPPFunc m_NewQDRRectUPPFunc;
-    NewQDRectUPPFunc m_NewQDRectUPPFunc;
-    NewQDRgnUPPFunc m_NewQDRgnUPPFunc;
-    NewQDStdGlyphsUPPFunc m_NewQDStdGlyphsUPPFunc;
-    NewQDTextUPPFunc m_NewQDTextUPPFunc;
-    NewQDTxMeasUPPFunc m_NewQDTxMeasUPPFunc;
-    NewRegionToRectsUPPFunc m_NewRegionToRectsUPPFunc;
     NewRgnFunc m_NewRgnFunc;
     ObscureCursorFunc m_ObscureCursorFunc;
     OffsetPolyFunc m_OffsetPolyFunc;
-    OffsetRectFunc m_OffsetRectFunc;
     OffsetRgnFunc m_OffsetRgnFunc;
     OpColorFunc m_OpColorFunc;
     OpenCPictureFunc m_OpenCPictureFunc;
@@ -5260,10 +5280,7 @@ private:
     PicCommentFunc m_PicCommentFunc;
     PortSizeFunc m_PortSizeFunc;
     ProtectEntryFunc m_ProtectEntryFunc;
-    Pt2RectFunc m_Pt2RectFunc;
-    PtInRectFunc m_PtInRectFunc;
     PtInRgnFunc m_PtInRgnFunc;
-    PtToAngleFunc m_PtToAngleFunc;
     QDAddRectToDirtyRegionFunc m_QDAddRectToDirtyRegionFunc;
     QDAddRegionToDirtyRegionFunc m_QDAddRegionToDirtyRegionFunc;
     QDBeginCGContextFunc m_QDBeginCGContextFunc;
@@ -5286,7 +5303,6 @@ private:
     QDLocalToGlobalPointFunc m_QDLocalToGlobalPointFunc;
     QDLocalToGlobalRectFunc m_QDLocalToGlobalRectFunc;
     QDLocalToGlobalRegionFunc m_QDLocalToGlobalRegionFunc;
-    QDRegionToRectsFunc m_QDRegionToRectsFunc;
     QDRegisterNamedPixMapCursorFunc m_QDRegisterNamedPixMapCursorFunc;
     QDSetCursorScaleFunc m_QDSetCursorScaleFunc;
     QDSetDirtyRegionFunc m_QDSetDirtyRegionFunc;
@@ -5305,10 +5321,8 @@ private:
     RectRgnFunc m_RectRgnFunc;
     ReserveEntryFunc m_ReserveEntryFunc;
     RgnToHandleFunc m_RgnToHandleFunc;
-    ScalePtFunc m_ScalePtFunc;
     ScreenResFunc m_ScreenResFunc;
     ScrollRectFunc m_ScrollRectFunc;
-    SectRectFunc m_SectRectFunc;
     SectRegionWithPortClipRegionFunc m_SectRegionWithPortClipRegionFunc;
     SectRegionWithPortVisibleRegionFunc m_SectRegionWithPortVisibleRegionFunc;
     SectRgnFunc m_SectRgnFunc;
@@ -5341,10 +5355,8 @@ private:
     SetPortTextModeFunc m_SetPortTextModeFunc;
     SetPortTextSizeFunc m_SetPortTextSizeFunc;
     SetPortVisibleRegionFunc m_SetPortVisibleRegionFunc;
-    SetPtFunc m_SetPtFunc;
     SetQDErrorFunc m_SetQDErrorFunc;
     SetQDGlobalsRandomSeedFunc m_SetQDGlobalsRandomSeedFunc;
-    SetRectFunc m_SetRectFunc;
     SetRectRgnFunc m_SetRectRgnFunc;
     SetStdCProcsFunc m_SetStdCProcsFunc;
     ShieldCursorFunc m_ShieldCursorFunc;
@@ -5364,28 +5376,348 @@ private:
     StdRectFunc m_StdRectFunc;
     StdRgnFunc m_StdRgnFunc;
     StuffHexFunc m_StuffHexFunc;
-    SubPtFunc m_SubPtFunc;
     SwapPortPicSaveHandleFunc m_SwapPortPicSaveHandleFunc;
     SwapPortPolySaveHandleFunc m_SwapPortPolySaveHandleFunc;
     SwapPortRegionSaveHandleFunc m_SwapPortRegionSaveHandleFunc;
     SyncCGContextOriginWithPortFunc m_SyncCGContextOriginWithPortFunc;
     TestDeviceAttributeFunc m_TestDeviceAttributeFunc;
-    UnionRectFunc m_UnionRectFunc;
     UnionRgnFunc m_UnionRgnFunc;
     UnlockPortBitsFunc m_UnlockPortBitsFunc;
     UnpackBitsFunc m_UnpackBitsFunc;
     XorRgnFunc m_XorRgnFunc;
     deltapointFunc m_deltapointFunc;
+#endif /* !__LP64__ */
 };
 QuickDrawAPIWrapper s_wrapper;
 extern "C" {
-void fakeQD_AddComp(ColorComplementUPP a0)
-{
-    s_wrapper.fakeQD_AddComp(a0);
-}
 void fakeQD_AddPt(Point a0, Point * a1)
 {
     s_wrapper.fakeQD_AddPt(a0, a1);
+}
+void fakeQD_DisposeCMBitmapCallBackUPP(CMBitmapCallBackUPP a0)
+{
+    s_wrapper.fakeQD_DisposeCMBitmapCallBackUPP(a0);
+}
+void fakeQD_DisposeColorComplementUPP(ColorComplementUPP a0)
+{
+    s_wrapper.fakeQD_DisposeColorComplementUPP(a0);
+}
+void fakeQD_DisposeColorSearchUPP(ColorSearchUPP a0)
+{
+    s_wrapper.fakeQD_DisposeColorSearchUPP(a0);
+}
+void fakeQD_DisposeDragGrayRgnUPP(DragGrayRgnUPP a0)
+{
+    s_wrapper.fakeQD_DisposeDragGrayRgnUPP(a0);
+}
+void fakeQD_DisposeQDArcUPP(QDArcUPP a0)
+{
+    s_wrapper.fakeQD_DisposeQDArcUPP(a0);
+}
+void fakeQD_DisposeQDBitsUPP(QDBitsUPP a0)
+{
+    s_wrapper.fakeQD_DisposeQDBitsUPP(a0);
+}
+void fakeQD_DisposeQDCommentUPP(QDCommentUPP a0)
+{
+    s_wrapper.fakeQD_DisposeQDCommentUPP(a0);
+}
+void fakeQD_DisposeQDGetPicUPP(QDGetPicUPP a0)
+{
+    s_wrapper.fakeQD_DisposeQDGetPicUPP(a0);
+}
+void fakeQD_DisposeQDJShieldCursorUPP(QDJShieldCursorUPP a0)
+{
+    s_wrapper.fakeQD_DisposeQDJShieldCursorUPP(a0);
+}
+void fakeQD_DisposeQDLineUPP(QDLineUPP a0)
+{
+    s_wrapper.fakeQD_DisposeQDLineUPP(a0);
+}
+void fakeQD_DisposeQDOpcodeUPP(QDOpcodeUPP a0)
+{
+    s_wrapper.fakeQD_DisposeQDOpcodeUPP(a0);
+}
+void fakeQD_DisposeQDOvalUPP(QDOvalUPP a0)
+{
+    s_wrapper.fakeQD_DisposeQDOvalUPP(a0);
+}
+void fakeQD_DisposeQDPolyUPP(QDPolyUPP a0)
+{
+    s_wrapper.fakeQD_DisposeQDPolyUPP(a0);
+}
+void fakeQD_DisposeQDPutPicUPP(QDPutPicUPP a0)
+{
+    s_wrapper.fakeQD_DisposeQDPutPicUPP(a0);
+}
+void fakeQD_DisposeQDRRectUPP(QDRRectUPP a0)
+{
+    s_wrapper.fakeQD_DisposeQDRRectUPP(a0);
+}
+void fakeQD_DisposeQDRectUPP(QDRectUPP a0)
+{
+    s_wrapper.fakeQD_DisposeQDRectUPP(a0);
+}
+void fakeQD_DisposeQDRgnUPP(QDRgnUPP a0)
+{
+    s_wrapper.fakeQD_DisposeQDRgnUPP(a0);
+}
+void fakeQD_DisposeQDStdGlyphsUPP(QDStdGlyphsUPP a0)
+{
+    s_wrapper.fakeQD_DisposeQDStdGlyphsUPP(a0);
+}
+void fakeQD_DisposeQDTextUPP(QDTextUPP a0)
+{
+    s_wrapper.fakeQD_DisposeQDTextUPP(a0);
+}
+void fakeQD_DisposeQDTxMeasUPP(QDTxMeasUPP a0)
+{
+    s_wrapper.fakeQD_DisposeQDTxMeasUPP(a0);
+}
+void fakeQD_DisposeRegionToRectsUPP(RegionToRectsUPP a0)
+{
+    s_wrapper.fakeQD_DisposeRegionToRectsUPP(a0);
+}
+Boolean fakeQD_EmptyRect(const Rect * a0)
+{
+    return s_wrapper.fakeQD_EmptyRect(a0);
+}
+Boolean fakeQD_EqualPt(Point a0, Point a1)
+{
+    return s_wrapper.fakeQD_EqualPt(a0, a1);
+}
+Boolean fakeQD_EqualRect(const Rect * a0, const Rect * a1)
+{
+    return s_wrapper.fakeQD_EqualRect(a0, a1);
+}
+void fakeQD_InsetRect(Rect * a0, short a1, short a2)
+{
+    s_wrapper.fakeQD_InsetRect(a0, a1, a2);
+}
+Boolean fakeQD_InvokeCMBitmapCallBackUPP(long a0, void * a1, CMBitmapCallBackUPP a2)
+{
+    return s_wrapper.fakeQD_InvokeCMBitmapCallBackUPP(a0, a1, a2);
+}
+Boolean fakeQD_InvokeColorComplementUPP(RGBColor * a0, ColorComplementUPP a1)
+{
+    return s_wrapper.fakeQD_InvokeColorComplementUPP(a0, a1);
+}
+Boolean fakeQD_InvokeColorSearchUPP(RGBColor * a0, long * a1, ColorSearchUPP a2)
+{
+    return s_wrapper.fakeQD_InvokeColorSearchUPP(a0, a1, a2);
+}
+void fakeQD_InvokeDragGrayRgnUPP(DragGrayRgnUPP a0)
+{
+    s_wrapper.fakeQD_InvokeDragGrayRgnUPP(a0);
+}
+void fakeQD_InvokeQDArcUPP(GrafVerb a0, const Rect * a1, short a2, short a3, QDArcUPP a4)
+{
+    s_wrapper.fakeQD_InvokeQDArcUPP(a0, a1, a2, a3, a4);
+}
+void fakeQD_InvokeQDBitsUPP(const BitMap * a0, const Rect * a1, const Rect * a2, short a3, RgnHandle a4, QDBitsUPP a5)
+{
+    s_wrapper.fakeQD_InvokeQDBitsUPP(a0, a1, a2, a3, a4, a5);
+}
+void fakeQD_InvokeQDCommentUPP(short a0, short a1, Handle a2, QDCommentUPP a3)
+{
+    s_wrapper.fakeQD_InvokeQDCommentUPP(a0, a1, a2, a3);
+}
+void fakeQD_InvokeQDGetPicUPP(void * a0, short a1, QDGetPicUPP a2)
+{
+    s_wrapper.fakeQD_InvokeQDGetPicUPP(a0, a1, a2);
+}
+void fakeQD_InvokeQDJShieldCursorUPP(short a0, short a1, short a2, short a3, QDJShieldCursorUPP a4)
+{
+    s_wrapper.fakeQD_InvokeQDJShieldCursorUPP(a0, a1, a2, a3, a4);
+}
+void fakeQD_InvokeQDLineUPP(Point a0, QDLineUPP a1)
+{
+    s_wrapper.fakeQD_InvokeQDLineUPP(a0, a1);
+}
+void fakeQD_InvokeQDOpcodeUPP(const Rect * a0, const Rect * a1, UInt16 a2, SInt16 a3, QDOpcodeUPP a4)
+{
+    s_wrapper.fakeQD_InvokeQDOpcodeUPP(a0, a1, a2, a3, a4);
+}
+void fakeQD_InvokeQDOvalUPP(GrafVerb a0, const Rect * a1, QDOvalUPP a2)
+{
+    s_wrapper.fakeQD_InvokeQDOvalUPP(a0, a1, a2);
+}
+void fakeQD_InvokeQDPolyUPP(GrafVerb a0, PolyHandle a1, QDPolyUPP a2)
+{
+    s_wrapper.fakeQD_InvokeQDPolyUPP(a0, a1, a2);
+}
+void fakeQD_InvokeQDPutPicUPP(const void * a0, short a1, QDPutPicUPP a2)
+{
+    s_wrapper.fakeQD_InvokeQDPutPicUPP(a0, a1, a2);
+}
+void fakeQD_InvokeQDRRectUPP(GrafVerb a0, const Rect * a1, short a2, short a3, QDRRectUPP a4)
+{
+    s_wrapper.fakeQD_InvokeQDRRectUPP(a0, a1, a2, a3, a4);
+}
+void fakeQD_InvokeQDRectUPP(GrafVerb a0, const Rect * a1, QDRectUPP a2)
+{
+    s_wrapper.fakeQD_InvokeQDRectUPP(a0, a1, a2);
+}
+void fakeQD_InvokeQDRgnUPP(GrafVerb a0, RgnHandle a1, QDRgnUPP a2)
+{
+    s_wrapper.fakeQD_InvokeQDRgnUPP(a0, a1, a2);
+}
+OSStatus fakeQD_InvokeQDStdGlyphsUPP(void * a0, ByteCount a1, QDStdGlyphsUPP a2)
+{
+    return s_wrapper.fakeQD_InvokeQDStdGlyphsUPP(a0, a1, a2);
+}
+void fakeQD_InvokeQDTextUPP(short a0, const void * a1, Point a2, Point a3, QDTextUPP a4)
+{
+    s_wrapper.fakeQD_InvokeQDTextUPP(a0, a1, a2, a3, a4);
+}
+short fakeQD_InvokeQDTxMeasUPP(short a0, const void * a1, Point * a2, Point * a3, FontInfo * a4, QDTxMeasUPP a5)
+{
+    return s_wrapper.fakeQD_InvokeQDTxMeasUPP(a0, a1, a2, a3, a4, a5);
+}
+OSStatus fakeQD_InvokeRegionToRectsUPP(UInt16 a0, RgnHandle a1, const Rect * a2, void * a3, RegionToRectsUPP a4)
+{
+    return s_wrapper.fakeQD_InvokeRegionToRectsUPP(a0, a1, a2, a3, a4);
+}
+void fakeQD_MapPt(Point * a0, const Rect * a1, const Rect * a2)
+{
+    s_wrapper.fakeQD_MapPt(a0, a1, a2);
+}
+void fakeQD_MapRect(Rect * a0, const Rect * a1, const Rect * a2)
+{
+    s_wrapper.fakeQD_MapRect(a0, a1, a2);
+}
+CMBitmapCallBackUPP fakeQD_NewCMBitmapCallBackUPP(CMBitmapCallBackProcPtr a0)
+{
+    return s_wrapper.fakeQD_NewCMBitmapCallBackUPP(a0);
+}
+ColorComplementUPP fakeQD_NewColorComplementUPP(ColorComplementProcPtr a0)
+{
+    return s_wrapper.fakeQD_NewColorComplementUPP(a0);
+}
+ColorSearchUPP fakeQD_NewColorSearchUPP(ColorSearchProcPtr a0)
+{
+    return s_wrapper.fakeQD_NewColorSearchUPP(a0);
+}
+DragGrayRgnUPP fakeQD_NewDragGrayRgnUPP(DragGrayRgnProcPtr a0)
+{
+    return s_wrapper.fakeQD_NewDragGrayRgnUPP(a0);
+}
+QDArcUPP fakeQD_NewQDArcUPP(QDArcProcPtr a0)
+{
+    return s_wrapper.fakeQD_NewQDArcUPP(a0);
+}
+QDBitsUPP fakeQD_NewQDBitsUPP(QDBitsProcPtr a0)
+{
+    return s_wrapper.fakeQD_NewQDBitsUPP(a0);
+}
+QDCommentUPP fakeQD_NewQDCommentUPP(QDCommentProcPtr a0)
+{
+    return s_wrapper.fakeQD_NewQDCommentUPP(a0);
+}
+QDGetPicUPP fakeQD_NewQDGetPicUPP(QDGetPicProcPtr a0)
+{
+    return s_wrapper.fakeQD_NewQDGetPicUPP(a0);
+}
+QDJShieldCursorUPP fakeQD_NewQDJShieldCursorUPP(QDJShieldCursorProcPtr a0)
+{
+    return s_wrapper.fakeQD_NewQDJShieldCursorUPP(a0);
+}
+QDLineUPP fakeQD_NewQDLineUPP(QDLineProcPtr a0)
+{
+    return s_wrapper.fakeQD_NewQDLineUPP(a0);
+}
+QDOpcodeUPP fakeQD_NewQDOpcodeUPP(QDOpcodeProcPtr a0)
+{
+    return s_wrapper.fakeQD_NewQDOpcodeUPP(a0);
+}
+QDOvalUPP fakeQD_NewQDOvalUPP(QDOvalProcPtr a0)
+{
+    return s_wrapper.fakeQD_NewQDOvalUPP(a0);
+}
+QDPolyUPP fakeQD_NewQDPolyUPP(QDPolyProcPtr a0)
+{
+    return s_wrapper.fakeQD_NewQDPolyUPP(a0);
+}
+QDPutPicUPP fakeQD_NewQDPutPicUPP(QDPutPicProcPtr a0)
+{
+    return s_wrapper.fakeQD_NewQDPutPicUPP(a0);
+}
+QDRRectUPP fakeQD_NewQDRRectUPP(QDRRectProcPtr a0)
+{
+    return s_wrapper.fakeQD_NewQDRRectUPP(a0);
+}
+QDRectUPP fakeQD_NewQDRectUPP(QDRectProcPtr a0)
+{
+    return s_wrapper.fakeQD_NewQDRectUPP(a0);
+}
+QDRgnUPP fakeQD_NewQDRgnUPP(QDRgnProcPtr a0)
+{
+    return s_wrapper.fakeQD_NewQDRgnUPP(a0);
+}
+QDStdGlyphsUPP fakeQD_NewQDStdGlyphsUPP(QDStdGlyphsProcPtr a0)
+{
+    return s_wrapper.fakeQD_NewQDStdGlyphsUPP(a0);
+}
+QDTextUPP fakeQD_NewQDTextUPP(QDTextProcPtr a0)
+{
+    return s_wrapper.fakeQD_NewQDTextUPP(a0);
+}
+QDTxMeasUPP fakeQD_NewQDTxMeasUPP(QDTxMeasProcPtr a0)
+{
+    return s_wrapper.fakeQD_NewQDTxMeasUPP(a0);
+}
+RegionToRectsUPP fakeQD_NewRegionToRectsUPP(RegionToRectsProcPtr a0)
+{
+    return s_wrapper.fakeQD_NewRegionToRectsUPP(a0);
+}
+void fakeQD_OffsetRect(Rect * a0, short a1, short a2)
+{
+    s_wrapper.fakeQD_OffsetRect(a0, a1, a2);
+}
+void fakeQD_Pt2Rect(Point a0, Point a1, Rect * a2)
+{
+    s_wrapper.fakeQD_Pt2Rect(a0, a1, a2);
+}
+Boolean fakeQD_PtInRect(Point a0, const Rect * a1)
+{
+    return s_wrapper.fakeQD_PtInRect(a0, a1);
+}
+void fakeQD_PtToAngle(const Rect * a0, Point a1, short * a2)
+{
+    s_wrapper.fakeQD_PtToAngle(a0, a1, a2);
+}
+OSStatus fakeQD_QDRegionToRects(RgnHandle a0, QDRegionParseDirection a1, RegionToRectsUPP a2, void * a3)
+{
+    return s_wrapper.fakeQD_QDRegionToRects(a0, a1, a2, a3);
+}
+void fakeQD_ScalePt(Point * a0, const Rect * a1, const Rect * a2)
+{
+    s_wrapper.fakeQD_ScalePt(a0, a1, a2);
+}
+Boolean fakeQD_SectRect(const Rect * a0, const Rect * a1, Rect * a2)
+{
+    return s_wrapper.fakeQD_SectRect(a0, a1, a2);
+}
+void fakeQD_SetPt(Point * a0, short a1, short a2)
+{
+    s_wrapper.fakeQD_SetPt(a0, a1, a2);
+}
+void fakeQD_SetRect(Rect * a0, short a1, short a2, short a3, short a4)
+{
+    s_wrapper.fakeQD_SetRect(a0, a1, a2, a3, a4);
+}
+void fakeQD_SubPt(Point a0, Point * a1)
+{
+    s_wrapper.fakeQD_SubPt(a0, a1);
+}
+void fakeQD_UnionRect(const Rect * a0, const Rect * a1, Rect * a2)
+{
+    s_wrapper.fakeQD_UnionRect(a0, a1, a2);
+}
+#if !__LP64__
+void fakeQD_AddComp(ColorComplementUPP a0)
+{
+    s_wrapper.fakeQD_AddComp(a0);
 }
 void fakeQD_AddSearch(ColorSearchUPP a0)
 {
@@ -5531,25 +5863,9 @@ void fakeQD_DiffRgn(RgnHandle a0, RgnHandle a1, RgnHandle a2)
 {
     s_wrapper.fakeQD_DiffRgn(a0, a1, a2);
 }
-void fakeQD_DisposeCMBitmapCallBackUPP(CMBitmapCallBackUPP a0)
-{
-    s_wrapper.fakeQD_DisposeCMBitmapCallBackUPP(a0);
-}
 void fakeQD_DisposeCTable(CTabHandle a0)
 {
     s_wrapper.fakeQD_DisposeCTable(a0);
-}
-void fakeQD_DisposeColorComplementUPP(ColorComplementUPP a0)
-{
-    s_wrapper.fakeQD_DisposeColorComplementUPP(a0);
-}
-void fakeQD_DisposeColorSearchUPP(ColorSearchUPP a0)
-{
-    s_wrapper.fakeQD_DisposeColorSearchUPP(a0);
-}
-void fakeQD_DisposeDragGrayRgnUPP(DragGrayRgnUPP a0)
-{
-    s_wrapper.fakeQD_DisposeDragGrayRgnUPP(a0);
 }
 void fakeQD_DisposeGDevice(GDHandle a0)
 {
@@ -5567,74 +5883,6 @@ void fakeQD_DisposePort(CGrafPtr a0)
 {
     s_wrapper.fakeQD_DisposePort(a0);
 }
-void fakeQD_DisposeQDArcUPP(QDArcUPP a0)
-{
-    s_wrapper.fakeQD_DisposeQDArcUPP(a0);
-}
-void fakeQD_DisposeQDBitsUPP(QDBitsUPP a0)
-{
-    s_wrapper.fakeQD_DisposeQDBitsUPP(a0);
-}
-void fakeQD_DisposeQDCommentUPP(QDCommentUPP a0)
-{
-    s_wrapper.fakeQD_DisposeQDCommentUPP(a0);
-}
-void fakeQD_DisposeQDGetPicUPP(QDGetPicUPP a0)
-{
-    s_wrapper.fakeQD_DisposeQDGetPicUPP(a0);
-}
-void fakeQD_DisposeQDJShieldCursorUPP(QDJShieldCursorUPP a0)
-{
-    s_wrapper.fakeQD_DisposeQDJShieldCursorUPP(a0);
-}
-void fakeQD_DisposeQDLineUPP(QDLineUPP a0)
-{
-    s_wrapper.fakeQD_DisposeQDLineUPP(a0);
-}
-void fakeQD_DisposeQDOpcodeUPP(QDOpcodeUPP a0)
-{
-    s_wrapper.fakeQD_DisposeQDOpcodeUPP(a0);
-}
-void fakeQD_DisposeQDOvalUPP(QDOvalUPP a0)
-{
-    s_wrapper.fakeQD_DisposeQDOvalUPP(a0);
-}
-void fakeQD_DisposeQDPolyUPP(QDPolyUPP a0)
-{
-    s_wrapper.fakeQD_DisposeQDPolyUPP(a0);
-}
-void fakeQD_DisposeQDPutPicUPP(QDPutPicUPP a0)
-{
-    s_wrapper.fakeQD_DisposeQDPutPicUPP(a0);
-}
-void fakeQD_DisposeQDRRectUPP(QDRRectUPP a0)
-{
-    s_wrapper.fakeQD_DisposeQDRRectUPP(a0);
-}
-void fakeQD_DisposeQDRectUPP(QDRectUPP a0)
-{
-    s_wrapper.fakeQD_DisposeQDRectUPP(a0);
-}
-void fakeQD_DisposeQDRgnUPP(QDRgnUPP a0)
-{
-    s_wrapper.fakeQD_DisposeQDRgnUPP(a0);
-}
-void fakeQD_DisposeQDStdGlyphsUPP(QDStdGlyphsUPP a0)
-{
-    s_wrapper.fakeQD_DisposeQDStdGlyphsUPP(a0);
-}
-void fakeQD_DisposeQDTextUPP(QDTextUPP a0)
-{
-    s_wrapper.fakeQD_DisposeQDTextUPP(a0);
-}
-void fakeQD_DisposeQDTxMeasUPP(QDTxMeasUPP a0)
-{
-    s_wrapper.fakeQD_DisposeQDTxMeasUPP(a0);
-}
-void fakeQD_DisposeRegionToRectsUPP(RegionToRectsUPP a0)
-{
-    s_wrapper.fakeQD_DisposeRegionToRectsUPP(a0);
-}
 void fakeQD_DisposeRgn(RgnHandle a0)
 {
     s_wrapper.fakeQD_DisposeRgn(a0);
@@ -5643,21 +5891,9 @@ void fakeQD_DrawPicture(PicHandle a0, const Rect * a1)
 {
     s_wrapper.fakeQD_DrawPicture(a0, a1);
 }
-Boolean fakeQD_EmptyRect(const Rect * a0)
-{
-    return s_wrapper.fakeQD_EmptyRect(a0);
-}
 Boolean fakeQD_EmptyRgn(RgnHandle a0)
 {
     return s_wrapper.fakeQD_EmptyRgn(a0);
-}
-Boolean fakeQD_EqualPt(Point a0, Point a1)
-{
-    return s_wrapper.fakeQD_EqualPt(a0, a1);
-}
-Boolean fakeQD_EqualRect(const Rect * a0, const Rect * a1)
-{
-    return s_wrapper.fakeQD_EqualRect(a0, a1);
 }
 Boolean fakeQD_EqualRgn(RgnHandle a0, RgnHandle a1)
 {
@@ -6019,10 +6255,6 @@ void fakeQD_InitGDevice(short a0, long a1, GDHandle a2)
 {
     s_wrapper.fakeQD_InitGDevice(a0, a1, a2);
 }
-void fakeQD_InsetRect(Rect * a0, short a1, short a2)
-{
-    s_wrapper.fakeQD_InsetRect(a0, a1, a2);
-}
 void fakeQD_InsetRgn(RgnHandle a0, short a1, short a2)
 {
     s_wrapper.fakeQD_InsetRgn(a0, a1, a2);
@@ -6054,90 +6286,6 @@ void fakeQD_InvertRgn(RgnHandle a0)
 void fakeQD_InvertRoundRect(const Rect * a0, short a1, short a2)
 {
     s_wrapper.fakeQD_InvertRoundRect(a0, a1, a2);
-}
-Boolean fakeQD_InvokeCMBitmapCallBackUPP(long a0, void * a1, CMBitmapCallBackUPP a2)
-{
-    return s_wrapper.fakeQD_InvokeCMBitmapCallBackUPP(a0, a1, a2);
-}
-Boolean fakeQD_InvokeColorComplementUPP(RGBColor * a0, ColorComplementUPP a1)
-{
-    return s_wrapper.fakeQD_InvokeColorComplementUPP(a0, a1);
-}
-Boolean fakeQD_InvokeColorSearchUPP(RGBColor * a0, long * a1, ColorSearchUPP a2)
-{
-    return s_wrapper.fakeQD_InvokeColorSearchUPP(a0, a1, a2);
-}
-void fakeQD_InvokeDragGrayRgnUPP(DragGrayRgnUPP a0)
-{
-    s_wrapper.fakeQD_InvokeDragGrayRgnUPP(a0);
-}
-void fakeQD_InvokeQDArcUPP(GrafVerb a0, const Rect * a1, short a2, short a3, QDArcUPP a4)
-{
-    s_wrapper.fakeQD_InvokeQDArcUPP(a0, a1, a2, a3, a4);
-}
-void fakeQD_InvokeQDBitsUPP(const BitMap * a0, const Rect * a1, const Rect * a2, short a3, RgnHandle a4, QDBitsUPP a5)
-{
-    s_wrapper.fakeQD_InvokeQDBitsUPP(a0, a1, a2, a3, a4, a5);
-}
-void fakeQD_InvokeQDCommentUPP(short a0, short a1, Handle a2, QDCommentUPP a3)
-{
-    s_wrapper.fakeQD_InvokeQDCommentUPP(a0, a1, a2, a3);
-}
-void fakeQD_InvokeQDGetPicUPP(void * a0, short a1, QDGetPicUPP a2)
-{
-    s_wrapper.fakeQD_InvokeQDGetPicUPP(a0, a1, a2);
-}
-void fakeQD_InvokeQDJShieldCursorUPP(short a0, short a1, short a2, short a3, QDJShieldCursorUPP a4)
-{
-    s_wrapper.fakeQD_InvokeQDJShieldCursorUPP(a0, a1, a2, a3, a4);
-}
-void fakeQD_InvokeQDLineUPP(Point a0, QDLineUPP a1)
-{
-    s_wrapper.fakeQD_InvokeQDLineUPP(a0, a1);
-}
-void fakeQD_InvokeQDOpcodeUPP(const Rect * a0, const Rect * a1, UInt16 a2, SInt16 a3, QDOpcodeUPP a4)
-{
-    s_wrapper.fakeQD_InvokeQDOpcodeUPP(a0, a1, a2, a3, a4);
-}
-void fakeQD_InvokeQDOvalUPP(GrafVerb a0, const Rect * a1, QDOvalUPP a2)
-{
-    s_wrapper.fakeQD_InvokeQDOvalUPP(a0, a1, a2);
-}
-void fakeQD_InvokeQDPolyUPP(GrafVerb a0, PolyHandle a1, QDPolyUPP a2)
-{
-    s_wrapper.fakeQD_InvokeQDPolyUPP(a0, a1, a2);
-}
-void fakeQD_InvokeQDPutPicUPP(const void * a0, short a1, QDPutPicUPP a2)
-{
-    s_wrapper.fakeQD_InvokeQDPutPicUPP(a0, a1, a2);
-}
-void fakeQD_InvokeQDRRectUPP(GrafVerb a0, const Rect * a1, short a2, short a3, QDRRectUPP a4)
-{
-    s_wrapper.fakeQD_InvokeQDRRectUPP(a0, a1, a2, a3, a4);
-}
-void fakeQD_InvokeQDRectUPP(GrafVerb a0, const Rect * a1, QDRectUPP a2)
-{
-    s_wrapper.fakeQD_InvokeQDRectUPP(a0, a1, a2);
-}
-void fakeQD_InvokeQDRgnUPP(GrafVerb a0, RgnHandle a1, QDRgnUPP a2)
-{
-    s_wrapper.fakeQD_InvokeQDRgnUPP(a0, a1, a2);
-}
-OSStatus fakeQD_InvokeQDStdGlyphsUPP(void * a0, ByteCount a1, QDStdGlyphsUPP a2)
-{
-    return s_wrapper.fakeQD_InvokeQDStdGlyphsUPP(a0, a1, a2);
-}
-void fakeQD_InvokeQDTextUPP(short a0, const void * a1, Point a2, Point a3, QDTextUPP a4)
-{
-    s_wrapper.fakeQD_InvokeQDTextUPP(a0, a1, a2, a3, a4);
-}
-short fakeQD_InvokeQDTxMeasUPP(short a0, const void * a1, Point * a2, Point * a3, FontInfo * a4, QDTxMeasUPP a5)
-{
-    return s_wrapper.fakeQD_InvokeQDTxMeasUPP(a0, a1, a2, a3, a4, a5);
-}
-OSStatus fakeQD_InvokeRegionToRectsUPP(UInt16 a0, RgnHandle a1, const Rect * a2, void * a3, RegionToRectsUPP a4)
-{
-    return s_wrapper.fakeQD_InvokeRegionToRectsUPP(a0, a1, a2, a3, a4);
 }
 Boolean fakeQD_IsPortClipRegionEmpty(CGrafPtr a0)
 {
@@ -6331,14 +6479,6 @@ void fakeQD_MapPoly(PolyHandle a0, const Rect * a1, const Rect * a2)
 {
     s_wrapper.fakeQD_MapPoly(a0, a1, a2);
 }
-void fakeQD_MapPt(Point * a0, const Rect * a1, const Rect * a2)
-{
-    s_wrapper.fakeQD_MapPt(a0, a1, a2);
-}
-void fakeQD_MapRect(Rect * a0, const Rect * a1, const Rect * a2)
-{
-    s_wrapper.fakeQD_MapRect(a0, a1, a2);
-}
 void fakeQD_MapRgn(RgnHandle a0, const Rect * a1, const Rect * a2)
 {
     s_wrapper.fakeQD_MapRgn(a0, a1, a2);
@@ -6367,22 +6507,6 @@ CMError fakeQD_NCMUseProfileComment(CMProfileRef a0, UInt32 a1)
 {
     return s_wrapper.fakeQD_NCMUseProfileComment(a0, a1);
 }
-CMBitmapCallBackUPP fakeQD_NewCMBitmapCallBackUPP(CMBitmapCallBackProcPtr a0)
-{
-    return s_wrapper.fakeQD_NewCMBitmapCallBackUPP(a0);
-}
-ColorComplementUPP fakeQD_NewColorComplementUPP(ColorComplementProcPtr a0)
-{
-    return s_wrapper.fakeQD_NewColorComplementUPP(a0);
-}
-ColorSearchUPP fakeQD_NewColorSearchUPP(ColorSearchProcPtr a0)
-{
-    return s_wrapper.fakeQD_NewColorSearchUPP(a0);
-}
-DragGrayRgnUPP fakeQD_NewDragGrayRgnUPP(DragGrayRgnProcPtr a0)
-{
-    return s_wrapper.fakeQD_NewDragGrayRgnUPP(a0);
-}
 GDHandle fakeQD_NewGDevice(short a0, long a1)
 {
     return s_wrapper.fakeQD_NewGDevice(a0, a1);
@@ -6395,74 +6519,6 @@ PixPatHandle fakeQD_NewPixPat()
 {
     return s_wrapper.fakeQD_NewPixPat();
 }
-QDArcUPP fakeQD_NewQDArcUPP(QDArcProcPtr a0)
-{
-    return s_wrapper.fakeQD_NewQDArcUPP(a0);
-}
-QDBitsUPP fakeQD_NewQDBitsUPP(QDBitsProcPtr a0)
-{
-    return s_wrapper.fakeQD_NewQDBitsUPP(a0);
-}
-QDCommentUPP fakeQD_NewQDCommentUPP(QDCommentProcPtr a0)
-{
-    return s_wrapper.fakeQD_NewQDCommentUPP(a0);
-}
-QDGetPicUPP fakeQD_NewQDGetPicUPP(QDGetPicProcPtr a0)
-{
-    return s_wrapper.fakeQD_NewQDGetPicUPP(a0);
-}
-QDJShieldCursorUPP fakeQD_NewQDJShieldCursorUPP(QDJShieldCursorProcPtr a0)
-{
-    return s_wrapper.fakeQD_NewQDJShieldCursorUPP(a0);
-}
-QDLineUPP fakeQD_NewQDLineUPP(QDLineProcPtr a0)
-{
-    return s_wrapper.fakeQD_NewQDLineUPP(a0);
-}
-QDOpcodeUPP fakeQD_NewQDOpcodeUPP(QDOpcodeProcPtr a0)
-{
-    return s_wrapper.fakeQD_NewQDOpcodeUPP(a0);
-}
-QDOvalUPP fakeQD_NewQDOvalUPP(QDOvalProcPtr a0)
-{
-    return s_wrapper.fakeQD_NewQDOvalUPP(a0);
-}
-QDPolyUPP fakeQD_NewQDPolyUPP(QDPolyProcPtr a0)
-{
-    return s_wrapper.fakeQD_NewQDPolyUPP(a0);
-}
-QDPutPicUPP fakeQD_NewQDPutPicUPP(QDPutPicProcPtr a0)
-{
-    return s_wrapper.fakeQD_NewQDPutPicUPP(a0);
-}
-QDRRectUPP fakeQD_NewQDRRectUPP(QDRRectProcPtr a0)
-{
-    return s_wrapper.fakeQD_NewQDRRectUPP(a0);
-}
-QDRectUPP fakeQD_NewQDRectUPP(QDRectProcPtr a0)
-{
-    return s_wrapper.fakeQD_NewQDRectUPP(a0);
-}
-QDRgnUPP fakeQD_NewQDRgnUPP(QDRgnProcPtr a0)
-{
-    return s_wrapper.fakeQD_NewQDRgnUPP(a0);
-}
-QDStdGlyphsUPP fakeQD_NewQDStdGlyphsUPP(QDStdGlyphsProcPtr a0)
-{
-    return s_wrapper.fakeQD_NewQDStdGlyphsUPP(a0);
-}
-QDTextUPP fakeQD_NewQDTextUPP(QDTextProcPtr a0)
-{
-    return s_wrapper.fakeQD_NewQDTextUPP(a0);
-}
-QDTxMeasUPP fakeQD_NewQDTxMeasUPP(QDTxMeasProcPtr a0)
-{
-    return s_wrapper.fakeQD_NewQDTxMeasUPP(a0);
-}
-RegionToRectsUPP fakeQD_NewRegionToRectsUPP(RegionToRectsProcPtr a0)
-{
-    return s_wrapper.fakeQD_NewRegionToRectsUPP(a0);
-}
 RgnHandle fakeQD_NewRgn()
 {
     return s_wrapper.fakeQD_NewRgn();
@@ -6474,10 +6530,6 @@ void fakeQD_ObscureCursor()
 void fakeQD_OffsetPoly(PolyHandle a0, short a1, short a2)
 {
     s_wrapper.fakeQD_OffsetPoly(a0, a1, a2);
-}
-void fakeQD_OffsetRect(Rect * a0, short a1, short a2)
-{
-    s_wrapper.fakeQD_OffsetRect(a0, a1, a2);
 }
 void fakeQD_OffsetRgn(RgnHandle a0, short a1, short a2)
 {
@@ -6567,21 +6619,9 @@ void fakeQD_ProtectEntry(short a0, Boolean a1)
 {
     s_wrapper.fakeQD_ProtectEntry(a0, a1);
 }
-void fakeQD_Pt2Rect(Point a0, Point a1, Rect * a2)
-{
-    s_wrapper.fakeQD_Pt2Rect(a0, a1, a2);
-}
-Boolean fakeQD_PtInRect(Point a0, const Rect * a1)
-{
-    return s_wrapper.fakeQD_PtInRect(a0, a1);
-}
 Boolean fakeQD_PtInRgn(Point a0, RgnHandle a1)
 {
     return s_wrapper.fakeQD_PtInRgn(a0, a1);
-}
-void fakeQD_PtToAngle(const Rect * a0, Point a1, short * a2)
-{
-    s_wrapper.fakeQD_PtToAngle(a0, a1, a2);
 }
 OSStatus fakeQD_QDAddRectToDirtyRegion(CGrafPtr a0, const Rect * a1)
 {
@@ -6671,10 +6711,6 @@ RgnHandle fakeQD_QDLocalToGlobalRegion(CGrafPtr a0, RgnHandle a1)
 {
     return s_wrapper.fakeQD_QDLocalToGlobalRegion(a0, a1);
 }
-OSStatus fakeQD_QDRegionToRects(RgnHandle a0, QDRegionParseDirection a1, RegionToRectsUPP a2, void * a3)
-{
-    return s_wrapper.fakeQD_QDRegionToRects(a0, a1, a2, a3);
-}
 OSStatus fakeQD_QDRegisterNamedPixMapCursor(PixMapHandle a0, PixMapHandle a1, Point a2, const char a3)
 {
     return s_wrapper.fakeQD_QDRegisterNamedPixMapCursor(a0, a1, a2, a3);
@@ -6747,10 +6783,6 @@ void fakeQD_RgnToHandle(RgnHandle a0, Handle a1)
 {
     s_wrapper.fakeQD_RgnToHandle(a0, a1);
 }
-void fakeQD_ScalePt(Point * a0, const Rect * a1, const Rect * a2)
-{
-    s_wrapper.fakeQD_ScalePt(a0, a1, a2);
-}
 void fakeQD_ScreenRes(short * a0, short * a1)
 {
     s_wrapper.fakeQD_ScreenRes(a0, a1);
@@ -6758,10 +6790,6 @@ void fakeQD_ScreenRes(short * a0, short * a1)
 void fakeQD_ScrollRect(const Rect * a0, short a1, short a2, RgnHandle a3)
 {
     s_wrapper.fakeQD_ScrollRect(a0, a1, a2, a3);
-}
-Boolean fakeQD_SectRect(const Rect * a0, const Rect * a1, Rect * a2)
-{
-    return s_wrapper.fakeQD_SectRect(a0, a1, a2);
 }
 void fakeQD_SectRegionWithPortClipRegion(CGrafPtr a0, RgnHandle a1)
 {
@@ -6891,10 +6919,6 @@ void fakeQD_SetPortVisibleRegion(CGrafPtr a0, RgnHandle a1)
 {
     s_wrapper.fakeQD_SetPortVisibleRegion(a0, a1);
 }
-void fakeQD_SetPt(Point * a0, short a1, short a2)
-{
-    s_wrapper.fakeQD_SetPt(a0, a1, a2);
-}
 void fakeQD_SetQDError(OSErr a0)
 {
     s_wrapper.fakeQD_SetQDError(a0);
@@ -6902,10 +6926,6 @@ void fakeQD_SetQDError(OSErr a0)
 void fakeQD_SetQDGlobalsRandomSeed(long a0)
 {
     s_wrapper.fakeQD_SetQDGlobalsRandomSeed(a0);
-}
-void fakeQD_SetRect(Rect * a0, short a1, short a2, short a3, short a4)
-{
-    s_wrapper.fakeQD_SetRect(a0, a1, a2, a3, a4);
 }
 void fakeQD_SetRectRgn(RgnHandle a0, short a1, short a2, short a3, short a4)
 {
@@ -6983,10 +7003,6 @@ void fakeQD_StuffHex(void * a0, ConstStr255Param a1)
 {
     s_wrapper.fakeQD_StuffHex(a0, a1);
 }
-void fakeQD_SubPt(Point a0, Point * a1)
-{
-    s_wrapper.fakeQD_SubPt(a0, a1);
-}
 Handle fakeQD_SwapPortPicSaveHandle(CGrafPtr a0, Handle a1)
 {
     return s_wrapper.fakeQD_SwapPortPicSaveHandle(a0, a1);
@@ -7006,10 +7022,6 @@ OSStatus fakeQD_SyncCGContextOriginWithPort(CGContextRef a0, CGrafPtr a1)
 Boolean fakeQD_TestDeviceAttribute(GDHandle a0, short a1)
 {
     return s_wrapper.fakeQD_TestDeviceAttribute(a0, a1);
-}
-void fakeQD_UnionRect(const Rect * a0, const Rect * a1, Rect * a2)
-{
-    s_wrapper.fakeQD_UnionRect(a0, a1, a2);
 }
 void fakeQD_UnionRgn(RgnHandle a0, RgnHandle a1, RgnHandle a2)
 {
@@ -7031,7 +7043,7 @@ long fakeQD_deltapoint(Point * a0, Point * a1)
 {
     return s_wrapper.fakeQD_deltapoint(a0, a1);
 }
+#endif /* !__LP64__ */
 } /* extern "C" */
 #pragma GCC diagnostic pop
 #endif /* MAC_OS_X_VERSION_10_6 < MAC_OS_X_VERSION_MIN_REQUIRED */
-#endif /* !__LP64__ */

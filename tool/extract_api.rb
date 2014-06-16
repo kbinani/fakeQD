@@ -29,6 +29,7 @@ class FunctionSignature
   attr_reader :return_type
   attr_reader :arguments
   attr_reader :name
+  attr_accessor :available_for_64bit
 
   def initialize(function_symbol)
     function_symbol.gsub!(/\)$/, '')
@@ -47,6 +48,8 @@ class FunctionSignature
         FunctionArgument.new(argument)
       }
     end
+
+    @available_for_64bit = false
   end
 
 
@@ -57,13 +60,17 @@ class FunctionSignature
 
 
   def <=>(other)
+    compare(other)
+  end
+
+
+  def compare(other)
     if @name === other.name then
       argument_list <=> other.argument_list
     else
       @name <=> other.name
     end
   end
-
 
   def fakeqd_name
     "#{FAKEQD_PREFIX}#{@name}"
@@ -109,17 +116,17 @@ def remove_space(s)
 end
 
 
-def get_header_contents(draw_api_header_list)
+def get_header_contents(draw_api_header_list, remove_32bit_only = false)
   contents = ''
   draw_api_header_list.each { |file|
-    contents << open(file)
-      .read
+    defineLP64 = "-D__LP64__=#{remove_32bit_only ? 1 : 0}"
+    contents << `cat "#{file}" | grep -v '#include' | cpp #{defineLP64} 2>/dev/null`
       .force_encoding('MacRoman')
       .encode('UTF-8')
-      .gsub(/#if OLDROUTINENAMES.+?#endif/m, '')
   }
   contents
 end
+
 
 def extract_enums(draw_api_header_list)
   contents = get_header_contents(draw_api_header_list)
@@ -159,7 +166,17 @@ end
 
 
 def extract_extern_function_symbols(draw_api_header_list)
-  contents = get_header_contents(draw_api_header_list)
+  symbols_available_for_64bit = do_extract_extern_function_symbols(draw_api_header_list, true)
+  symbols_all = do_extract_extern_function_symbols(draw_api_header_list, false)
+  symbols_all.each { |s|
+    s.available_for_64bit = (not (symbols_available_for_64bit.find { |_| _.compare(s) == 0 }).nil?)
+  }
+  symbols_all
+end
+
+
+def do_extract_extern_function_symbols(draw_api_header_list, remove_32bit_only)
+  contents = get_header_contents(draw_api_header_list, remove_32bit_only)
 
   function_symbols = contents
     .scan(/extern[^{]+?;/m).map { |func_sig|
@@ -247,6 +264,23 @@ EOT
   file_handle.puts ' */'
 end
 
+
+def print_each_symbol(function_symbols, file_handle, &block)
+  function_symbols.select { |s|
+    s.available_for_64bit
+  }.each { |s|
+    block.call(s)
+  }
+  file_handle.puts '#if !__LP64__'
+  function_symbols.select { |s|
+    not s.available_for_64bit
+  }.each { |s|
+    block.call(s)
+  }
+  file_handle.puts '#endif /* !__LP64__ */'
+end
+
+
 def main(qd_api_headers)
   function_symbols = extract_extern_function_symbols(qd_api_headers)
   enums = extract_enums(qd_api_headers)
@@ -254,13 +288,12 @@ def main(qd_api_headers)
 
   open("#{dir}/../include/fakeQD.h", 'w') { |f|
     print_header(f, qd_api_headers)
-    f.puts '#if !__LP64__'
     f.puts '#include <Availability.h>'
     f.puts '#include <ApplicationServices/ApplicationServices.h>'
 
     f.puts '#if MAC_OS_X_VERSION_10_6 < MAC_OS_X_VERSION_MIN_REQUIRED'
 
-    function_symbols.each { |s|
+    print_each_symbol(function_symbols, f) { |s|
       f.puts "#define #{s.name} #{s.fakeqd_name}"
     }
 
@@ -317,7 +350,7 @@ def main(qd_api_headers)
     f.puts 'extern "C" {'
     f.puts '#endif'
 
-    function_symbols.each { |s|
+    print_each_symbol(function_symbols, f) { |s|
       f.puts "extern #{s.return_type} #{s.fakeqd_name}(#{s.argument_list});"
     }
 
@@ -328,12 +361,10 @@ def main(qd_api_headers)
     f.puts '#pragma GCC diagnostic pop'
 
     f.puts '#endif /* MAC_OS_X_VERSION_10_6 < MAC_OS_X_VERSION_MIN_REQUIRED */'
-    f.puts '#endif /* !__LP64__ */'
   }
 
   open("#{dir}/../src/fakeQD.cpp", 'w') { |f|
     print_header(f, qd_api_headers)
-    f.puts '#if !__LP64__'
     f.puts '#include "fakeQD.h"'
     f.puts '#if MAC_OS_X_VERSION_10_6 < MAC_OS_X_VERSION_MIN_REQUIRED'
 
@@ -344,7 +375,7 @@ def main(qd_api_headers)
 
     f.puts 'extern "C" {'
 
-    function_symbols.each { |s|
+    print_each_symbol(function_symbols, f) { |s|
       f.puts "typedef #{s.return_type} (*#{s.name}Func)(#{s.argument_list});"
     }
 
@@ -356,13 +387,13 @@ def main(qd_api_headers)
     f.puts '    QuickDrawAPIWrapper()'
     f.puts '        : m_initialized(false)'
     f.puts '        , m_qd_dylib_handle(0)'
-    function_symbols.each { |s|
+    print_each_symbol(function_symbols, f) { |s|
       f.puts "        , m_#{s.name}Func(0)"
     }
     f.puts '    {}'
     f.puts '    ~QuickDrawAPIWrapper()'
     f.puts '    {'
-    function_symbols.each { |s|
+    print_each_symbol(function_symbols, f) { |s|
       f.puts "        m_#{s.name}Func = 0;"
     }
     f.puts '        if (m_qd_dylib_handle) {'
@@ -370,7 +401,7 @@ def main(qd_api_headers)
     f.puts '            m_qd_dylib_handle = 0;'
     f.puts '        }'
     f.puts '    }'
-    function_symbols.each { |s|
+    print_each_symbol(function_symbols, f) { |s|
       index = -1
       f.puts "    #{s.return_type} #{s.fakeqd_name}(#{s.argument_list_with_name})"
       f.puts '    {'
@@ -393,7 +424,7 @@ def main(qd_api_headers)
     f.puts '    void initializeIfNeeded()'
     f.puts '    {'
     f.puts '        if (!m_initialized) {'
-    function_symbols.each { |s|
+    print_each_symbol(function_symbols, f) { |s|
       f.puts "            m_#{s.name}Func = getProcAddress<#{s.name}Func>(\"#{s.name}\");"
     }
     f.puts '            m_initialized = true;'
@@ -419,7 +450,7 @@ def main(qd_api_headers)
     f.puts 'private:'
     f.puts '    bool m_initialized;'
     f.puts '    void * m_qd_dylib_handle;'
-    function_symbols.each { |s|
+    print_each_symbol(function_symbols, f) { |s|
       f.puts "    #{s.name}Func m_#{s.name}Func;"
     }
     f.puts '};'
@@ -427,7 +458,7 @@ def main(qd_api_headers)
 
     f.puts 'extern "C" {'
 
-    function_symbols.each { |s|
+    print_each_symbol(function_symbols, f) { |s|
       index = -1
       f.puts "#{s.return_type} #{s.fakeqd_name}(#{s.argument_list_with_name})"
 
@@ -447,7 +478,6 @@ def main(qd_api_headers)
     f.puts '#pragma GCC diagnostic pop'
 
     f.puts '#endif /* MAC_OS_X_VERSION_10_6 < MAC_OS_X_VERSION_MIN_REQUIRED */'
-    f.puts '#endif /* !__LP64__ */'
   }
 end
 
