@@ -5389,7 +5389,7 @@ private:
     deltapointFunc m_deltapointFunc;
 #endif /* !__LP64__ */
 };
-QuickDrawAPIWrapper s_wrapper;
+static QuickDrawAPIWrapper s_wrapper;
 extern "C" {
 void fakeQD_AddPt(Point a0, Point * a1)
 {

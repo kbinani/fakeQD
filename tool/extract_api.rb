@@ -455,7 +455,7 @@ def main(qd_api_headers)
       f.puts "    #{s.name}Func m_#{s.name}Func;"
     }
     f.puts '};'
-    f.puts 'QuickDrawAPIWrapper s_wrapper;'
+    f.puts 'static QuickDrawAPIWrapper s_wrapper;'
 
     f.puts 'extern "C" {'
 
