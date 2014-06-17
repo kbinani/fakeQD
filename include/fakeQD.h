@@ -30,9 +30,8 @@
  *   8e35fe0aa7611115c9db4300e26c1b99
  */
 #pragma once
-#include <Availability.h>
 #include <ApplicationServices/ApplicationServices.h>
-#if MAC_OS_X_VERSION_10_6 < MAC_OS_X_VERSION_MIN_REQUIRED
+#if ! defined(__QUICKDRAWAPI__)
 #define AddPt fakeQD_AddPt
 #define DisposeCMBitmapCallBackUPP fakeQD_DisposeCMBitmapCallBackUPP
 #define DisposeColorComplementUPP fakeQD_DisposeColorComplementUPP
@@ -1242,4 +1241,4 @@ extern long fakeQD_deltapoint(Point *, Point *);
 } /* extern "C" */
 #endif
 #pragma GCC diagnostic pop
-#endif /* MAC_OS_X_VERSION_10_6 < MAC_OS_X_VERSION_MIN_REQUIRED */
+#endif /* ! defined(__QUICKDRAWAPI__) */

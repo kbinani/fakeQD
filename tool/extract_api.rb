@@ -289,10 +289,9 @@ def main(qd_api_headers)
   open("#{dir}/../include/fakeQD.h", 'w') { |f|
     print_header(f, qd_api_headers)
     f.puts '#pragma once'
-    f.puts '#include <Availability.h>'
     f.puts '#include <ApplicationServices/ApplicationServices.h>'
 
-    f.puts '#if MAC_OS_X_VERSION_10_6 < MAC_OS_X_VERSION_MIN_REQUIRED'
+    f.puts '#if ! defined(__QUICKDRAWAPI__)'
 
     print_each_symbol(function_symbols, f) { |s|
       f.puts "#define #{s.name} #{s.fakeqd_name}"
@@ -361,13 +360,13 @@ def main(qd_api_headers)
 
     f.puts '#pragma GCC diagnostic pop'
 
-    f.puts '#endif /* MAC_OS_X_VERSION_10_6 < MAC_OS_X_VERSION_MIN_REQUIRED */'
+    f.puts '#endif /* ! defined(__QUICKDRAWAPI__) */'
   }
 
   open("#{dir}/../src/fakeQD.cpp", 'w') { |f|
     print_header(f, qd_api_headers)
     f.puts '#include "fakeQD.h"'
-    f.puts '#if MAC_OS_X_VERSION_10_6 < MAC_OS_X_VERSION_MIN_REQUIRED'
+    f.puts '#if ! defined(__QUICKDRAWAPI__)'
 
     f.puts '#include <dlfcn.h>'
 
@@ -479,7 +478,7 @@ def main(qd_api_headers)
 
     f.puts '#pragma GCC diagnostic pop'
 
-    f.puts '#endif /* MAC_OS_X_VERSION_10_6 < MAC_OS_X_VERSION_MIN_REQUIRED */'
+    f.puts '#endif /* ! defined(__QUICKDRAWAPI__) */'
   }
 end
 

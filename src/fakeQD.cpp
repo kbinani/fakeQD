@@ -30,7 +30,7 @@
  *   8e35fe0aa7611115c9db4300e26c1b99
  */
 #include "fakeQD.h"
-#if MAC_OS_X_VERSION_10_6 < MAC_OS_X_VERSION_MIN_REQUIRED
+#if ! defined(__QUICKDRAWAPI__)
 #include <dlfcn.h>
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
@@ -7047,4 +7047,4 @@ long fakeQD_deltapoint(Point * a0, Point * a1)
 #endif /* !__LP64__ */
 } /* extern "C" */
 #pragma GCC diagnostic pop
-#endif /* MAC_OS_X_VERSION_10_6 < MAC_OS_X_VERSION_MIN_REQUIRED */
+#endif /* ! defined(__QUICKDRAWAPI__) */
