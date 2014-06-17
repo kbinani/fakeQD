@@ -28,6 +28,9 @@
  *   dfe8856f7132957c050857ad7078fe4a
  * /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/QD.framework/Headers/QuickdrawTypes.h
  *   8e35fe0aa7611115c9db4300e26c1b99
+ *
+ * (retired) API reference is here:
+ * https://developer.apple.com/legacy/library/documentation/Carbon/reference/QuickDraw_Ref/QuickDraw_Ref.pdf
  */
 #include "fakeQD.h"
 #if ! defined(__QUICKDRAWAPI__)
@@ -4953,7 +4956,7 @@ private:
                 m_XorRgnFunc = getProcAddress<XorRgnFunc>(m_qd_dylib_handle, "XorRgn");
                 m_deltapointFunc = getProcAddress<deltapointFunc>(m_qd_dylib_handle, "deltapoint");
 #endif /* !__LP64__ */
-    }
+            }
             m_initialized = true;
         }
     }
@@ -4962,7 +4965,7 @@ private:
     {
         assert(handle);
         assert(name);
-            return reinterpret_cast<Func>(dlsym(handle, name));
+        return reinterpret_cast<Func>(dlsym(handle, name));
     }
 private:
     bool m_initialized;

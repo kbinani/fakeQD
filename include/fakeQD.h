@@ -28,6 +28,9 @@
  *   dfe8856f7132957c050857ad7078fe4a
  * /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/QD.framework/Headers/QuickdrawTypes.h
  *   8e35fe0aa7611115c9db4300e26c1b99
+ *
+ * (retired) API reference is here:
+ * https://developer.apple.com/legacy/library/documentation/Carbon/reference/QuickDraw_Ref/QuickDraw_Ref.pdf
  */
 #pragma once
 #include <ApplicationServices/ApplicationServices.h>

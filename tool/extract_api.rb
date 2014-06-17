@@ -261,6 +261,9 @@ EOT
     file_handle.puts " * #{header}"
     file_handle.puts " *   #{md5}"
   }
+  file_handle.puts ' *'
+  file_handle.puts ' * (retired) API reference is here:'
+  file_handle.puts ' * https://developer.apple.com/legacy/library/documentation/Carbon/reference/QuickDraw_Ref/QuickDraw_Ref.pdf'
   file_handle.puts ' */'
 end
 
@@ -431,7 +434,7 @@ def main(qd_api_headers)
     print_each_symbol(function_symbols, f) { |s|
       f.puts "                m_#{s.name}Func = getProcAddress<#{s.name}Func>(m_qd_dylib_handle, \"#{s.name}\");"
     }
-    f.puts '    }'
+    f.puts '            }'
     f.puts '            m_initialized = true;'
     f.puts '        }'
     f.puts '    }'
@@ -440,7 +443,7 @@ def main(qd_api_headers)
     f.puts '    {'
     f.puts '        assert(handle);'
     f.puts '        assert(name);'
-    f.puts '            return reinterpret_cast<Func>(dlsym(handle, name));'
+    f.puts '        return reinterpret_cast<Func>(dlsym(handle, name));'
     f.puts '    }'
     f.puts 'private:'
     f.puts '    bool m_initialized;'
