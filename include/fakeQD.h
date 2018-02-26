@@ -32,7 +32,7 @@
  *   8e35fe0aa7611115c9db4300e26c1b99
  *
  * (retired) API reference is here:
- * https://developer.apple.com/legacy/library/documentation/Carbon/reference/QuickDraw_Ref/QuickDraw_Ref.pdf
+ * https://web.archive.org/web/20140727111914/https://developer.apple.com/legacy/library/documentation/Carbon/Reference/QuickDraw_Ref/QuickDraw_Ref.pdf
  */
 #pragma once
 #include <ApplicationServices/ApplicationServices.h>
